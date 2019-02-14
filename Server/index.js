@@ -1,7 +1,3 @@
-
-
-
-
 // Get all the module packages
 var express = require('express')
 var apiRouter = require('./Routes/api.js')
