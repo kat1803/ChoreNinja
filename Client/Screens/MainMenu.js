@@ -19,7 +19,8 @@ class MainMenu extends React.Component {
 //Main Navigation of the Application 
 const AppMainNavigator = createBottomTabNavigator(
     {
-        'Home': LoginScreen,
+        'Login': LoginScreen,
+        'Home': HomeScreen,
         'Profile': ProfileScreen,
         'About': AboutScreen,
     },
