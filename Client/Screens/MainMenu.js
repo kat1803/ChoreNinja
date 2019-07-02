@@ -10,8 +10,7 @@ import AboutScreen from "./AboutScreen";
 class MainMenu extends React.Component {
     render() {
         return (
-           <AppMainContainer
-            />
+           <AppMainContainer/>
         );
     }
 }
@@ -23,6 +22,7 @@ const AppMainNavigator = createBottomTabNavigator(
         'Home': HomeScreen,
         'Profile': ProfileScreen,
         'About': AboutScreen,
+        //'CustomerProfileScreen': CustomerProfile,
     },
 )
 
