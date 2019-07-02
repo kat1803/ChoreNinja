@@ -6,7 +6,7 @@ class AboutScreen extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                <Text>About Screen</Text>
+                <Text>ChoreNinja is the mobile application that help matching customers with freelancer</Text>
             </View>
         );
     }
