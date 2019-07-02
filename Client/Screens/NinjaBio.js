@@ -42,8 +42,7 @@ class NinjaBio extends React.Component {
                 </View>
 
                 <View style={{  margin: 10,
-
-                                 borderRadius: 4,
+                                 borderRadius: 3,
                                  borderWidth: 1,
                                  borderColor: '#d6d7da',
                                  flex: 3, justifyContent:'flex-start',alignItems: "flex-start", flexDirection:'column', padding: 5}}>
