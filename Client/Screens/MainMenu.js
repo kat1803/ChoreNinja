@@ -4,6 +4,7 @@ import { createDrawerNavigator, createBottomTabNavigator, createAppContainer} fr
 
 import HomeScreen from "./HomeScreen";
 import LoginScreen from "./LoginScreen";
+import SignupScreen from "./SignupScreen";
 import ProfileScreen from "./ProfileScreen";
 import AboutScreen from "./AboutScreen";
 import NinjaBio from './NinjaBio';
@@ -20,6 +21,7 @@ class MainMenu extends React.Component {
 //Main Navigation of the Application 
 const AppMainNavigator = createBottomTabNavigator(
     {
+        'Signup': SignupScreen,
         'Ninjabio':NinjaBio,
         'Login': LoginScreen,
         'Home': HomeScreen,
