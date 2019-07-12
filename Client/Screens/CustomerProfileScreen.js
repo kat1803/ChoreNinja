@@ -7,6 +7,8 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import { Platform, FlatList, Alert } from 'react-native';
+
 export default class Profile extends Component {
 
   render() {
@@ -17,12 +19,8 @@ export default class Profile extends Component {
           <View style={styles.body}>
             <View style={styles.bodyContent}>
               <Text style={styles.name}>Wu Tang</Text>
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Invite Friend to get $10 off</Text>  
-              </TouchableOpacity>              
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Join Ninja Team</Text> 
-              </TouchableOpacity>
+              <Text>Hello</Text>
+              
             </View>
         </View>
       </View>
