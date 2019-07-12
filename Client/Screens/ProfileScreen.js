@@ -1,30 +1,35 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
 import {StyleSheet,Image,TouchableOpacity} from "react-native";
-import { AppRegistry } from "react-native";
-import Grid from 'react-native-grid-component';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
 class ProfileScreen  extends React.Component {
+  
     render() {
         return (
                 <View style={styles.container}>
                     <View style={styles.header}></View>
                     <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
                     <View style={styles.body}>
-                      <View style={styles.bodyContent}>
+                      <View style={styles.bodyContent}></View>
                         <Text style={styles.name}> Wu Tang </Text>
-                        <Text style={styles.name}> Wu Tang </Text>
-                      
-                     <View style={styles.footer}></View>
-                        <TouchableOpacity style={styles.buttonContainer}>
-                          <Text>Invite Friend to get $10 off</Text>  
+                        <Text style={styles.name}> Address: 123 Jacson Ave </Text>
+                       
+                          <Grid item xs={12}>
+                          <Paper className={classes.paper}>xs=12</Paper>
+                          </Grid>
+                           <TouchableOpacity style={styles.buttonContainer}>
+                          <Text>Invite your friend to get 10$ off</Text>  
                         </TouchableOpacity>              
                         <TouchableOpacity style={styles.buttonContainer}>
                           <Text>Join Ninja Team</Text> 
                         </TouchableOpacity>
                       </View>
-                  </View>
-                </View>
+                      </View>
+           
+                
+
               );
             }
           }
@@ -51,22 +56,19 @@ class ProfileScreen  extends React.Component {
               marginTop:130
             },
             name:{
+              alignItems: 'center',
               fontSize:22,
-              color:"#FFFFFF",
+              color:"#000000",
               fontWeight:'600',
             },
             body:{
               marginTop:40,
+              alignItems: 'center',
             },
             bodyContent: {
               flex: 1,
               alignItems: 'center',
               padding:30,
-            },
-            name:{
-              fontSize:28,
-              color: "#696969",
-              fontWeight: "600"
             },
             buttonContainer: {
               marginTop:10,

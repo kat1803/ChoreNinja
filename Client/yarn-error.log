@@ -1,0 +1,52 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add react-native-paper
+
+PATH: 
+  /opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/Applications/Wireshark.app/Contents/MacOS:/opt/local/bin:/opt/local/sbin
+
+Yarn version: 
+  1.12.3
+
+Node version: 
+  12.5.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EACCES: permission denied, rmdir '/Users/kathryn/Documents/GitHub/ChoreNinja/Client/node_modules/.cache/@babel'
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "@ant-design/react-native": "^3.1.9",
+      "antd-mobile": "^2.2.11",
+      "expo": "^32.0.0",
+      "react": "16.5.0",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+      "react-native-gifted-form": "^0.1.1",
+      "react-native-grid-component": "^2.0.0",
+      "react-native-navigation": "^2.11.0",
+      "react-native-super-grid": "^3.0.7",
+      "react-navigation": "^3.2.1",
+      "react-redux": "^6.0.0",
+      "redux": "^4.0.1"
+    },
+    "devDependencies": {
+      "babel-preset-expo": "^5.0.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
