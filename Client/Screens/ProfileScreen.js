@@ -1,13 +1,16 @@
 import React from "react";
 import { View, Text } from "react-native";
 import {StyleSheet,Image,TouchableOpacity} from "react-native";
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import {Paper} from '@material-ui/core';
+import {Typography} from '@material-ui/core';
+
+
 
 class ProfileScreen  extends React.Component {
   
     render() {
         return (
+          <View>
                 <View style={styles.container}>
                     <View style={styles.header}></View>
                     <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
@@ -15,20 +18,26 @@ class ProfileScreen  extends React.Component {
                       <View style={styles.bodyContent}></View>
                         <Text style={styles.name}> Wu Tang </Text>
                         <Text style={styles.name}> Address: 123 Jacson Ave </Text>
-                       
-                          <Grid item xs={12}>
-                          <Paper className={classes.paper}>xs=12</Paper>
-                          </Grid>
+                        
+      <Paper>
+        <Typography variant="h5" component="h3">
+          This is a sheet of paper.
+        </Typography>
+        <Typography component="p">
+          Paper can be used to build surface or other elements for your application.
+        </Typography>
+      </Paper>
+
                            <TouchableOpacity style={styles.buttonContainer}>
                           <Text>Invite your friend to get 10$ off</Text>  
-                        </TouchableOpacity>              
+                        </TouchableOpacity>         
                         <TouchableOpacity style={styles.buttonContainer}>
                           <Text>Join Ninja Team</Text> 
                         </TouchableOpacity>
                       </View>
                       </View>
            
-                
+                      </View>
 
               );
             }
