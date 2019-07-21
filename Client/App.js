@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { AppRegistry,Text, View } from 'react-native';
 import MainMenu from './Screens/MainMenu'; 
 import { AppLoading, Font } from 'expo';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 export default class App extends Component {
 	state = {
@@ -28,9 +29,10 @@ export default class App extends Component {
       return <AppLoading />;
     }
     return (
-      <MainMenu />
+	<PaperProvider>
+		<MainMenu />
+	</PaperProvider>
     );
   }
 }
 AppRegistry.registerComponent('choreNinja', () => App);
-
