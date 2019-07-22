@@ -1,12 +1,14 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import { DefaultTheme } from 'react-native-paper' ; 
+import { Button } from 'react-native-paper' ; 
+
 class NinjaJoinScreen extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                <Text>NinjaJoinScreen</Text>
+                <Text>Hey, are you interested to join as a ninja?</Text>
+                <Button mode="contained"> JOIN NOW </Button>
             </View>
         );
     }
