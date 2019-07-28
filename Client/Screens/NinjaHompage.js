@@ -22,7 +22,7 @@ class NinjaHomepage extends React.Component {
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                     <Searchbar
                         placeholder="Search"
-                        style = {{width: 280}}
+                        style = {{width: 350}}
                         onChangeText={query => { this.setState({ firstQuery: query }); }}
                         value={firstQuery}
                     />
