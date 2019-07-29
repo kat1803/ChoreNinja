@@ -14,7 +14,7 @@ class NinjaHomepage extends React.Component {
             <View>
                 <Appbar.Header>
                     <Appbar.Content
-                        title = "Ninja HomePage :)"
+                        title = "Ninja Home"
                     />
                     <Appbar.Action icon="notifications" onPress = {() => console.log('Pressed')}/>
                     <Appbar.Action icon="inbox" onPress={() => console.log('Pressed')} />
