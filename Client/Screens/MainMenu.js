@@ -7,6 +7,7 @@ import LoginScreen from "./LoginScreen";
 import ProfileScreen from "./ProfileScreen";
 import AboutScreen from "./AboutScreen";
 import NinjaBio from './NinjaBio';
+import NinjaJoinScreen from './NinjaJoinScreen'
 import NinjaSignUp from './NinjaSignUp';
 
 class MainMenu extends React.Component {
@@ -26,6 +27,7 @@ const AppMainNavigator = createBottomTabNavigator(
         'Home': HomeScreen,
         'Profile': ProfileScreen,
         'About': AboutScreen,
+        'NinjaJoin': NinjaJoinScreen,
         'NinjaSignUp': NinjaSignUp,
     },
 )
