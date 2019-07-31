@@ -11,7 +11,8 @@ import MessageList from "./MessageList";
 import ProfileScreen from "./ProfileScreen";
 import AboutScreen from "./AboutScreen";
 import NinjaBio from './NinjaBio';
-import NinjaHomepage from './NinjaHompage';
+import NinjaOngoingExpired from './NinjaOngoingExpired';
+import NinjaHomepage from './NinjaHomepage';
 import NinjaJoinScreen from './NinjaJoinScreen';
 import NinjaSignUp from './NinjaSignUp';
 
@@ -27,10 +28,15 @@ class MainMenu extends React.Component {
 //Main Navigation of the Application 
 const AppMainNavigator = createBottomTabNavigator(
     {
+
         // 'MessageList': MessageList,
         'Message': Message,
         'C_OnGoing': CustomerOnGoingScreen,
         'Signup': SignupScreen,
+
+        'NinjaHomepage': NinjaHomepage,
+        'NinjaOngoingExpired':NinjaOngoingExpired,
+
         'Ninjabio':NinjaBio,
         'Login': LoginScreen,
         'Home': HomeScreen,
