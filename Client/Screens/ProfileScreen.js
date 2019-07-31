@@ -1,16 +1,85 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { Card, ListItem, Button, Icon } from "react-native-elements";
+import {
+  StyleSheet,
+  Image,
+  FlatList,
+  AppRegistry,
+  Component,
+  TouchableOpacity
+} from "react-native";
+import { Divider } from 'react-native-elements';
 
-class ProfileScreen  extends React.Component {
-    render() {
-        return (
-            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                <Text>Profile Screen</Text>
-            </View>
-        );
-    }
+// Formatted with the following command:
+// Nhis-MacBook-Pro:Screens kathryn$ prettier --write ProfileScreen.js
+
+
+class ProfileScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        <View style={styles.Header}>
+          <Text style={{ fontWeight: "bold", fontSize: 15 }}>
+            Master Profile
+          </Text>
+          <Image
+            style={{ width: 40, height: 40 }}
+            source={require("../assets/crow.png")}
+          />
+        </View>
+        <View style={styles.Body}>
+          <Image
+            style={{
+              width: 100,
+              height: 100,
+              overflow: "hidden",
+              borderRadius: 80
+            }}
+            source={require("../assets/snoopdogg.jpg")}
+          />
+          <Text style={{ fontWeight: "bold", fontSize: 25 }}>Snoop Dogg</Text>
+        </View>
+
+<View>
+        <Card >
+          <ListItem style={{borderBottomColor: "#000000"}} title="Address:"/>
+
+          <ListItem title="Payment Type :"/>
+          <ListItem title="Email address:"/>
+          <ListItem title="Message :"/>
+          <ListItem title="Change Password :"/>
+          <ListItem title=""/>
+          <Button style={{alignItems: 'center', alignContent: 'center'}} title="Edit"></Button>
+        </Card>
+        <Button style={{alignItems: 'center', alignContent: 'center', paddingTop: 30}} title="Invite your friend to get $10 off" type="outline" />
+        <Button style={{alignItems: 'center', alignContent: 'center', paddingTop: 30}} title="Log out" type="outline" />
+      </View>
+      </View>
+    );
+  }
 }
 
 
-export default ProfileScreen
+const styles = StyleSheet.create({
+  Header: {
+    marginTop: "5%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "#D3D3D3"
+  },
+  Body: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    borderBottomColor: "#D3D3D3"
+  },
+ Info: {
+   borderBottomColor: "black"
+ }
+});
+
+export default ProfileScreen;
