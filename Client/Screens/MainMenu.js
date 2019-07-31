@@ -7,7 +7,7 @@ import LoginScreen from "./LoginScreen";
 import ProfileScreen from "./ProfileScreen";
 import AboutScreen from "./AboutScreen";
 import NinjaBio from './NinjaBio';
-import NinjaJoinScreen from './NinjaJoinScreen'
+import NinjaJoinScreen from './NinjaJoinScreen';
 
 class MainMenu extends React.Component {
     render() {
