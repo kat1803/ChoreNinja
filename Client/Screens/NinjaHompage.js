@@ -51,11 +51,11 @@ class NinjaHomepage extends React.Component {
                                 <Text>{n.Title}</Text>
                                 <Text>{n.JobDecription}</Text>
                                 <View>
-                                     <Text>{n.Price}</Text>
-                                     <Button 
-                                            title="Accept Job"
-                                            onPress={() => console.log("Accept Job")}
-                                        />
+                                    <Text>{n.Price}</Text>
+                                    <Button 
+                                        title="Accept Job"
+                                        onPress={() => console.log("Accept Job")}
+                                    />
                                 </View>
                                 
                             </View>
