@@ -39,6 +39,7 @@ class NinjaHomepage extends React.Component {
                         onPress={() => console.log('Pressed')}
                     />
                 </View>
+                <View>
                 {this.state.Ninjas.map((n,i)=>{
                     return (
                         <Card key={i} flexDirection="row" >
@@ -63,7 +64,7 @@ class NinjaHomepage extends React.Component {
 
                     )
                 })}
-
+                </View>
             </View>
         );
     }
