@@ -28,7 +28,7 @@ class HomeScreen extends React.Component {
           </Text>
           <Image
             style={{ width: 30, height: 30 }}
-            source={require("../assets/ninjabio.png")}
+            source={require("../assets/crow.png")}
           />
         </View>
 
@@ -68,12 +68,13 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   Header: {
-    marginTop: "2%",
+    margin: "2%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    borderBottomWidth: 1,
-    borderBottomColor: "#D3D3D3"
+    borderBottomWidth: 5, //change the size of the purple line
+    borderBottomColor: "#e4c5e9",
+    backgroundColor:"#e4c5e9"
   },
 
   MainContainer: {

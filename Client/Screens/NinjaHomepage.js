@@ -19,7 +19,7 @@ class NinjaHomepage extends React.Component {
         return (
             <View>
                 
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', margin: 10}}>
                     <Searchbar
                         placeholder="Search"
                         style = {{width: 300}}

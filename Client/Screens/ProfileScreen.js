@@ -24,7 +24,7 @@ class ProfileScreen extends React.Component {
             Master Profile
           </Text>
           <Image
-            style={{ width: 40, height: 40 }}
+            style={{ width: 30, height: 30 }}
             source={require("../assets/crow.png")}
           />
         </View>
@@ -63,11 +63,13 @@ class ProfileScreen extends React.Component {
 
 const styles = StyleSheet.create({
   Header: {
+    margin: "2%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    borderBottomWidth: 1,
-    borderBottomColor: "#D3D3D3"
+    borderBottomWidth: 5, //change the size of the purple line
+    borderBottomColor: "#e4c5e9",
+    backgroundColor:"#e4c5e9"
   },
   Body: {
     flexDirection: "column",
