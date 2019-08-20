@@ -2,8 +2,6 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Platform, StyleSheet, TextInput, Image } from "react-native";
 import { Button } from "react-native";
-import { Card } from "react-native";
-
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 class HomeScreen extends React.Component {
@@ -70,7 +68,7 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   Header: {
-    marginTop: "10%",
+    marginTop: "2%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -80,7 +78,7 @@ const styles = StyleSheet.create({
 
   MainContainer: {
     justifyContent: "center",
-    margin: 20
+    margin: 5
   },
 
   TextInputStyleClass: {

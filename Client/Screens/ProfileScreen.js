@@ -63,7 +63,6 @@ class ProfileScreen extends React.Component {
 
 const styles = StyleSheet.create({
   Header: {
-    marginTop: "5%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",

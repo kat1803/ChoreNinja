@@ -18,13 +18,7 @@ class NinjaHomepage extends React.Component {
         const { firstQuery } = this.state;
         return (
             <View>
-                <Appbar.Header>
-                    <Appbar.Content
-                        title = "Ninja Home"
-                    />
-                    <Appbar.Action icon="notifications" onPress = {() => console.log('Pressed')}/>
-                    <Appbar.Action icon="inbox" onPress={() => console.log('Pressed')} />
-                </Appbar.Header>
+                
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                     <Searchbar
                         placeholder="Search"
@@ -71,3 +65,13 @@ class NinjaHomepage extends React.Component {
 
 
 export default NinjaHomepage
+
+//Header part
+/*<Appbar.Header>
+                    <Appbar.Content
+                        title = "Ninja Home"
+                    />
+                    <Appbar.Action icon="notifications" onPress = {() => console.log('Pressed')}/>
+                    <Appbar.Action icon="inbox" onPress={() => console.log('Pressed')} />
+                </Appbar.Header>
+                */
