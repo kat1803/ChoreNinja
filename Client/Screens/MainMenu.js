@@ -48,8 +48,9 @@ class MainMenu extends React.Component {
   borderColor={'#7a44cf'}
   hasPadding
   options={[
-    { label: "Ninja", value: true}, 
-    { label: "Master", value: false} 
+    { label: "Master", value: false},
+    { label: "Ninja", value: true} 
+    
   ]}
 />
 
