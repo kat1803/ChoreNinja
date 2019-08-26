@@ -1,55 +1,53 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { createDrawerNavigator, createAppContainer} from 'react-navigation'
+import { createDrawerNavigator, createBottomTabNavigator, createAppContainer} from 'react-navigation'
 
 import HomeScreen from "./HomeScreen";
+import LoginScreen from "./LoginScreen";
+import SignupScreen from "./SignupScreen";
+import CustomerOnGoingScreen from "./CustomerOnGoingScreen";
+import Message from "./Message";
+import MessageList from "./MessageList";
 import ProfileScreen from "./ProfileScreen";
 import AboutScreen from "./AboutScreen";
+import NinjaBio from './NinjaBio';
+import NinjaOngoingExpired from './NinjaOngoingExpired';
+import NinjaHomepage from './NinjaHomepage';
+import NinjaJoinScreen from './NinjaJoinScreen';
+import NinjaSignUp from './NinjaSignUp';
 
 class MainMenu extends React.Component {
     render() {
         return (
            <AppMainContainer
-                // ref={navigatorRef => {
-                //     NavigationService.setTopLevelNavigator(navigatorRef)
-                // }}
             />
         );
     }
 }
 
 //Main Navigation of the Application 
-const AppMainNavigator = createDrawerNavigator(
+const AppMainNavigator = createBottomTabNavigator(
     {
+
+        // 'MessageList': MessageList,
+        'Message': Message,
+        'C_OnGoing': CustomerOnGoingScreen,
+        'Signup': SignupScreen,
+
+        'NinjaHomepage': NinjaHomepage,
+        'NinjaOngoingExpired':NinjaOngoingExpired,
+
+        'Ninjabio':NinjaBio,
+        'Login': LoginScreen,
         'Home': HomeScreen,
         'Profile': ProfileScreen,
         'About': AboutScreen,
+        'NinjaHomepage' : NinjaHomepage,
+        'NinjaJoin': NinjaJoinScreen,
+        'NinjaSignUp': NinjaSignUp,
     },
-    // {
-    //     contentComponent: customMainComponent,
-    //     contentOptions: {
-    //         activeTintColor: '#2196f3'
-    //     }
-    // }
 )
 
 const AppMainContainer = createAppContainer(AppMainNavigator);
 
-// const customMainComponent = props => 
-// (
-//     <SafeAreaView style = {{flex:1}}> 
-//         <View>
-//             style = {{
-//                 height: 150,
-//                 backgroundColor: 'Green',
-//                 alignItems: 'center',
-//                 justifyContent: 'center',
-//             }}
-//         </View>
-//         <ScrollView>
-//             <DrawerItems {...props} />
-//         </ScrollView>
-//     </SafeAreaView>
-// )
-
-export default MainMenu 
+export default MainMenu
