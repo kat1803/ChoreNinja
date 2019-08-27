@@ -1,4 +1,4 @@
-const express = require("./node_modules/express");
+const express = require("express");
 var router = express.Router();
 
 router.post("/createUser", (req, res) => {
