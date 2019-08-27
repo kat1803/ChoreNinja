@@ -4,10 +4,23 @@ import MainMenu from './Screens/MainMenu';
 import { AppLoading, Font } from 'expo';
 import { Provider as PaperProvider } from 'react-native-paper';
 
+//Configure db.js with mongoose API 
+var dbConfig = require('./Authentication/db.js');
+var mongoose = require('mongoose');
+mongoose.connect(dbConfig.url);
+
+//Configuring Passport
+var passport = require('passport');
+var expressSession = require('express-session');
+app.use(expressSession({ secret: 'myChoreNinjaSecretKey' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 export default class App extends Component {
 	state = {
 		isReady: false,
 	  };
+
 	async componentDidMount() {
 		await Font.loadAsync(
 		  'antoutline',
