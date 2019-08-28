@@ -3,7 +3,8 @@ import { View, Text, Switch } from "react-native";
 import {
   createDrawerNavigator,
   createBottomTabNavigator,
-  createAppContainer
+  createAppContainer,
+  StackNavigator
 } from "react-navigation";
 import SwitchSelector from "react-native-switch-selector";
 import HomeScreen from "./HomeScreen";
@@ -37,15 +38,15 @@ class MainMenu extends React.Component {
   render() {
     return (
         // dont fuck with this line
-      <View style={{ flex: 1 }}>
-      
-        <SwitchSelector style={{marginTop:50, marginBottom:4, width:150,alignSelf: 'center'}}
+      <View style={{ flex: 1}}>
+      <Text style={{color:'#01479b', marginLeft: 15, marginTop:50, fontSize:35, fontWeight:"bold"}}>ChoreNinja</Text>
+        <SwitchSelector style={{ marginBottom:4, marginRight:10, width:120,alignSelf: 'flex-end'}}
   initial={0}
   onPress={this.handleToggle.bind(this)}
-  textColor={'#7a44cf'} //'#7a44cf'
-  selectedColor={'#e1bee7'}
-  buttonColor={'#7a44cf'}
-  borderColor={'#7a44cf'}
+  textColor={'#01479b'} //'#7a44cf'
+  selectedColor={'#80d8ff'}
+  buttonColor={'#01479b'}
+  borderColor={'#01479b'}
   hasPadding
   options={[
     { label: "Master", value: false},
@@ -63,18 +64,18 @@ class MainMenu extends React.Component {
     );
   }
 }
-//<AppMainContainer/>
+
 //Main Navigation of the Application
 const AppMainNavigatorCustomer = createBottomTabNavigator({
   //Login: LoginScreen,
   Home: HomeScreen,
   Profile: ProfileScreen,
-
   // 'MessageList': MessageList,
   Message: Message,
   C_OnGoing: CustomerOnGoingScreen,
-  Signup: SignupScreen,
-  NinjaSignUp: NinjaSignUp
+  //Signup: SignupScreen, //this is sign up for customer first join the app
+  NinjaSignUp: NinjaSignUp,
+  NinjaJoin: NinjaJoinScreen,
 });
 
 const AppMainNavigatorNinja = createBottomTabNavigator({
@@ -82,11 +83,11 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
   NinjaOngoingExpired: NinjaOngoingExpired,
   Ninjabio: NinjaBio,
   NinjaHomepage: NinjaHomepage,
-  NinjaJoin: NinjaJoinScreen,
   About: AboutScreen
 });
 
 const AppMainContainerCustomer = createAppContainer(AppMainNavigatorCustomer);
 const AppMainContainerNinja = createAppContainer(AppMainNavigatorNinja);
+
 
 export default MainMenu;

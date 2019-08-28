@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image  } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import { Button, InputItem, List, WingBlank, Flex, WhiteSpace } from '@ant-design/react-native';
-import {Header} from "react-native-elements";
+import { Card} from "react-native-elements";
 
 class AboutScreen extends React.Component {
     constructor(props) {
@@ -15,10 +15,8 @@ class AboutScreen extends React.Component {
     render() {
         return ( 
             <View style={{ justifyContent: "center"  }}>
-                <Header
-                    centerComponent={{ text: "CHORE NINJA | SIGN UP" }}
-                ></Header>
-                <Text style={{ fontWeight: 'bold', textAlign: "center" }}>
+               <Card>
+                <Text style={{ fontWeight: 'bold'}}>
                     Social Security Number
                 </Text>
                 <InputItem
@@ -28,11 +26,11 @@ class AboutScreen extends React.Component {
                     onChange = {
                         ssn => { this.setState ({ssn,});}
                     }
-                    placeholder = "Social Security Number"
+                    placeholder = "XXX-XX-XXXX"
                 >
                 </InputItem>
                 <Text></Text>
-                <Text style={{ fontWeight: 'bold', textAlign: "center" }}>
+                <Text style={{ fontWeight: 'bold'}}>
                     Bio
                 </Text>
                 <InputItem
@@ -42,10 +40,11 @@ class AboutScreen extends React.Component {
                     onChange={
                         ssn => { this.setState({ ssn, }); }
                     }
-                    placeholder="Bio"
+                    placeholder="Please decribe briefly about yourself"
                 >
                 </InputItem>
-                <Button type="primary" inline size="small">primary</Button>
+                <Button type="primary" >Argree to join</Button>
+                </Card>
             </View>
         );
     }

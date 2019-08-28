@@ -4,6 +4,7 @@ import MainMenu from './Screens/MainMenu';
 import { AppLoading, Font } from 'expo';
 import { Provider as PaperProvider } from 'react-native-paper';
 
+
 export default class App extends Component {
 	state = {
 		isReady: false,

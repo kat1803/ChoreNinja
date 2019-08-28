@@ -22,16 +22,6 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View>
-        <View style={styles.Header}>
-          <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-            Customer Home
-          </Text>
-          <Image
-            style={{ width: 30, height: 30 }}
-            source={require("../assets/crow.png")}
-          />
-        </View>
-
         <View style={styles.MainContainer}>
           <TextInput
             style={styles.TextInputStyleClass}
@@ -94,3 +84,14 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
+
+/*<View style={styles.Header}>
+          <Text style={{ fontWeight: "bold", fontSize: 15 }}>
+            Customer Home
+          </Text>
+          <Image
+            style={{ width: 30, height: 30 }}
+            source={require("../assets/crow.png")}
+          />
+        </View>
+        */

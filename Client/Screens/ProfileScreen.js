@@ -19,15 +19,6 @@ class ProfileScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View style={styles.Header}>
-          <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-            Master Profile
-          </Text>
-          <Image
-            style={{ width: 30, height: 30 }}
-            source={require("../assets/crow.png")}
-          />
-        </View>
         <View style={styles.Body}>
           <Image
             style={{
@@ -84,3 +75,14 @@ const styles = StyleSheet.create({
 });
 
 export default ProfileScreen;
+
+/* <View style={styles.Header}>
+          <Text style={{ fontWeight: "bold", fontSize: 15 }}>
+            Master Profile
+          </Text>
+          <Image
+            style={{ width: 30, height: 30 }}
+            source={require("../assets/crow.png")}
+          />
+        </View>
+*/
