@@ -1,9 +1,8 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { Platform, StyleSheet, TextInput, Image } from "react-native";
-import { Button } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
-
+import { Button} from '@ant-design/react-native';
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -34,7 +33,7 @@ class HomeScreen extends React.Component {
             multiline={true}
           />
         </View>
-        <Button title="Post" onPress={() => this.handlePost()} />
+        <Button style={{width:100, alignSelf:'center'}}type="primary" onPress={() => this.handlePost()}>Post</Button>
 
         {this.state.posts.map((post, idx) => (
           <View key={idx} style={styles.MainContainer}>
@@ -48,7 +47,7 @@ class HomeScreen extends React.Component {
               multiline={true}
               editable={false}
             />
-            <Button title="Delete" onPress={() => this.handleDelete(idx)} />
+            <Button style={{width:100, alignSelf:'center', backgroundColor:'red'}} tyle="primary" onPress={() => this.handleDelete(idx)}>Delete</Button>
           </View>
         ))}
       </View>

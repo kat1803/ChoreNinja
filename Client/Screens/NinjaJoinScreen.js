@@ -1,31 +1,72 @@
 import React from "react";
 import { View, Text,Image } from "react-native";
-import { Appbar } from 'react-native-paper' ; 
-import NinjaSignUp from "./NinjaSignUp";
-import { createStackNavigator, createAppContainer } from "react-navigation";
 import { Card} from "react-native-elements";
-import { Button } from '@ant-design/react-native';
+import { Button,InputItem } from '@ant-design/react-native';
+
 class NinjaJoinScreen extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            register: false,
+            ssn: '',
+            bio: ''
+        }
+    }
     render() {
-        const {navigate} = this.props.navigation;
+ 
         return (
             <View>
-                
-                <View style={{alignSelf: 'center', alignItems: 'center', justifyContent: 'center' }}>
-                    <Card>
-                        <Text style={{fontSize:25, alignItems:'center'}}>Would you like to join our team and become a ninja?</Text>
-                        <Text style={{fontSize:20}}>
-                        <Image style={{ width: 120, height: 120 }} source={require("../assets/money.png")}/> Extra Money
-                        </Text>
-                        <Text style={{fontSize:20}}>
-                        <Image style={{ width: 95, height: 95 }} source={require("../assets/calendar.png")}/>  Flexible Schedule
-                        </Text>
-                        <Text style={{fontSize:20, marginBottom:30}}>
-                        <Image style={{ width: 120, height: 120 }} source={require("../assets/freedom.png")}/>  Freedom 
-                        </Text>
-                        <Button type="primary" onPress={() => navigate('NinjaSignUp')}>Join Now</Button>
-                        </Card>
-                </View>
+                {
+                    !this.state.register ? 
+                            <View style={{alignSelf: 'center', alignItems: 'center', justifyContent: 'center' }}>
+                                <Card>
+                                    <Text style={{fontSize:25, alignItems:'center'}}>Would you like to join our team and become a ninja?</Text>
+                                    <Text style={{fontSize:20}}>
+                                    <Image style={{ width: 120, height: 120 }} source={require("../assets/money.png")}/> Extra Money
+                                    </Text>
+                                    <Text style={{fontSize:20}}>
+                                    <Image style={{ width: 95, height: 95 }} source={require("../assets/calendar.png")}/>  Flexible Schedule
+                                    </Text>
+                                    <Text style={{fontSize:20, marginBottom:30}}>
+                                    <Image style={{ width: 120, height: 120 }} source={require("../assets/freedom.png")}/>  Freedom 
+                                    </Text>
+                                    <Button type="primary" onPress={() => this.setState({register: true})}>Join Now</Button>
+                                </Card>
+                            </View>        
+                            :
+                            <View style={{ justifyContent: "center"  }}>
+                            <Card>
+                             <Text style={{ fontWeight: 'bold'}}>
+                                 Social Security Number
+                             </Text>
+                             <InputItem
+                                 clear
+                                 style={{flex:1}}
+                                 value = {this.state.ssn}
+                                 onChange = {
+                                     ssn => { this.setState ({ssn,});}
+                                 }
+                                 placeholder = "XXX-XX-XXXX"
+                             >
+                             </InputItem>
+                             <Text></Text>
+                             <Text style={{ fontWeight: 'bold'}}>
+                                 Bio
+                             </Text>
+                             <InputItem
+                                 clear
+                                 style={{ flex: 1 }}
+                                 value={this.state.ssn}
+                                 onChange={
+                                     ssn => { this.setState({ ssn, }); }
+                                 }
+                                 placeholder="Please decribe briefly about yourself"
+                             >
+                             </InputItem>
+                             <Button type="primary" >Argree to join</Button>
+                             </Card>
+                         </View>
+                    }
             </View>
         );
     }

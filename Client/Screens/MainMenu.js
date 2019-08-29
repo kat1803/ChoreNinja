@@ -19,7 +19,33 @@ import NinjaBio from "./NinjaBio";
 import NinjaOngoingExpired from "./NinjaOngoingExpired";
 import NinjaHomepage from "./NinjaHomepage";
 import NinjaJoinScreen from "./NinjaJoinScreen";
-import NinjaSignUp from "./NinjaSignUp";
+
+
+
+
+//Main Navigation of the Application
+const AppMainNavigatorCustomer = createBottomTabNavigator({
+  //Login: LoginScreen,
+  Home: HomeScreen,
+  Profile: ProfileScreen,
+  // 'MessageList': MessageList,
+  Message: Message,
+  C_OnGoing: CustomerOnGoingScreen,
+  //Signup: SignupScreen, //this is sign up for customer first join the app
+  NinjaJoin: NinjaJoinScreen
+});
+
+const AppMainNavigatorNinja = createBottomTabNavigator({
+  NinjaHomepage: NinjaHomepage,
+  NinjaOngoingExpired: NinjaOngoingExpired,
+  Ninjabio: NinjaBio,
+  NinjaHomepage: NinjaHomepage,
+  About: AboutScreen
+});
+
+const AppMainContainerCustomer = createAppContainer(AppMainNavigatorCustomer);
+const AppMainContainerNinja = createAppContainer(AppMainNavigatorNinja);
+
 
 class MainMenu extends React.Component {
   constructor(props) {
@@ -49,45 +75,21 @@ class MainMenu extends React.Component {
   borderColor={'#01479b'}
   hasPadding
   options={[
-    { label: "Master", value: false},
-    { label: "Ninja", value: true} 
+    { label: "Master", value: true},
+    { label: "Ninja", value: false} 
     
   ]}
 />
 
         {this.state.isNinja ? (
-          <AppMainContainerNinja />
-        ) : (
           <AppMainContainerCustomer />
+          
+        ) : (
+          <AppMainContainerNinja />
         )}
       </View>
     );
   }
 }
-
-//Main Navigation of the Application
-const AppMainNavigatorCustomer = createBottomTabNavigator({
-  //Login: LoginScreen,
-  Home: HomeScreen,
-  Profile: ProfileScreen,
-  // 'MessageList': MessageList,
-  Message: Message,
-  C_OnGoing: CustomerOnGoingScreen,
-  //Signup: SignupScreen, //this is sign up for customer first join the app
-  NinjaSignUp: NinjaSignUp,
-  NinjaJoin: NinjaJoinScreen,
-});
-
-const AppMainNavigatorNinja = createBottomTabNavigator({
-  NinjaHomepage: NinjaHomepage,
-  NinjaOngoingExpired: NinjaOngoingExpired,
-  Ninjabio: NinjaBio,
-  NinjaHomepage: NinjaHomepage,
-  About: AboutScreen
-});
-
-const AppMainContainerCustomer = createAppContainer(AppMainNavigatorCustomer);
-const AppMainContainerNinja = createAppContainer(AppMainNavigatorNinja);
-
 
 export default MainMenu;
