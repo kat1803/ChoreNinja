@@ -24,5 +24,4 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Here is the API route
 app.use('/api/v1/job', job)
 
-
 module.exports = app

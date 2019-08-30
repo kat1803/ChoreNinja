@@ -29,10 +29,10 @@ router.put("/:jobId", function (req, res) {
     });
 })
     
-router.put("/:jobId", function (req, res) {
-    Job.findByIdAndUpdate(req.params.jobId, req.body.job, function (err, updatedJob) {
+router.delete("/:jobId", function (req, res) {
+    Job.findByIdAndRemove(req.params.jobId, function (err) {
         if (!err) {
-            res.status(200).send({ "err": null, item: updatedJob })
+            res.status(200).send({ "err": null, item: "Successfully delete the job" })
         } else {
             res.status(500).send({ "err": err })
         }
