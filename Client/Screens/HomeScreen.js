@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { Platform, StyleSheet, TextInput, Image } from "react-native";
-import { Button } from "react-native";
-import { Card } from "react-native";
+import { Platform, StyleSheet, Image } from "react-native";
+import { Button} from '@ant-design/react-native';
+import { Card } from 'react-native-elements';
+import { TextInput } from "react-native-paper";
+
 import { connect } from 'react-redux';
-import { createStackNavigator, createAppContainer } from "react-navigation";
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -13,8 +14,13 @@ class HomeScreen extends React.Component {
   }
 
   handlePost() {
+    let newpost = {
+      name: "asdaf",
+    }
+    this.props.reduxHandlePost(newpost)
     var post = this.state.text;
-    this.setState({ text: "", posts: this.state.posts.concat(post) });
+    this.setState({ text: "", posts: this.state.posts.concat(post) 
+  });
   }
   handleDelete(idx) {
     var posts = this.state.posts;
@@ -24,43 +30,37 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View>
-        <View style={styles.Header}>
-          <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-            Customer Home
-          </Text>
-          <Image
-            style={{ width: 30, height: 30 }}
-            source={require("../assets/ninjabio.png")}
-          />
-        </View>
-
-        <View style={styles.MainContainer}>
+        <Card>
+        <View >
           <TextInput
-            style={styles.TextInputStyleClass}
             underlineColorAndroid="transparent"
-            placeholder={"Job Description."}
             placeholderTextColor={"#9E9E9E"}
-            numberOfLines={10}
+            numberOfLines={1}
+            label='Time'
             onChangeText={text => this.setState({ text })}
             value={this.state.text}
-            multiline={true}
           />
+         
         </View>
-        <Button title="Post" onPress={() => this.handlePost()} />
+        </Card>
+        <Button style={{width:100, alignSelf:'center'}}type="primary" onPress={() => this.handlePost()}>Post</Button>
 
-        {this.state.posts.map((post, idx) => (
+        {this.state.posts.map((post,idx) => (
+          
           <View key={idx} style={styles.MainContainer}>
+            <Card>
             <TextInput
               style={styles.TextInputStyleClass}
               underlineColorAndroid="transparent"
               placeholder={"Job Description."}
               placeholderTextColor={"#9E9E9E"}
-              numberOfLines={10}
               value={post}
               multiline={true}
               editable={false}
             />
-            <Button title="Delete" onPress={() => this.reduxHandleDelete} />
+          
+            </Card>
+            <Button style={{width:100, alignSelf:'center', backgroundColor:'red'}} tyle="primary" onPress={() => this.handleDelete(idx)}>Delete</Button>
           </View>
         ))}
       </View>
@@ -69,46 +69,44 @@ class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  Header: {
-    marginTop: "10%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    borderBottomWidth: 1,
-    borderBottomColor: "#D3D3D3"
-  },
+
 
   MainContainer: {
     justifyContent: "center",
-    margin: 20
+    
   },
 
   TextInputStyleClass: {
     height: 50,
-    borderWidth: 4,
-    borderColor: "#9E9E9E",
-    borderRadius: 20,
+    //borderWidth: 4,
+    //borderColor: "#9E9E9E",
+    //borderRadius: 20,
     height: 150,
     paddingLeft: 20,
     paddingRight: 10
   }
 });
 
+
 const mapStateToProps = (state) => {
-  console.log("State");
-  console.log(state);
   return {
-    //posts: state.
     posts: state.posts.posts,
   }
 }
-const mapDispatchProps = (dispatch)=>{
-  return {
-    reduxHandleDelete: ()=> dispatch ({
-      type: 'DELETE_POST',
-      value: 1,
-    })
-  };
-};
 
-export default connect(mapStateToProps,mapDispatchProps)(HomeScreen);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    reduxHandlePost: (post)=> dispatch({
+      type:'ADD_POST',
+      value: post,
+    }),
+    reduxDeletePost: (id) =>  dispatch({
+      type: 'DELETE_POST',
+      value: id,
+    })
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(HomeScreen);
+
+

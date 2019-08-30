@@ -7,10 +7,10 @@ const initialState = {
   // Redux: Counter Reducer
   const homescreenReducer = (state = initialState, action) => {
     switch (action.type) {
-      case 'DELETE_POST': {
+      case 'RECIEVE_POST': {
         return {
           ...state,
-          posts: state.posts - action.value,
+          posts: action.value,
         };
       }
       default: {

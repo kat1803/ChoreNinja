@@ -26,9 +26,9 @@ class NinjaOngoingExpired extends React.Component {
             <ScrollView>
                 <View style={{ flex: 1, }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',borderBottomWidth: 1, borderBottomColor:'#D3D3D3' }}>
-                        <Text style={{ fontWeight: 'bold', fontSize: 23 }}>{this.state.pagetitle}</Text>
+                        <Text style={{ fontWeight: 'bold', fontSize: 15 }}>{this.state.pagetitle}</Text>
                         <Image
-                            style={{ width: 50, height: 50 }}
+                            style={{ width: 30, height: 30 }}
                             source={require('../assets/ninjabio.png')} />
                         <Button title="Job" onPress={this.appearMessage}/>
                         <Button title="In" onPress ={this.appearMessage}/>

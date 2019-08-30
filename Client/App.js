@@ -7,7 +7,8 @@ import HomeScreen from './Screens/HomeScreen';
 //Imports: Dependencies
 import { Provider } from 'react-redux';
 //import redux store
-import {Store} from './Screens/store/store';
+import {store} from './Screens/store/store';
+
 
 
 export default class App extends Component {
@@ -38,11 +39,11 @@ export default class App extends Component {
     }
     return (
 	// <PaperProvider>
-	// 		{/* <MainMenu /> */}
+	// 		<MainMenu />
 	
 	// </PaperProvider>
-	<Provider store={Store}>
-		<HomeScreen />
+	<Provider store={store}>
+		<MainMenu />
 	</Provider>
     );
   }
