@@ -19,15 +19,6 @@ class ProfileScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View style={styles.Header}>
-          <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-            Master Profile
-          </Text>
-          <Image
-            style={{ width: 40, height: 40 }}
-            source={require("../assets/crow.png")}
-          />
-        </View>
         <View style={styles.Body}>
           <Image
             style={{
@@ -63,12 +54,13 @@ class ProfileScreen extends React.Component {
 
 const styles = StyleSheet.create({
   Header: {
-    marginTop: "5%",
+    margin: "2%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    borderBottomWidth: 1,
-    borderBottomColor: "#D3D3D3"
+    borderBottomWidth: 5, //change the size of the purple line
+    borderBottomColor: "#e4c5e9",
+    backgroundColor:"#e4c5e9"
   },
   Body: {
     flexDirection: "column",
@@ -83,3 +75,14 @@ const styles = StyleSheet.create({
 });
 
 export default ProfileScreen;
+
+/* <View style={styles.Header}>
+          <Text style={{ fontWeight: "bold", fontSize: 15 }}>
+            Master Profile
+          </Text>
+          <Image
+            style={{ width: 30, height: 30 }}
+            source={require("../assets/crow.png")}
+          />
+        </View>
+*/
