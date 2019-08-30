@@ -35,7 +35,6 @@ class ProfileScreen extends React.Component {
 <View>
         <Card >
           <ListItem style={{borderBottomColor: "#000000"}} title="Address:"/>
-
           <ListItem title="Payment Type :"/>
           <ListItem title="Email address:"/>
           <ListItem title="Message :"/>
