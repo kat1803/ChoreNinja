@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import { Platform, StyleSheet, TextInput, Image } from "react-native";
 import { Button } from "react-native";
 import { Card } from "react-native";
-
+import { connect } from 'react-redux';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 class HomeScreen extends React.Component {
@@ -60,7 +60,7 @@ class HomeScreen extends React.Component {
               multiline={true}
               editable={false}
             />
-            <Button title="Delete" onPress={() => this.handleDelete(idx)} />
+            <Button title="Delete" onPress={() => this.reduxHandleDelete} />
           </View>
         ))}
       </View>
@@ -94,4 +94,21 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeScreen;
+const mapStateToProps = (state) => {
+  console.log("State");
+  console.log(state);
+  return {
+    //posts: state.
+    posts: state.posts.posts,
+  }
+}
+const mapDispatchProps = (dispatch)=>{
+  return {
+    reduxHandleDelete: ()=> dispatch ({
+      type: 'DELETE_POST',
+      value: 1,
+    })
+  };
+};
+
+export default connect(mapStateToProps,mapDispatchProps)(HomeScreen);
