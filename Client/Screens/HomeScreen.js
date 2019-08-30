@@ -4,6 +4,8 @@ import { Platform, StyleSheet, Image } from "react-native";
 import { Card,CheckBox } from 'react-native-elements';
 import { TextInput, Button} from "react-native-paper";
 
+import { connect } from 'react-redux';
+
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +19,10 @@ class HomeScreen extends React.Component {
   }
 
   handlePost() {
+    let newpost = {
+      name: "asdaf",
+    }
+    this.props.reduxHandlePost(newpost)
     var post = this.state.text;
     var newpost = {
       text: this.state.text,
@@ -126,27 +132,26 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeScreen;
 
-/*<View style={styles.Header}>
-          <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-            Customer Home
-          </Text>
-          <Image
-            style={{ width: 30, height: 30 }}
-            source={require("../assets/crow.png")}
-          />
-        </View>
-        */
+const mapStateToProps = (state) => {
+  return {
+    posts: state.posts.posts,
+  }
+}
 
-       /* <TextInput
-            style={styles.TextInputStyleClass}
-            underlineColorAndroid="transparent"
-            placeholder={"Job Description."}
-            placeholderTextColor={"#9E9E9E"}
-            numberOfLines={10}
-            onChangeText={text => this.setState({ text })}
-            value={this.state.text}
-            multiline={true}
-          />
-          */
+const mapDispatchToProps = (dispatch) => {
+  return {
+    reduxHandlePost: (post)=> dispatch({
+      type:'ADD_POST',
+      value: post,
+    }),
+    reduxDeletePost: (id) =>  dispatch({
+      type: 'DELETE_POST',
+      value: id,
+    })
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(HomeScreen);
+
+
