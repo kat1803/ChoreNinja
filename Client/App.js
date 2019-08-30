@@ -31,6 +31,7 @@ passport.deserializeUser(function(id,done))
 		}
 	};
 };
+
 export default class App extends Component {
 	state = {
 		isReady: false,

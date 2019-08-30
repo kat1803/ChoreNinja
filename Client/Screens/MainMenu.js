@@ -1,7 +1,12 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { createDrawerNavigator, createBottomTabNavigator, createAppContainer} from 'react-navigation'
-
+import { View, Text, Switch } from "react-native";
+import {
+  createDrawerNavigator,
+  createBottomTabNavigator,
+  createAppContainer,
+  StackNavigator
+} from "react-navigation";
+import SwitchSelector from "react-native-switch-selector";
 import HomeScreen from "./HomeScreen";
 import LoginScreen from "./LoginScreen";
 import SignupScreen from "./SignupScreen";
@@ -10,44 +15,81 @@ import Message from "./Message";
 import MessageList from "./MessageList";
 import ProfileScreen from "./ProfileScreen";
 import AboutScreen from "./AboutScreen";
-import NinjaBio from './NinjaBio';
-import NinjaOngoingExpired from './NinjaOngoingExpired';
-import NinjaHomepage from './NinjaHomepage';
-import NinjaJoinScreen from './NinjaJoinScreen';
-import NinjaSignUp from './NinjaSignUp';
+import NinjaBio from "./NinjaBio";
+import NinjaOngoingExpired from "./NinjaOngoingExpired";
+import NinjaHomepage from "./NinjaHomepage";
+import NinjaJoinScreen from "./NinjaJoinScreen";
+
+
+
+
+//Main Navigation of the Application
+const AppMainNavigatorCustomer = createBottomTabNavigator({
+  //Login: LoginScreen,
+  Home: HomeScreen,
+  Profile: ProfileScreen,
+  // 'MessageList': MessageList,
+  Message: Message,
+  C_OnGoing: CustomerOnGoingScreen,
+  //Signup: SignupScreen, //this is sign up for customer first join the app
+  NinjaJoin: NinjaJoinScreen
+});
+
+const AppMainNavigatorNinja = createBottomTabNavigator({
+  NinjaHomepage: NinjaHomepage,
+  NinjaOngoingExpired: NinjaOngoingExpired,
+  Ninjabio: NinjaBio,
+  NinjaHomepage: NinjaHomepage,
+  About: AboutScreen
+});
+
+const AppMainContainerCustomer = createAppContainer(AppMainNavigatorCustomer);
+const AppMainContainerNinja = createAppContainer(AppMainNavigatorNinja);
+
 
 class MainMenu extends React.Component {
-    render() {
-        return (
-           <AppMainContainer
-            />
-        );
-    }
+  constructor(props) {
+    super(props);
+    this.state = { isNinja: true };
+  }
+
+  handleToggle(isNinja) {
+      console.log("sub");
+    this.setState(state => ({
+      isNinja: isNinja
+    }));
+  }
+
+
+  render() {
+    return (
+        // dont fuck with this line
+      <View style={{ flex: 1}}>
+      <Text style={{color:'#01479b', marginLeft: 15, marginTop:50, fontSize:35, fontWeight:"bold"}}>ChoreNinja</Text>
+        <SwitchSelector style={{ marginBottom:4, marginRight:10, width:120,alignSelf: 'flex-end'}}
+  initial={0}
+  onPress={this.handleToggle.bind(this)}
+  textColor={'#01479b'} //'#7a44cf'
+  selectedColor={'#80d8ff'}
+  buttonColor={'#01479b'}
+  borderColor={'#01479b'}
+  hasPadding
+  options={[
+    { label: "Master", value: true},
+    { label: "Ninja", value: false} 
+    
+  ]}
+/>
+
+        {this.state.isNinja ? (
+          <AppMainContainerCustomer />
+          
+        ) : (
+          <AppMainContainerNinja />
+        )}
+      </View>
+    );
+  }
 }
 
-//Main Navigation of the Application 
-const AppMainNavigator = createBottomTabNavigator(
-    {
-
-        // 'MessageList': MessageList,
-        'Message': Message,
-        'C_OnGoing': CustomerOnGoingScreen,
-        'Signup': SignupScreen,
-
-        'NinjaHomepage': NinjaHomepage,
-        'NinjaOngoingExpired':NinjaOngoingExpired,
-
-        'Ninjabio':NinjaBio,
-        'Login': LoginScreen,
-        'Home': HomeScreen,
-        'Profile': ProfileScreen,
-        'About': AboutScreen,
-        'NinjaHomepage' : NinjaHomepage,
-        'NinjaJoin': NinjaJoinScreen,
-        'NinjaSignUp': NinjaSignUp,
-    },
-)
-
-const AppMainContainer = createAppContainer(AppMainNavigator);
-
-export default MainMenu
+export default MainMenu;
