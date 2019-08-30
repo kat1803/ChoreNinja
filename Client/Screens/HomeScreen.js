@@ -1,8 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { Platform, StyleSheet, TextInput, Image } from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { Platform, StyleSheet, Image } from "react-native";
 import { Button} from '@ant-design/react-native';
+import { Card } from 'react-native-elements';
+import { TextInput } from "react-native-paper";
+
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -21,32 +23,36 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View>
-        <View style={styles.MainContainer}>
+        <Card>
+        <View >
           <TextInput
-            style={styles.TextInputStyleClass}
             underlineColorAndroid="transparent"
-            placeholder={"Job Description."}
             placeholderTextColor={"#9E9E9E"}
-            numberOfLines={10}
+            numberOfLines={1}
+            label='Time'
             onChangeText={text => this.setState({ text })}
             value={this.state.text}
-            multiline={true}
           />
+         
         </View>
+        </Card>
         <Button style={{width:100, alignSelf:'center'}}type="primary" onPress={() => this.handlePost()}>Post</Button>
 
-        {this.state.posts.map((post, idx) => (
+        {this.state.posts.map((post,idx) => (
+          
           <View key={idx} style={styles.MainContainer}>
+            <Card>
             <TextInput
               style={styles.TextInputStyleClass}
               underlineColorAndroid="transparent"
               placeholder={"Job Description."}
               placeholderTextColor={"#9E9E9E"}
-              numberOfLines={10}
               value={post}
               multiline={true}
               editable={false}
             />
+          
+            </Card>
             <Button style={{width:100, alignSelf:'center', backgroundColor:'red'}} tyle="primary" onPress={() => this.handleDelete(idx)}>Delete</Button>
           </View>
         ))}
@@ -56,26 +62,18 @@ class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  Header: {
-    margin: "2%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    borderBottomWidth: 5, //change the size of the purple line
-    borderBottomColor: "#e4c5e9",
-    backgroundColor:"#e4c5e9"
-  },
+
 
   MainContainer: {
     justifyContent: "center",
-    margin: 5
+    
   },
 
   TextInputStyleClass: {
     height: 50,
-    borderWidth: 4,
-    borderColor: "#9E9E9E",
-    borderRadius: 20,
+    //borderWidth: 4,
+    //borderColor: "#9E9E9E",
+    //borderRadius: 20,
     height: 150,
     paddingLeft: 20,
     paddingRight: 10
@@ -94,3 +92,15 @@ export default HomeScreen;
           />
         </View>
         */
+
+       /* <TextInput
+            style={styles.TextInputStyleClass}
+            underlineColorAndroid="transparent"
+            placeholder={"Job Description."}
+            placeholderTextColor={"#9E9E9E"}
+            numberOfLines={10}
+            onChangeText={text => this.setState({ text })}
+            value={this.state.text}
+            multiline={true}
+          />
+          */
