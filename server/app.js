@@ -24,5 +24,32 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Here is the API route
 app.use('/api/v1/job', job)
 
+//Configure db.js with mongoose API 
+var dbConfig = require('./Authentication/db.js');
+var mongoose = require('mongoose');
+mongoose.connect(dbConfig.url);
+
+//Configuring Passport
+var passport = require('passport');
+var expressSession = require('express-session');
+app.use(expressSession({ secret: 'myChoreNinjaSecretKey' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Serialize and Deserialize to keep the user credentials private
+passport.serializeUser(function (user, done)){
+    done(null, user._id);
+};
+
+passport.deserializeUser(function (id, done))
+{
+    User.findById(id, function (err, user))
+    {
+        User.findById(id, function (err, user))
+        {
+            done(err, user);
+        }
+    };
+};
 
 module.exports = app
