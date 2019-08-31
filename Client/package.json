@@ -20,7 +20,9 @@
     "react-native-switch-selector": "^1.1.14",
     "react-navigation": "^3.12.1",
     "react-redux": "^6.0.0",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.0.5"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
