@@ -1,9 +1,9 @@
-import { delay, takeEvery, takeLatest, put } from 'redux-saga/effects';
+import { delay, takeEvery, takeLatest, put, call } from 'redux-saga/effects';
 
 function* deletePost(id) {
     try {
         //make http call to add post
-        fetch({
+        fetch("http://10.1.10.160:3000/api/v1/job", {
             method: "DELETE",
             body: id
         }).then(res=>{
@@ -21,7 +21,7 @@ function* deletePost(id) {
 function* editPost(post) {
     try {
         //make http call to add post
-        fetch({
+        fetch("http://10.1.10.160:3000/api/v1/job", {
             method: "PUT",
             body: JSON.stringify(post)
         }).then(res=>{
@@ -40,17 +40,25 @@ function* editPost(post) {
 function* addPost(post) {
     try {
         //make http call to add post
-        fetch({
-            method: "POST",
-            body: JSON.stringify(post)
-        }).then(res=>{
-            console.log(res);
-            fetchPost()
-        }).catch(err=>{
-            console.log(err)
+        const posts = yield call(() => {
+            return fetch("http://10.1.10.160:3000/api/v1/job", {
+                method: "POST",
+                body: JSON.stringify({
+                    job: post.value
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+            .catch(err => {
+                    console.log(err)
+                })
+        })
+        yield put({
+            type: 'FETCH_POST',
         })
     }
-    catch (error){
+    catch (error) {
         console.log(error);
     }
 }
@@ -58,16 +66,20 @@ function* addPost(post) {
 function* fetchPost() {
     try {
         //make http call to add post
-        fetch({
-            method: "GET",
-        }).then(res=>{
-            console.log(res);
-            put({
-                type: 'RECIEVE_POST',
-                value: res
-            })
-        }).catch(err=>{
-            console.log(err)
+        const posts = yield call(()=>{
+            return fetch(
+                "http://10.1.10.160:3000/api/v1/job",
+                {
+                    method: "GET",
+                })
+                .then(res => res.json())
+                .catch(err => {
+                    console.log(err)
+                })
+        })
+        yield put({
+            type: 'RECIEVE_POST',
+            value: posts
         })
 
     }
@@ -82,4 +94,5 @@ export function* watchDeletePost (){
     yield takeLatest('DELETE_POST', deletePost);
     yield takeLatest("ADD_POST", addPost);
     yield takeLatest("EDIT_POST", editPost);
+    yield takeLatest("FETCH_POST", fetchPost);
 }
