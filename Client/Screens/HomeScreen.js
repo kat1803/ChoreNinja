@@ -113,18 +113,21 @@ class HomeScreen extends React.Component {
         }
         
         <ScrollView>
-        {this.props.posts.map((post,idx) => (
-          <View key={idx} contentContainerStyle={styles.MainContainer}>
-            <Card>
-            <Text>Job Name: {post.name}</Text>
-            <Text>Job Description: {post.description}</Text>
-            <Text>Time: {post.due_date}</Text>
-            <Text>Price: ${post.price}</Text>
-            <Button style={{width:70, margin:7, alignSelf:'center'}}mode="outlined">Edit</Button>
-            </Card>
-            <Button style={{width:100, alignSelf:'flex-end', backgroundColor:'#F42244', margin:10}} mode="contained" onPress={() => this.handleDelete(idx)}>Delete</Button>
-          </View>
-        ))}
+        {
+          this.props.posts &&
+            this.props.posts.map((post,idx) => (
+            <View key={idx} contentContainerStyle={styles.MainContainer}>
+              <Card>
+              <Text>Job Name: {post.name}</Text>
+              <Text>Job Description: {post.description}</Text>
+              <Text>Time: {post.due_date}</Text>
+              <Text>Price: ${post.price}</Text>
+              <Button style={{width:70, margin:7, alignSelf:'center'}}mode="outlined">Edit</Button>
+              </Card>
+              <Button style={{width:100, alignSelf:'flex-end', backgroundColor:'#F42244', margin:10}} mode="contained" onPress={() => this.handleDelete(idx)}>Delete</Button>
+            </View>
+          ))
+        }
         </ScrollView>
       </View>
     );

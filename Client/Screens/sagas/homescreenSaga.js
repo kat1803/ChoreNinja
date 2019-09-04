@@ -3,7 +3,7 @@ import { delay, takeEvery, takeLatest, put, call } from 'redux-saga/effects';
 function* deletePost(id) {
     try {
         //make http call to add post
-        fetch("http://10.1.10.160:3000/api/v1/job", {
+        fetch("https://choreninja.herokuapp.com/api/v1/job", {
             method: "DELETE",
             body: id
         }).then(res=>{
@@ -21,7 +21,7 @@ function* deletePost(id) {
 function* editPost(post) {
     try {
         //make http call to add post
-        fetch("http://10.1.10.160:3000/api/v1/job", {
+        fetch("https://choreninja.herokuapp.com/api/v1/job", {
             method: "PUT",
             body: JSON.stringify(post)
         }).then(res=>{
@@ -41,7 +41,7 @@ function* addPost(post) {
     try {
         //make http call to add post
         const posts = yield call(() => {
-            return fetch("http://10.1.10.160:3000/api/v1/job", {
+            return fetch("https://choreninja.herokuapp.com/api/v1/job", {
                 method: "POST",
                 body: JSON.stringify({
                     job: post.value
@@ -68,7 +68,7 @@ function* fetchPost() {
         //make http call to add post
         const posts = yield call(()=>{
             return fetch(
-                "http://10.1.10.160:3000/api/v1/job",
+                "https://choreninja.herokuapp.com/api/v1/job",
                 {
                     method: "GET",
                 })
@@ -77,6 +77,7 @@ function* fetchPost() {
                     console.log(err)
                 })
         })
+        console.log("posts", posts)
         yield put({
             type: 'RECIEVE_POST',
             value: posts
