@@ -60,10 +60,10 @@ class NinjaJoinScreen extends React.Component {
                                  onChange={
                                      ssn => { this.setState({ ssn, }); }
                                  }
-                                 placeholder="Please decribe briefly about yourself"
+                                 placeholder="Please describe briefly about yourself"
                              >
                              </InputItem>
-                             <Button type="primary" >Argree to join</Button>
+                             <Button type="primary" >Agree to join</Button>
                              </Card>
                          </View>
                     }
