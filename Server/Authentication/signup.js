@@ -1,5 +1,5 @@
  var LocalStrategy = require('passport-local').Strategy;
- var User = require('../models/user');
+ var { User } = require('../models/User');
  var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport)
@@ -7,7 +7,7 @@ module.exports = function(passport)
     passport.use('signup', new LocalStrategy({
         passReqtoCallback: true
     },
-        function (req, username, password, done) {
+        function (username, password, done) {
             findOrCreateUser = function () {
                 User.findOne({ 'username': username }, function (err, user) {
                     
@@ -18,16 +18,18 @@ module.exports = function(passport)
                     //if user is in the database, notify user
                     if (user) {
                         console.log('User already exists');
-                        return done(null, false, req.flash('message', 'User Already Exists'));
+                        return done(null, false);
                     }
                     else {
                         var newUser = new User();
 
                         newUser.username = username;
                         newUser.password = hash(password);
-                        newUser.email = req.param('email');
-                        newUser.firstName = req.param('firstName');
-                        newUser.lastName = req.param('lastName');
+                        // newUser.email = req.body.email;
+                        // newUser.first_name = req.body.first_name;
+                        // newUser.last_name = req.body.last_name;
+                        // newUser.phone_number = req.body.phone_number;
+                        // newUser.is_ninja = req.body.is_ninja;
 
                         newUser.save(function (err) {
                             if (err) {

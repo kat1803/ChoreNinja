@@ -1,5 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy;
-var User = require('../models/user');
+// var User = require('../models/User');
+var { User } = require('../models/User');
 var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport){
@@ -17,12 +18,12 @@ module.exports = function(passport){
                     //If user does not exist, log error & redirect back
                     if (!user) {
                         console.log('User Not Found with username ' + username);
-                        return done(null, false, req.flash('message', 'User Not found.'));
+                        return done(null, false);
                     }
                     //If user exist but wrong password, log the error
                     if (!isValidPassword(user, password)) {
                         console.log('Invalid Password');
-                        return done(null, false, req.flash('message', 'Invalid Password'));
+                        return done(null, false);
                     }
                     //If user and password match, return user from done method (success)
                     return done(null, user);

@@ -12,33 +12,32 @@ var isAuthenticated = function (req, res, next) {
 module.exports = function(passport){
     
     //Get login page
-    router.get('/', function(req,res){
-        res.render('index', {message: req.flash('message')});
-    });
+    // router.get('/', function(req,res){
+    //     // res.render('index', {message: "Hello from auth"});
+    //     res.status(200).send({ message: "Hello from auth" });
+    // });
     
     //Handle login page
-    router.post('/login', passport.authentication('login', {
-        successRedirect: '/home',
-        failuerRedirect: '/',
-        failureFlash: true
+    router.post('/login', passport.authenticate('login', {
+        successRedirect: '/auth/home',
+        failuerRedirect: '/auth/login',
     }));
 
-    //Get registration page
+    // //Get registration page
     router.get('/signup', function(req, res)
     {
-        res.render('register', {message: req.flash('message')});
+        res.status(200).send({ message: "Hello from signup" });
     });
 
     //Handle registration post
     router.post('/signup', passport.authenticate('signup', {
-        successRedirect: '/home',
+        successRedirect: '/',
         failuerRedirect: '/signup',
-        failureFlash : true
     }));
 
     //get homepage
     router.get('/home', isAuthenticated, function(req, res){
-        res.render('home', {user: req.user});
+        res.status(200).send({ message: "Hello from secure route" });
     });
 
     //Handle Logout
