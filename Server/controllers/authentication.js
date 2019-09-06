@@ -20,7 +20,7 @@ module.exports = function(passport){
     //Handle login page
     router.post('/login', passport.authenticate('login', {
         successRedirect: '/auth/home',
-        failuerRedirect: '/auth/login',
+        failureRedirect: '/auth/failure',
     }));
 
     // //Get registration page
@@ -31,19 +31,29 @@ module.exports = function(passport){
 
     //Handle registration post
     router.post('/signup', passport.authenticate('signup', {
-        successRedirect: '/',
-        failuerRedirect: '/signup',
+        successRedirect: '/auth/aftersignup',
+        failureRedirect: '/auth/failure',
     }));
 
     //get homepage
     router.get('/home', isAuthenticated, function(req, res){
-        res.status(200).send({ message: "Hello from secure route" });
+        res.status(200).send({ message: "Successfully login" , user: req.user});
+    });
+
+    //get homepage
+    router.get('/aftersignup', function(req, res){
+        res.status(200).send({ message: "Thanks for signup" });
     });
 
     //Handle Logout
     router.get('/signout', function(req, res){
         req.logout();
         res.redirect('/');
+    })
+
+    //Handle Logout
+    router.get('/failure', function(req, res){
+        res.status(200).send({ message: "Failure accur" });
     })
 
     return router;

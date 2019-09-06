@@ -25,11 +25,11 @@ module.exports = function(passport)
 
                         newUser.username = username;
                         newUser.password = hash(password);
-                        // newUser.email = req.body.email;
-                        // newUser.first_name = req.body.first_name;
-                        // newUser.last_name = req.body.last_name;
-                        // newUser.phone_number = req.body.phone_number;
-                        // newUser.is_ninja = req.body.is_ninja;
+                        newUser.email = req.body.email;
+                        newUser.first_name = req.body.first_name;
+                        newUser.last_name = req.body.last_name;
+                        newUser.phone_number = req.body.phone_number;
+                        newUser.is_ninja = req.body.is_ninja;
 
                         newUser.save(function (err) {
                             if (err) {

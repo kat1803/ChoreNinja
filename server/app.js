@@ -41,9 +41,9 @@ initPassport(passport);
 
 var routes = require('./controllers/authentication')(passport);
 app.use('/auth', routes);
-app.use('/', (req, res)=>{
-    res.status(200).send("Wellcome Home!")
-});
+// app.use('/', (req, res)=>{
+//     res.status(200).send("Welcome Home!")
+// });
 
 //To catch 404 and forward to error handler
 app.use(function(req,res, next)
