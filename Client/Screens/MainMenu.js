@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Switch } from "react-native";
+import { View, Text, Switch} from "react-native";
 import {
   createBottomTabNavigator,
   createAppContainer,
@@ -18,19 +18,81 @@ import NinjaOngoingExpired from "./NinjaOngoingExpired";
 import NinjaHomepage from "./NinjaHomepage";
 import NinjaJoinScreen from "./NinjaJoinScreen";
 
+//importing icon
+import FAIcon from 'react-native-vector-icons/FontAwesome';
+import MCIIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
+const ninjaImage = require('../assets/ninja1.png');
+const userImage = require('../assets/users.png');
 
 //Main Navigation of the Application
 const AppMainNavigatorCustomer = createBottomTabNavigator({
   //Login: LoginScreen,
-  Home: HomeScreen,
-  Profile: ProfileScreen,
+  Home: {
+    screen: HomeScreen, 
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name = "home"
+          size = {30}
+          color='#0091EA'
+        />
+      )
+    })
+  },
+  Profile: {
+    screen: ProfileScreen,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name = "user"
+          size = {30}
+          color='#0091EA'
+        />
+      )
+    })
+  },
   // 'MessageList': MessageList,
-  Message: Message,
-  C_OnGoing: CustomerOnGoingScreen,
+  Message: {
+    screen: Message,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="envelope"
+          size={30}
+          color='#0091EA'
+        />
+      )
+    }),
+    tabBarOptions: {
+      showLabel: false
+    }
+  },
+  C_OnGoing: {
+    screen: CustomerOnGoingScreen,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="bell"
+          size={30}
+          color='#0091EA'
+        />
+      ),
+    })
+  }, 
   //Signup: SignupScreen, //this is sign up for customer first join the app
-  NinjaJoin: NinjaJoinScreen
+  NinjaJoin: {
+    screen: NinjaJoinScreen,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <MCIIcon
+          name = "ninja"
+          size={30}
+          color = '#0091EA'
+        />
+      )
+    })
+  }, 
 });
 
 const AppMainNavigatorNinja = createBottomTabNavigator({
@@ -63,9 +125,9 @@ class MainMenu extends React.Component {
     return (
         // dont fuck with this line
       <View style={{ flex: 1}}>
-<View style={{flexDirection:"row", justifyContent:"space-between", marginTop:55, marginLeft:15}}>
-        <Text style={{color:'#01479b', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>ChoreNinja</Text>
-        <SwitchSelector style={{ marginBottom:4, marginRight:13, width:120, marginTop: 5}}
+      <View style={{flexDirection:"row", justifyContent:"space-between", marginTop:55, marginLeft:15}}>
+      <Text style={{color:'#01479b', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>ChoreNinja</Text>
+      <SwitchSelector style={{ marginBottom:4, marginRight:20, width:145, marginTop: 5}}
             initial={0}
             onPress={this.handleToggle.bind(this)}
             textColor={'#01479b'} //'#7a44cf'
@@ -74,10 +136,11 @@ class MainMenu extends React.Component {
             borderColor={'#01479b'}
             hasPadding
             options={[
-              { label: "Master", value: true},
-              { label: "Ninja", value: false} 
+              { label: "Master", value: true, imageIcon: userImage},
+              { label: "Ninja", value: false, imageIcon: ninjaImage} 
     
-        ]} />
+        ]} 
+      />
       
         </View>
         {this.state.isNinja ? (
