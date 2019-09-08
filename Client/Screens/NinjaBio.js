@@ -1,5 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
+import { Card} from "react-native-elements";
+import { Button, TouchableRipple} from "react-native-paper";
 // import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
 
 class NinjaBio extends React.Component {
@@ -10,39 +12,9 @@ class NinjaBio extends React.Component {
     };
   }
   render() {
-    // const styles = StyleSheet.create({
-    //     container: {
-    //       borderRadius: 4,
-    //       borderWidth: 0.5,
-    //       borderColor: '#d6d7da',
-    //     },
-    //     title: {
-    //       fontSize: 19,
-    //       fontWeight: 'bold',
-    //     },
-    //     activeTitle: {
-    //       color: 'red',
-    //     },
-    //   });
     return (
-      <View style={{ flex: 1 }}>
-        <View
-          style={{
-            borderBottomWidth: 5,
-            borderBottomColor: "#e4c5e9",
-            backgroundColor:"#e4c5e9",
-            margin: "2%", 
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Text style={{ fontWeight: "bold", fontSize: 15 }}>Ninja Bio</Text>
-          <Image
-            style={{ width: 30, height: 30 }}
-            source={require("../assets/ninjabio.png")}
-          />
-        </View>
+      <View style={{ flex: 1, marginTop:20 }}>
+        <Card>
         <View
           style={{
             //flex: 2,
@@ -98,7 +70,10 @@ class NinjaBio extends React.Component {
           <Text>98% positive</Text>
           <Text style={{ fontWeight: "bold" }}>Job done:</Text>
           <Text>20</Text>
+          <Text>Rating</Text>
         </View>
+        <Button style={{width:100, alignSelf:'center', backgsroundColor:'#01479b', margin:10}} mode="contained">Edit Bio</Button>
+        </Card>
       </View>
     );
   }

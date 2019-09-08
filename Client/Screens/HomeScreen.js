@@ -109,7 +109,7 @@ class HomeScreen extends React.Component {
             <Button style={{width:100, alignSelf:'flex-end', backgroundColor:'#01479b', margin:10}} mode="contained" onPress={() => this.handlePost()}>Post</Button>
             </View>
           ) :
-            <Button style={{ width: 100, alignSelf: 'flex-end', backgroundColor: '#01479b', margin: 10 }} mode="contained" onPress={() => this.setState({addNewPost: true})}>New Job</Button>
+            <Button style={{ width: 250, alignSelf: 'center', color: '#01479b', margin: 10 }} mode="contained" onPress={() => this.setState({addNewPost: true})}>Start New Jobs</Button>
         }
         
         <ScrollView>

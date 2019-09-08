@@ -24,11 +24,11 @@ class NinjaOngoingExpired extends React.Component {
     render() {
         return (
             <ScrollView>
-                <View style={{ flex: 1, }}>
-                    <Text>
-                <Image style={{ width: 120, height: 80 }} source={require("../assets/tracking.jpg")}/>My task
-                </Text>
-                                {this.state.tasks.map((task, i)=>{
+                <View style={{ flex: 1}}>
+                    <Text style={{alignSelf: 'center', justifyContent: 'center', fontSize:20, fontWeight:'bold'}}>
+                        <Image style={{ width:45, height:45, margin:5}} source={require("../assets/tasks.png")}/> My tasks: 
+                    </Text>    
+                {this.state.tasks.map((task, i)=>{
                                 return (
                                 
                                         <Card>
@@ -36,9 +36,8 @@ class NinjaOngoingExpired extends React.Component {
                                             <Text>Job:{task.Job}</Text>
                                             <Text>Field: {task.Field}</Text>
                                             <Text>Description: {task.Description}</Text>
-                                        
                                             <Text>Time:{task.Time}</Text>
-                                            <Text>{task.status}</Text>
+                                            <Text style={{alignSelf:'center', fontSize:'18', backgroundColor:'#E3E2EF', margin: 7}}>{task.status}</Text>
                                         </View>
                                     </Card>
                                 
