@@ -127,7 +127,7 @@ class MainMenu extends React.Component {
       <View style={{ flex: 1}}>
       <View style={{flexDirection:"row", justifyContent:"space-between", marginTop:55, marginLeft:15}}>
       <Text style={{color:'#01479b', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>ChoreNinja</Text>
-      <SwitchSelector style={{ marginBottom:4, marginRight:20, width:145, marginTop: 5}}
+      <SwitchSelector style={{ marginBottom:4, marginRight:5, width:145, marginTop: 5}}
             initial={0}
             onPress={this.handleToggle.bind(this)}
             textColor={'#01479b'} //'#7a44cf'
@@ -136,8 +136,8 @@ class MainMenu extends React.Component {
             borderColor={'#01479b'}
             hasPadding
             options={[
-              { label: "Master", value: true, imageIcon: userImage},
-              { label: "Ninja", value: false, imageIcon: ninjaImage} 
+              { label: "Master", value: true },
+              { label: "Ninja", value: false} 
     
         ]} 
       />
