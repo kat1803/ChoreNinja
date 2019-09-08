@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, Button, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import { Card } from 'react-native-elements';
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import { Searchbar, IconButton, Appbar } from 'react-native-paper';
+import { Searchbar, Button } from 'react-native-paper';
 
 class NinjaHomepage extends React.Component {
     state = {
@@ -31,11 +31,11 @@ class NinjaHomepage extends React.Component {
                         icon="filter"
                         size={20}
                         onPress={() => console.log('Pressed')}
-                    />
+                    >Filter</Button>
                 </View>
                 {this.state.Ninjas.map((n,i)=>{
                     return (
-                        <Card key={i} flexDirection="row" >
+                        <Card key={i} >
                             <View>
                             <Image style={{ width: 100, height: 100, overflow: 'hidden', borderRadius: 80 }}
                              source={require('../assets/HungcarriesTaiwanFlag.jpeg')} />
@@ -45,10 +45,7 @@ class NinjaHomepage extends React.Component {
                                 <Text>{n.JobDecription}</Text>
                                 <View>
                                      <Text>{n.Price}</Text>
-                                     <Button 
-                                            title="Accept Job"
-                                            onPress={() => console.log("Accept Job")}
-                                        />
+                                     <Button style={{marginTop:10, alignSelf:'center'}}mode="contained" onPress={() => console.log("Accept Job")}>Accept Job</Button>
                                 </View>
                                 
                             </View>

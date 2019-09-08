@@ -17,6 +17,7 @@ import NinjaBio from "./NinjaBio";
 import NinjaOngoingExpired from "./NinjaOngoingExpired";
 import NinjaHomepage from "./NinjaHomepage";
 import NinjaJoinScreen from "./NinjaJoinScreen";
+import Rating from "./Rating";
 
 
 
@@ -38,7 +39,8 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
   NinjaOngoingExpired: NinjaOngoingExpired,
   Ninjabio: NinjaBio,
   NinjaHomepage: NinjaHomepage,
-  About: AboutScreen
+  About: AboutScreen,
+  Rating: Rating
 });
 
 const AppMainContainerCustomer = createAppContainer(AppMainNavigatorCustomer);

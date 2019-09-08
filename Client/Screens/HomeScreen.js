@@ -26,6 +26,8 @@ class HomeScreen extends React.Component {
       price: this.state.price,
       description: this.state.description,
       due_date: this.state.due_date,
+      start_time: this.state.start_time,
+      end_time: this.state.end_time,
     }
     // Call redux dispatcher to make API call for POST request
     this.props.reduxHandlePost(newpost)
@@ -77,10 +79,28 @@ class HomeScreen extends React.Component {
               style={{backgroundColor:'rgb(250,250,250)'}}
                 underlineColorAndroid="transparent"
                 numberOfLines={1}
-                label='Time (24hrs)'
+                label='Date'
                 onChangeText={due_date => this.setState({ due_date })}
                 value={this.state.due_date}
               />
+              <View style={{flexDirection:"row", justifyContent:"space-between", backgroundColor:'rgb(250,250,250)'}}>
+              <TextInput
+              style={{backgroundColor:'rgb(250,250,250)', width: 175}}
+                underlineColorAndroid="transparent"
+                numberOfLines={1}
+                label='Start Time:'
+                onChangeText={start_time => this.setState({ start_time })}
+                value={this.state.start_time}
+              />
+              <TextInput
+              style={{backgroundColor:'rgb(250,250,250)', width: 175, marginLeft: 10}}
+                underlineColorAndroid="transparent"
+                numberOfLines={1}
+                label='End Time:'
+                onChangeText={end_time => this.setState({ end_time })}
+                value={this.state.end_time}
+              />
+              </View>
               <TextInput
               style={{backgroundColor:'rgb(250,250,250)'}}
                 underlineColorAndroid="transparent"
@@ -89,6 +109,7 @@ class HomeScreen extends React.Component {
                 onChangeText={price => this.setState({ price })}
                 value={this.state.price}
               />
+              
               <CheckBox
                 title='Cash payment'
                 checkedIcon='dot-circle-o'

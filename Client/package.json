@@ -16,6 +16,7 @@
     "react-native-gifted-chat": "^0.9.11",
     "react-native-navigation": "^2.11.0",
     "react-native-paper": "^2.16.0",
+    "react-native-ratings": "^6.4.0",
     "react-native-switch-selector": "^1.1.14",
     "react-navigation": "^3.12.1",
     "react-redux": "^6.0.0",

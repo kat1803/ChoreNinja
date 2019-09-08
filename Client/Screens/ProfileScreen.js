@@ -15,7 +15,8 @@ class ProfileScreen extends React.Component {
           edit: false,
           name:'',
           address:'',
-          Payment:''
+          Payment:'',
+          Rating:''
           
       }
     }
@@ -67,10 +68,10 @@ class ProfileScreen extends React.Component {
           {!this.state.edit ? 
           <View>
           <Card >
-            <ListItem style={{borderBottomColor: "#000000"}} title="Address:"/>
-            <ListItem title="Payment Type :"/>
-            <ListItem title="Email address:"/>
-            <ListItem title=""/>
+            <ListItem style={{borderBottomColor: "#000000"}} title="Address :"></ListItem>
+            <ListItem title="Payment Type :"></ListItem>
+            <ListItem title="Email address :"></ListItem>
+            <ListItem title="Rating :"></ListItem>
             <Button style={{width:100, alignSelf:'center', backgsroundColor:'#01479b', margin:10}} mode="contained"
             clicked={this.handleEdit}>Edit</Button>
           </Card>
