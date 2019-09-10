@@ -15,7 +15,7 @@ import ProfileScreen from "./ProfileScreen";
 import AboutScreen from "./AboutScreen";
 import NinjaBio from "./NinjaBio";
 import NinjaOngoingExpired from "./NinjaOngoingExpired";
-import NinjaHomepage from "./NinjaHomepage";
+import NinjaHome from "./NinjaHomepage";
 import NinjaJoinScreen from "./NinjaJoinScreen";
 import Rating from "./Rating";
 
@@ -97,11 +97,43 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
 });
 
 const AppMainNavigatorNinja = createBottomTabNavigator({
-  NinjaHomepage: NinjaHomepage,
+ 'Ninja Home': {
+    screen: NinjaHome,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="home"
+          size={30}
+          color='#0091EA'
+        />
+      )
+    })
+  },
   NinjaOngoingExpired: NinjaOngoingExpired,
-  Ninjabio: NinjaBio,
-  NinjaHomepage: NinjaHomepage,
-  About: AboutScreen,
+  'Ninja Bio': {
+    screen: NinjaBio,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="user"
+          size={30}
+          color='#0091EA'
+        />
+      )
+    })
+  },
+  About: {
+    screen: AboutScreen,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="info"
+          size={30}
+          color='#0091EA'
+        />
+      )
+    })
+  },
   Rating: Rating
 });
 
