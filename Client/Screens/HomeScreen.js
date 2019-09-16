@@ -3,7 +3,7 @@ import { View, Text, DatePickerIOS, ScrollView } from "react-native";
 import { Platform, StyleSheet, Image } from "react-native";
 import { Card,CheckBox } from 'react-native-elements';
 import { TextInput, Button} from "react-native-paper";
-
+import { Dropdown } from 'react-native-material-dropdown';
 import { connect } from 'react-redux';
 
 class HomeScreen extends React.Component {
@@ -51,6 +51,14 @@ class HomeScreen extends React.Component {
 
   render() {
     console.log("this.props.posts", this.props.posts)
+    let data = [{
+      value: 'Technical',
+    }, {
+      value: 'Professional',
+    }, {
+      value: 'Labor',
+    }];
+
     return (
       <View>
         {
@@ -59,14 +67,8 @@ class HomeScreen extends React.Component {
             <View >
             <Card>
             <View >
-              <TextInput
-              style={{backgroundColor:'rgb(250,250,250)'}}
-                underlineColorAndroid="transparent"
-                numberOfLines={1}
-                label='Job Name'
-                onChangeText={name => this.setState({ name })}
-                value={this.state.name}
-              />
+            <Dropdown label='Favorite Fruit'data={data} />
+              
               <TextInput
               style={{backgroundColor:'rgb(250,250,250)'}}
                 underlineColorAndroid="transparent"
@@ -139,6 +141,7 @@ class HomeScreen extends React.Component {
             this.props.posts.map((post,idx) => (
             <View key={idx} contentContainerStyle={styles.MainContainer}>
               <Card>
+              <Text></Text>
               <Text>Job Name: {post.name}</Text>
               <Text>Job Description: {post.description}</Text>
               <Text>Time: {post.due_date}</Text>
