@@ -122,7 +122,7 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       )
     })
   },
-  'Ninja Bio': {
+  'Ninja': {
     screen: NinjaBio,
     navigationOptions: () => ({
       tabBarIcon: () => (
