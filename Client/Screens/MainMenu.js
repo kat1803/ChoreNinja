@@ -23,6 +23,7 @@ import Rating from "./Rating";
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import MCIIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+
 const ninjaImage = require('../assets/ninja1.png');
 const userImage = require('../assets/users.png');
 
@@ -109,7 +110,18 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       )
     })
   },
-  NinjaOngoingExpired: NinjaOngoingExpired,
+  "Task": {
+    screen: NinjaOngoingExpired,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="tasks"
+          size={30}
+          color='#0091EA'
+        />
+      )
+    })
+  },
   'Ninja Bio': {
     screen: NinjaBio,
     navigationOptions: () => ({
