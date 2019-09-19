@@ -70,7 +70,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       showLabel: false
     }
   },
-  C_OnGoing: {
+  "Jobs": {
     screen: CustomerOnGoingScreen,
     navigationOptions: () => ({
       tabBarIcon: () => (
