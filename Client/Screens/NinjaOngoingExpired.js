@@ -35,7 +35,7 @@ class NinjaOngoingExpired extends React.Component {
                                         title={task.Job}
                                         image= {require('../assets/examplejob.png')}>
                                         <View key={i}>
-                                            <Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: '20', backgroundColor: '#80D8FF', margin: 7 }}>{task.status}</Text>
+                                            <Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#80D8FF', margin: 7 }}>{task.status}</Text>
                                             <View style={{ flexDirection: "row" }}> 
                                                 <Text style={{ fontSize: 18, fontWeight: "bold" }}>Field: </Text>
                                                 <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{task.Field}</Text>
