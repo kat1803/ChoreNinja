@@ -15,13 +15,14 @@ import ProfileScreen from "./ProfileScreen";
 import AboutScreen from "./AboutScreen";
 import NinjaBio from "./NinjaBio";
 import NinjaOngoingExpired from "./NinjaOngoingExpired";
-import NinjaHomepage from "./NinjaHomepage";
+import NinjaHome from "./NinjaHomepage";
 import NinjaJoinScreen from "./NinjaJoinScreen";
 import Rating from "./Rating";
 
 //importing icon
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import MCIIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 const ninjaImage = require('../assets/ninja1.png');
 const userImage = require('../assets/users.png');
@@ -69,7 +70,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       showLabel: false
     }
   },
-  C_OnGoing: {
+  "Jobs": {
     screen: CustomerOnGoingScreen,
     navigationOptions: () => ({
       tabBarIcon: () => (
@@ -97,11 +98,54 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
 });
 
 const AppMainNavigatorNinja = createBottomTabNavigator({
-  NinjaHomepage: NinjaHomepage,
-  NinjaOngoingExpired: NinjaOngoingExpired,
-  Ninjabio: NinjaBio,
-  NinjaHomepage: NinjaHomepage,
-  About: AboutScreen,
+ 'Ninja Home': {
+    screen: NinjaHome,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="home"
+          size={30}
+          color='#0091EA'
+        />
+      )
+    })
+  },
+  "Task": {
+    screen: NinjaOngoingExpired,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="tasks"
+          size={30}
+          color='#0091EA'
+        />
+      )
+    })
+  },
+  'Ninja': {
+    screen: NinjaBio,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="user"
+          size={30}
+          color='#0091EA'
+        />
+      )
+    })
+  },
+  About: {
+    screen: AboutScreen,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="info"
+          size={30}
+          color='#0091EA'
+        />
+      )
+    })
+  },
   Rating: Rating
 });
 
