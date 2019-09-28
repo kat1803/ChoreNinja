@@ -1,32 +1,32 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { Card, ListItem, Icon } from "react-native-elements";
-import {Image, StyleSheet} from "react-native";
-import { Button, TouchableRipple} from "react-native-paper";
+import { Image, StyleSheet } from "react-native";
+import { Button, TouchableRipple } from "react-native-paper";
 
 // Formatted with the following command:
 // Nhis-MacBook-Pro:Screens kathryn$ prettier --write ProfileScreen.js
 
 
 class ProfileScreen extends React.Component {
-    constructor(props){
-      super(props)
-      this.state = {
-          edit: false,
-          name:'',
-          address:'',
-          Payment:'',
-          Rating:''
-          
-      }
+  constructor(props) {
+    super(props)
+    this.state = {
+      edit: false,
+      name: '',
+      address: '',
+      Payment: '',
+      Rating: ''
+
     }
-    handleEdit() {
-      alert("Edit button clicked");
-      this.setState({
-        edit: true
-      })
-    }
-  render(){
+  }
+  handleEdit() {
+    alert("Edit button clicked");
+    this.setState({
+      edit: true
+    })
+  }
+  render() {
     const styles = StyleSheet.create({
       Header: {
         margin: "2%",
@@ -35,7 +35,7 @@ class ProfileScreen extends React.Component {
         justifyContent: "center",
         borderBottomWidth: 5, //change the size of the purple line
         borderBottomColor: "#e4c5e9",
-        backgroundColor:"#e4c5e9"
+        backgroundColor: "#e4c5e9"
       },
       Body: {
         flexDirection: "column",
@@ -44,9 +44,9 @@ class ProfileScreen extends React.Component {
         flexDirection: "column",
         borderBottomColor: "#D3D3D3"
       },
-     Info: {
-       borderBottomColor: "black"
-     }
+      Info: {
+        borderBottomColor: "black"
+      }
     });
     return (
       <View style={{ flex: 1 }}>
@@ -64,46 +64,45 @@ class ProfileScreen extends React.Component {
         </View>
 
         <View>
-          
-          {!this.state.edit ? 
-          <View>
-          <Card >
-            <ListItem style={{borderBottomColor: "#000000"}} title="Address :"></ListItem>
-            <ListItem title="Payment Type :"></ListItem>
-            <ListItem title="Email address :"></ListItem>
-            <ListItem title="Rating :"></ListItem>
-            <Button style={{width:100, alignSelf:'center', backgsroundColor:'#01479b', margin:10}} mode="contained"
-            clicked={this.handleEdit}>Edit</Button>
-          </Card>
-          <Button style={{alignSelf:'center', margin:10}} mode="outlined">Invite your friend to join</Button>
 
-          </View> :<View>
-          <Card >
-                            <InputItem
-                                 clear
-                                 style={{flex:1}}
-                                 value = {this.state.ssn}
-                                 onChange = {
-                                     ssn => { this.setState ({ssn,});}
-                                 }
-                                 placeholder = "XXX-XX-XXXX"
-                             >
-                             </InputItem>
-          <Button style={{width:100, alignSelf:'center', backgroundColor:'#01479b', margin:10}} mode="contained"
+          {!this.state.edit ?
+            <View>
+              <Card>
+                <ListItem style={{ borderBottomColor: "#000000" }} title="Address :"></ListItem>
+                <ListItem title="Payment Type :"></ListItem>
+                <ListItem title="Email address :"></ListItem>
+                <ListItem title="Rating :"></ListItem>
+                <Button style={{ width: 100, alignSelf: 'center', backgsroundColor: '#01479b', margin: 10 }} mode="contained"
+                  clicked={this.handleEdit}>Edit</Button>
+              </Card>
+              <Button style={{ alignSelf: 'center', margin: 10 }} mode="outlined">Invite your friend to join</Button>
+            </View> : <View>
+              <Card>
+                <InputItem
+                  clear
+                  style={{ flex: 1 }}
+                  value={this.state.ssn}
+                  onChange={
+                    ssn => { this.setState({ ssn, }); }
+                  }
+                  placeholder="XXX-XX-XXXX"
+                >
+                </InputItem>
+                <Button style={{ width: 100, alignSelf: 'center', backgroundColor: '#01479b', margin: 10 }} mode="contained"
                 >Save</Button>
-        </Card>
-      </View>}
-    </View>
-    </View>)
-    
-      
-    
+              </Card>
+            </View>}
+        </View>
+      </View>)
+
+
+
   }
 }
 
 
 
-    
+
 export default ProfileScreen;
 
 /* <View style={styles.Header}>
