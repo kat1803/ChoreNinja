@@ -37,7 +37,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
         <FAIcon
           name = "home"
           size = {30}
-          color='#0091EA'
+          color='#01479b'
         />
       )
     })
@@ -49,7 +49,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
         <FAIcon
           name = "user"
           size = {30}
-          color='#0091EA'
+          color='#01479b'
         />
       )
     })
@@ -62,7 +62,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
         <FAIcon
           name="envelope"
           size={30}
-          color='#0091EA'
+          color='#01479b'
         />
       )
     }),
@@ -77,7 +77,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
         <FAIcon
           name="bell"
           size={30}
-          color='#0091EA'
+          color='#01479b'
         />
       ),
     })
@@ -90,7 +90,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
         <MCIIcon
           name = "ninja"
           size={30}
-          color = '#0091EA'
+          color= '#01479b'
         />
       )
     })
