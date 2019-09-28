@@ -4,7 +4,7 @@ import { Card, Radio, Button, InputItem, List, WingBlank, WhiteSpace, Flex, Chec
 const CheckboxItem = Checkbox.CheckboxItem;
 
 
-class CustomerOnGoingScreen extends React.Component {
+class Notification extends React.Component {
     constructor(props){
         super(props)
         this.state = {
@@ -59,4 +59,4 @@ class CustomerOnGoingScreen extends React.Component {
 }
 
 
-export default CustomerOnGoingScreen
+export default Notification

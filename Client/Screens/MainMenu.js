@@ -8,7 +8,7 @@ import SwitchSelector from "react-native-switch-selector";
 import HomeScreen from "./HomeScreen";
 import LoginScreen from "./LoginScreen";
 import SignupScreen from "./SignupScreen";
-import CustomerOnGoingScreen from "./CustomerOnGoingScreen";
+import Notification from "./Notification";
 import Message from "./Message";
 import MessageList from "./MessageList";
 import ProfileScreen from "./ProfileScreen";
@@ -27,7 +27,7 @@ import MCIIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 const ninjaImage = require('../assets/ninja1.png');
 const userImage = require('../assets/users.png');
 
-//Main Navigation of the Application
+//Main Navigation
 const AppMainNavigatorCustomer = createBottomTabNavigator({
   //Login: LoginScreen,
   Home: {
@@ -70,8 +70,8 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       showLabel: false
     }
   },
-  "Jobs": {
-    screen: CustomerOnGoingScreen,
+  "Notification": {
+    screen: Notification,
     navigationOptions: () => ({
       tabBarIcon: () => (
         <FAIcon
@@ -97,6 +97,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
   }, 
 });
 
+// Ninja Navigation
 const AppMainNavigatorNinja = createBottomTabNavigator({
  'Ninja Home': {
     screen: NinjaHome,
