@@ -8,9 +8,9 @@ class NinjaHomepage extends React.Component {
     state = {
         firstQuery: '',
         tasks: [
-            { id: 1, Job: "Laundry", Field: "Laundry", Description: "I need someone to pick up my laundry at my home and do it.", Date: '02/23/19', Time: "3pm-5pm", Price: "20" },
-            { id: 2, Job: "Lawn Cleaning", Field: "Garden", Description: "I need someone to come to my home and clean up my lawn.", Date: '08/23/19', Time: "3pm-5pm", Price: "20" },
-            { id: 3, Job: "Pick up dog", Field: "Transportation", Description: "I need someone to pick up my dog at airport and send him home.", Date: '02/23/19', Time: "3pm-5pm", Price: "20" }
+            { id: 1, Job: "Laundry", Field: "Laundry", Description: "I need someone to pick up my laundry at my home and do it.", Date: '02/23/19', Time: "3pm-5pm", Price: "20", Zipcode: "95112" },
+            { id: 2, Job: "Lawn Cleaning", Field: "Garden", Description: "I need someone to come to my home and clean up my lawn.", Date: '08/23/19', Time: "3pm-5pm", Price: "20", Zipcode: "95112" },
+            { id: 3, Job: "Pick up dog", Field: "Transportation", Description: "I need someone to pick up my dog at airport and send him home.", Date: '02/23/19', Time: "3pm-5pm", Price: "20", Zipcode: "95112" }
         ]
     };
 
@@ -69,10 +69,18 @@ class NinjaHomepage extends React.Component {
                                     <Text style={{ fontSize: 18, fontWeight: "bold" }}>Description:</Text>
                                     <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{n.Description}</Text>
                                     <Text></Text>
+
                                     {/* Time */}
                                     <View style={{ flexDirection: "row" }}>
                                         <Text style={{ fontSize: 18, fontWeight: "bold" }}>Time: </Text>
                                         <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{n.Time}</Text>
+                                    </View>
+                                    <Text></Text>
+
+                                    {/* Zip Code */}
+                                    <View style={{ flexDirection: "row" }}>
+                                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>Zip Code: </Text>
+                                        <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{n.Zipcode}</Text>
                                     </View>
                                     <Text></Text>
 
