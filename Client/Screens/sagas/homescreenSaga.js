@@ -1,11 +1,12 @@
 import { delay, takeEvery, takeLatest, put, call } from 'redux-saga/effects';
 
-function* deletePost(id) {
+export function deletePost(id) {
+    var url = "https://choreninja.herokuapp.com/api/v1/job/" + id;
+    console.log("going to call DELETE on " + url);
     try {
         //make http call to add post
-        fetch("https://choreninja.herokuapp.com/api/v1/job", {
+        fetch(url, {
             method: "DELETE",
-            body: id
         }).then(res=>{
             console.log(res);
             fetchPost()
@@ -18,12 +19,26 @@ function* deletePost(id) {
     }
 }
 
-function* editPost(post) {
+export function editPost(post, id) {
+    console.log("hihi");
+    var url = "https://choreninja.herokuapp.com/api/v1/job/" + id;
+    console.log("going to call PUT on " + url);
+    console.log(post);
+    console.log(post.value);
+    var jsonVal = JSON.stringify({
+                    job: post
+		}
+                );
+    console.log(jsonVal);
     try {
         //make http call to add post
-        fetch("https://choreninja.herokuapp.com/api/v1/job", {
+        fetch(url, {
             method: "PUT",
-            body: JSON.stringify(post)
+            body: jsonVal,
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': 'application/json'
+            }
         }).then(res=>{
             console.log(res);
             fetchPost()
@@ -37,7 +52,8 @@ function* editPost(post) {
 }
 
 
-function* addPost(post) {
+export function* addPost(post) {
+    console.log("ADDING POST ", post);
     try {
         //make http call to add post
         const posts = yield call(() => {
@@ -92,7 +108,7 @@ function* fetchPost() {
 
 export function* watchDeletePost (){
     //Take Latest action
-    yield takeLatest('DELETE_POST', deletePost);
+    //yield takeLatest('DELETE_POST', deletePost);
     yield takeLatest("ADD_POST", addPost);
     yield takeLatest("EDIT_POST", editPost);
     yield takeLatest("FETCH_POST", fetchPost);
