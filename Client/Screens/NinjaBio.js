@@ -19,31 +19,6 @@ class NinjaBio extends React.Component {
           image={require("../assets/HungcarriesTaiwanFlag.jpeg")}
           containerStyle={{ backgroundColor: '#F5F5F5'}}
         >
-        {/* <View
-          style={{
-            //flex: 2,
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column"
-          }}
-        >
-          <Text style={{ fontWeight: "bold", fontSize: 23 }}>
-            {this.state.Ninjaname}
-          </Text>
-          <Text></Text>
-          <Image
-            style={{
-              width: 160,
-              height: 160,
-              overflow: "hidden",
-            }}
-            source={require("../assets/HungcarriesTaiwanFlag.jpeg")}
-          />
-        </View> */}
-
-        <Text></Text>
-
         <View
           style={{
             borderRadius: 3,

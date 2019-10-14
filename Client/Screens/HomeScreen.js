@@ -178,19 +178,19 @@ class HomeScreen extends React.Component {
                     }
                   />
                 </View>
+                <Button
+                  style={{
+                    width: 100,
+                    alignSelf: "center",
+                    backgroundColor: "#01479b",
+                    margin: 10
+                  }}
+                  mode="contained"
+                  onPress={() => this.handlePost()}
+                >
+                  Post
+                </Button>
               </Card>
-              <Button
-                style={{
-                  width: 100,
-                  alignSelf: "flex-end",
-                  backgroundColor: "#01479b",
-                  margin: 10
-                }}
-                mode="contained"
-                onPress={() => this.handlePost()}
-              >
-                Post
-              </Button>
             </View>
           ) : (
             <Button

@@ -18,6 +18,7 @@ import NinjaOngoingExpired from "./NinjaOngoingExpired";
 import NinjaHome from "./NinjaHomepage";
 import NinjaJoinScreen from "./NinjaJoinScreen";
 import Rating from "./Rating";
+import NinjaEditBio from "./NinjaEditBio";
 
 //importing icon
 import FAIcon from 'react-native-vector-icons/FontAwesome';
@@ -147,7 +148,8 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       )
     })
   },
-  Rating: Rating
+  Rating: Rating,
+  NinjaEditBio: NinjaEditBio
 });
 
 const AppMainContainerCustomer = createAppContainer(AppMainNavigatorCustomer);
