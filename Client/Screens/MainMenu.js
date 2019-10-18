@@ -24,6 +24,7 @@ import NinjaEditBio from "./NinjaEditBio";
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import MCIIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { connect } from "react-redux";
 
 const ninjaImage = require('../assets/ninja1.png');
 const userImage = require('../assets/users.png');
@@ -172,52 +173,69 @@ class MainMenu extends React.Component {
 
   render() {
     return (
-        // dont fuck with this line
-      <View style={{ flex: 1}}>
-      <View style={{flexDirection:"row", justifyContent:"space-between", marginTop:55, marginLeft:15}}>
-      <Text style={{color:'#01479b', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>ChoreNinja</Text>
-      <SwitchSelector style={{ marginBottom:4, marginRight:5, width:145, marginTop: 5}}
-            initial={0}
-            onPress={this.handleToggle.bind(this)}
-            textColor={'#01479b'} //'#7a44cf'
-            selectedColor={'#80d8ff'}
-            buttonColor={'#01479b'}
-            borderColor={'#01479b'}
-            hasPadding
-            options={[
-              { label: "Master", value: true },
-              { label: "Ninja", value: false} 
-    
-        ]} 
-      />
-      
-        </View>
-        {this.state.isNinja ? (
-          <AppMainContainerCustomer />
-          
-        ) : (
-          <AppMainContainerNinja />
-        )}
-      </View>
+		// dont fuck with this line
+		<View style={{ flex: 1}}>
+			{
+				this.props.user.user ?
+						<View style={{flexDirection:"row", justifyContent:"space-between", marginTop:55, marginLeft:15}}>
+							<Text style={{color:'#01479b', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>ChoreNinja</Text>
+							<SwitchSelector style={{ marginBottom:4, marginRight:5, width:145, marginTop: 5}}
+								  initial={0}
+								  onPress={this.handleToggle.bind(this)}
+								  textColor={'#01479b'} //'#7a44cf'
+								  selectedColor={'#80d8ff'}
+								  buttonColor={'#01479b'}
+								  borderColor={'#01479b'}
+								  hasPadding
+								  options={[
+									{ label: "Master", value: true },
+									{ label: "Ninja", value: false} 
+						  
+							  ]} 
+							/>
+						</View>
+				:
+					<SignupScreen signup={this.props.signup} signin={this.props.signin}/>
+			} 
+			{
+				this.props.user.user ?
+					this.state.isNinja ? (<AppMainContainerCustomer />) : (<AppMainContainerNinja />)
+				:
+				null
+			}
+		</View>
     );
   }
 }
 
-export default MainMenu;
 
-//old style for the header
- {/* <Text style={{color:'#01479b', marginLeft: 15, marginTop:50, fontSize:35, fontWeight:"bold"}}>ChoreNinja</Text>
-        <SwitchSelector style={{ marginBottom:4, marginRight:10, width:120,alignSelf: 'flex-end'}}
-            initial={0}
-            onPress={this.handleToggle.bind(this)}
-            textColor={'#01479b'} //'#7a44cf'
-            selectedColor={'#80d8ff'}
-            buttonColor={'#01479b'}
-            borderColor={'#01479b'}
-            hasPadding
-            options={[
-              { label: "Master", value: true},
-              { label: "Ninja", value: false} 
-              
-            ]}
-          /> */}
+const mapStateToProps = state => {
+	return {
+	  user: state.auth.user
+	};
+  };
+  
+const mapDispatchToProps = dispatch => {
+	return {
+	  signup: (email, password) =>
+		dispatch({
+		  type: "SIGN_UP",
+		  value: {email, password}
+		}),
+	  signin: (email, password) =>
+		dispatch({
+		  type: "SIGN_IN",
+		  value: {email, password}
+		}),
+	  signout: () =>
+		dispatch({
+		  type: "SIGN_OUT",
+		}),
+	};
+  };
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+  )(MainMenu);
+  

@@ -106,7 +106,7 @@ function* fetchPost() {
 }
 
 
-export function* watchDeletePost (){
+export function* watchPost (){
     //Take Latest action
     //yield takeLatest('DELETE_POST', deletePost);
     yield takeLatest("ADD_POST", addPost);
