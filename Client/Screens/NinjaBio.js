@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import { Card, colors} from "react-native-elements";
 import { Button, TouchableRipple} from "react-native-paper";
+import { NinjaEditBio } from "./NinjaEditBio"
 // import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
 
 class NinjaBio extends React.Component {
@@ -12,6 +13,7 @@ class NinjaBio extends React.Component {
     };
   }
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <View style={{ flex: 1, marginTop:20 }}>
         <Card
@@ -73,7 +75,13 @@ class NinjaBio extends React.Component {
             <Text></Text>
 
         </View>
-        <Button style={{width:100, alignSelf:'center', margin:10}} mode="contained">Edit Bio</Button>
+        <Button 
+          style={{width:100, alignSelf:'center', margin:10}} 
+          mode="contained"
+          onPress = {()=> navigate('NinjaEditBio')}
+        >
+          Edit Bio
+        </Button>
         </Card>
       </View>
     );
