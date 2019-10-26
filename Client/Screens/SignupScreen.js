@@ -48,6 +48,7 @@ class SignupScreen extends React.Component {
 						underlineColorAndroid="transparent"
 						numberOfLines={1}
 						label="Password"
+						secureTextEntry={true}
 						onChangeText={password => this.setState({ password })}
 						value={this.state.password}
 						/>

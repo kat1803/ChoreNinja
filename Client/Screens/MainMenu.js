@@ -19,7 +19,7 @@ import NinjaHome from "./NinjaHomepage";
 import NinjaJoinScreen from "./NinjaJoinScreen";
 import Rating from "./Rating";
 import NinjaEditBio from "./NinjaEditBio";
-
+import MenuNavBar from "./MenuNavBar";
 //importing icon
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import MCIIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -150,7 +150,19 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
     })
   },
   Rating: Rating,
-  NinjaEditBio: NinjaEditBio
+  NinjaEditBio: NinjaEditBio,
+  MenuNavBar: {
+    screen: MenuNavBar,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="user"
+          size={30}
+          color='#0091EA'
+        />
+      )
+    })
+  },
 });
 
 const AppMainContainerCustomer = createAppContainer(AppMainNavigatorCustomer);
