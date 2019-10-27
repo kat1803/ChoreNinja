@@ -32,8 +32,12 @@ class SignupScreen extends React.Component {
 	render() {
 		const {signin} = this.state
 		return (
-			<View>
-			  <Title style={{marginTop: 100, textAlign: "center"}}>{signin ? "Please Sign in" : "Sign up with ChoreNinja"}</Title>
+			<View style={{ flex: 1}}>
+				<Image
+                  style={{width: 200, height: 200,alignSelf:"center", marginTop:30}}
+                  source={require('../assets/logo_transparent.png')}
+                />
+			  <Title style={{ textAlign: "center"}}>{signin ? "Please Sign in" : "Sign up with ChoreNinja"}</Title>
 				<View>
 					<TextInput
 						mode="outlined"
@@ -74,8 +78,11 @@ class SignupScreen extends React.Component {
 							value={this.state.lastname}
 							/>
 					}
-					<Button onPress={this.handleSubmit} mode="contained" style={{marginTop: 25}}>{signin ? "Sign in" : "Create account"}</Button>
-					<Button onPress={() => this.setState({ signin: !signin})} mode="contained" style={{marginTop: 25}}>{signin ? "Sign up" : "Already have account!"}</Button>
+					<Button onPress={this.handleSubmit} mode="contained" style={{marginTop: 25,alignSelf:"center", width:250}}>{signin ? "Sign in" : "Create account"}</Button>
+					<Button onPress={() => this.setState({ signin: !signin})} mode="contained" style={{marginTop: 25, alignSelf:"center", width:400}}>{signin ? "Sign up" : "Already have account"}</Button>
+					<Text style={{textAlign: "center", fontSize: 18}}>Or</Text>
+					<Button mode="outlined" style={{marginTop: 5, width:250, alignSelf:"center", backgroundColor:"#87CEFA"}}>Log in With Facebook</Button>
+                <Button mode="outlined" style={{marginTop:5, width:250, alignSelf:"center", backgroundColor:"#F08080"}}>Log in With Google</Button>
 				</View>
 			</View>
 		);
