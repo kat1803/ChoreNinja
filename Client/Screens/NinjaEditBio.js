@@ -25,6 +25,7 @@ class NinjaEditBio extends React.Component {
     };
 
     render(){
+        const {navigate} = this.props.navigation;
         return (
             <ScrollView>
                 <Card>
@@ -89,10 +90,10 @@ class NinjaEditBio extends React.Component {
                                 margin: 10
                             }}
                             mode="contained"
+                            onPress = {() => navigate('Ninja')}
                         >
                             Save
                         </Button>
-
                     </View>
                 </Card>
             </ScrollView>
