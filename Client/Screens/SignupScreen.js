@@ -40,6 +40,7 @@ class SignupScreen extends React.Component {
 			  <Title style={{ textAlign: "center"}}>{signin ? "Please Sign in" : "Sign up with ChoreNinja"}</Title>
 				<View>
 					<TextInput
+					style={{margin:2}}
 						mode="outlined"
 						underlineColorAndroid="transparent"
 						numberOfLines={1}
@@ -48,6 +49,7 @@ class SignupScreen extends React.Component {
 						value={this.state.email}
 						/>
 					<TextInput
+					style={{margin:2}}
 						mode="outlined"
 						underlineColorAndroid="transparent"
 						numberOfLines={1}
@@ -59,6 +61,7 @@ class SignupScreen extends React.Component {
 					{
 						!signin &&
 						<TextInput
+						style={{margin:2}}
 							mode="outlined"
 							underlineColorAndroid="transparent"
 							numberOfLines={1}
@@ -70,6 +73,7 @@ class SignupScreen extends React.Component {
 					{
 						!signin &&
 						<TextInput
+						style={{margin:2}}
 							mode="outlined"
 							underlineColorAndroid="transparent"
 							numberOfLines={1}
