@@ -41,6 +41,7 @@ class NinjaHomepage extends React.Component {
               title="filter"
               icon="filter"
               size={20}
+              style={{color: '#0091EA'}}
               onPress={() => console.log("Pressed")}
             >
               Filter
@@ -111,20 +112,20 @@ class NinjaHomepage extends React.Component {
                 <View
                   style={{
                     flexDirection: "row",
-                    justifyContent: "space-between"
+                    justifyContent: "space-between",
+                    alignSelf: 'center'
                   }}
                 >
-
                   <Button
                     style={{
-                      width: 100,
+                      width: 150,
                       margin: 7,
-                      backgroundColor: "#008000"
+                      backgroundColor: "#008000",
                     }}
                     mode="contained"
                     onPress={() => this.handleAcceptJob(idx)}
                   >
-                    <Text>Accept Job</Text>
+                    <Text>ACCEPT JOB</Text>
                   </Button>
                 </View>
               </Card>

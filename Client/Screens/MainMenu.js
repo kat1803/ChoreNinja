@@ -101,7 +101,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
 
 // Ninja Navigation
 const AppMainNavigatorNinja = createBottomTabNavigator({
- 'Ninja Home': {
+ 'HOME': {
     screen: NinjaHome,
     navigationOptions: () => ({
       tabBarIcon: () => (
@@ -113,19 +113,19 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       )
     })
   },
-  "Task": {
+  "TASK": {
     screen: NinjaOngoingExpired,
     navigationOptions: () => ({
       tabBarIcon: () => (
         <FAIcon
-          name="tasks"
+          name="briefcase"
           size={30}
           color='#0091EA'
         />
       )
     })
   },
-  'Ninja': {
+  'BIO': {
     screen: NinjaBio,
     navigationOptions: () => ({
       tabBarIcon: () => (
@@ -137,7 +137,7 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       )
     })
   },
-  About: {
+  'ABOUT': {
     screen: AboutScreen,
     navigationOptions: () => ({
       tabBarIcon: () => (
@@ -150,7 +150,6 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
     })
   },
   Rating: Rating,
-  NinjaEditBio: NinjaEditBio,
   MenuNavBar: {
     screen: MenuNavBar,
     navigationOptions: () => ({

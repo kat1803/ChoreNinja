@@ -10,24 +10,14 @@ import {connect} from 'react-redux';
 class NinjaBio extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            // testing: [
-            //     {
-            //         description: "Test",
-            //         skills: "Test",
-            //         email: "Test",
-            //         phone: "Test",
-            //         companyName: "Test",
-            //     }
-            // ],
-            auth: [],
-            user: [],
-            // description:'Testing',
-            // skills: '',
-            // email: '',
-            // phone: '',
-            // companyName: '',
-
+        this.state = {         
+            user: {
+                id: 1,
+                description: 'Best In the Business! You choose me, Or I choose you!',
+                skills: 'Accounting, Finance, Lawyer',
+                phone: '408 888 8888',
+                email: 'example@gmail.com',
+            },
             editBio: false,
         };
     }
@@ -119,12 +109,12 @@ class NinjaBio extends React.Component {
                     </View>
                     :
                     <View>
-                        {/* {this.props.user && this.props.user.map((user, id) => ( */}
+                        {/* {this.props.user.map((user, id) => ( */}
                             <View style={{ flex: 1, marginTop: 20 }}>
                                 <Card
                                     // key = {id}
                                     title="TEST"
-                                    image={require("../assets/HungcarriesTaiwanFlag.jpeg")}
+                                    image={require("../assets/businessprofile.png")}
                                     containerStyle={{ backgroundColor: '#F5F5F5' }}
                                 >
                                     <View
@@ -141,7 +131,7 @@ class NinjaBio extends React.Component {
                                         }}
                                     >
                                         {/* Descriptions */}
-                                        <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{this.state.description}</Text>
+                                        <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{this.state.user.description}</Text>
                                         <Text></Text>
 
                                         {/* Ratings */}
@@ -160,7 +150,7 @@ class NinjaBio extends React.Component {
 
                                         {/* Skills */}
                                         <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Skills: </Text>
-                                        <Text style={{ fontSize: 18 }}></Text>
+                                        <Text style={{ fontSize: 18 }}>{this.state.user.skills}</Text>
                                         <Text></Text>
 
                                         {/* Contact Information */}
@@ -168,12 +158,12 @@ class NinjaBio extends React.Component {
                                         {/* Phone Number */}
                                         <View style={{ flexDirection: 'row' }}>
                                             <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Tel: </Text>
-                                            <Text style={{ fontSize: 18 }}></Text>
+                                            <Text style={{ fontSize: 18 }}>{this.state.user.phone}</Text>
                                         </View>
                                         {/* Email */}
                                         <View style={{ flexDirection: 'row' }}>
                                             <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Email: </Text>
-                                            <Text style={{ fontSize: 18 }}></Text>
+                                            <Text style={{ fontSize: 18 }}>{this.state.user.email}</Text>
                                         </View>
                                         <Text></Text>
 
@@ -187,7 +177,7 @@ class NinjaBio extends React.Component {
                                     </Button>
                                 </Card>
                             </View>
-                        {/* ))} */}
+                        {/* ))}  */}
                     </View>
                     
                 }

@@ -1,8 +1,7 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ScrollView, KeyboardAvoidingView } from "react-native";
 import { Radio, InputItem, List, WingBlank, WhiteSpace, Flex, Checkbox } from '@ant-design/react-native';
 import { Button, TouchableRipple, TextInput, Title } from "react-native-paper";
-import FAIcon from 'react-native-vector-icons/FontAwesome';
 const CheckboxItem = Checkbox.CheckboxItem;
 
 
@@ -34,9 +33,12 @@ class SignupScreen extends React.Component {
 		const {signin} = this.state
 		return (
 			<View style={{ flex: 1 }}>
+			<ScrollView>
+				<KeyboardAvoidingView>
 				<Image
-                  style={{width: 300, height: 300, alignSelf:"center"}}
-                  source={require('../assets/logo_transparent.png')}
+					style={{ marginTop: 80, marginBottom: 20, width: 263, height: 150, alignSelf:"center"}}
+					// style={{justifyContent: 'center', width: 263, height: 150}}  
+					source={require('../assets/mainlogo.png')}
                 />
 			  	<Title style={{ textAlign: "center"}}>{signin ? "Sign In" : "Sign Up"}</Title>
 				<View>
@@ -88,7 +90,7 @@ class SignupScreen extends React.Component {
 							onPress={this.handleSubmit}
 							mode="outlined"
 							// style={{ marginTop: 15, alignSelf: "center", width: 250 }}
-							style={{ marginRight: 10, marginTop: 15, width: 180, backgroundColor: "#00B0FF"}}
+							style={{ marginLeft: 2, marginRight: 10, marginTop: 15, width: 160, backgroundColor: "#00B0FF"}}
 						>
 							{signin ? "Sign In" : "Sign Up"}
 						</Button>
@@ -96,7 +98,7 @@ class SignupScreen extends React.Component {
 							onPress={() => this.setState({ signin: !signin })}
 							mode="outlined" 
 							//style={{ marginTop: 25, alignSelf: "center", width: 250 }}
-							style={{ marginLeft: 10, marginTop: 15, width: 180, backgroundColor: "#00B0FF"}}
+							style={{ marginRight: 2, marginLeft: 3, marginTop: 15, width: 175, backgroundColor: "#00B0FF"}}
 						>
 							{signin ? "Create Account" : "Sign In"}
 						</Button>
@@ -110,15 +112,17 @@ class SignupScreen extends React.Component {
 					</Button>
 					<Button 
 						mode="contained" 
-						style={{marginTop:10, width:250, alignSelf:"center", backgroundColor:"#FF3E30"}}
+						style={{marginTop:10, width:250, alignSelf:"center", backgroundColor:"#FF3E30", marginBottom: 100}}
 					>
 						Login With Google
 					</Button>
 				</View>
+				</KeyboardAvoidingView>
+			</ScrollView>
 			</View>
+
 		);
 	}
 }
 
-
-export default SignupScreen
+export default SignupScreen;
