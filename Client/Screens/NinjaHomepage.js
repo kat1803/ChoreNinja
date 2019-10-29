@@ -51,10 +51,11 @@ class NinjaHomepage extends React.Component {
 
   render() {
     const { firstQuery } = this.state;
+    console.log("INSIDE NINJA HOMEPAGE")
     console.log(this.props.posts);
     return (
       <ScrollView>
-        <View>
+        <View style= {{flex: 1}}>
           <View
             style={{
               flexDirection: "row",
@@ -65,7 +66,7 @@ class NinjaHomepage extends React.Component {
           >
             <Searchbar
               placeholder="Search"
-              style={{ width: 300 }}
+              style={{ width: 300, flex: 1 }}
               onChangeText={query => {
                 this.setState({ firstQuery: query });
               }}

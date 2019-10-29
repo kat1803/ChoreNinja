@@ -8,7 +8,7 @@ class NinjaBio extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: [
+            testing: [
                 {
                     description: "Test",
                     skills: "Test",
@@ -17,29 +17,43 @@ class NinjaBio extends React.Component {
                     companyName: "Test",
                 }
             ],
-            description: "",
-            skills: "",
-            email: "",
-            phone: "",
-            companyName: "",
+            users: [
+                {
+                    id: 1,
+                    companyName: "Test",
+                    description: "Test",
+                    skills: "Test",
+                    email: "Test",
+                    phone: "Test",
+                    companyName: "Test",
+                }
+            ],
+            description:'',
+            skills: '',
+            email: '',
+            phone: '',
+            companyName: '',
 
             editBio: false,
         };
     }
 
-    // handleSave(){
-    //     var posts = this.props.posts;
-    //     var post = posts[idx];
-    //     this.setState({
-    //         companyName: post.companyName,
-    //         description: post.description,
-    //         skills: post.skills,
-    //         phone: post.phone,
-    //         email: post.email,
-    //     });
-    // }
+    handleEdit(){
+        var users = this.props.users;
+        var user = users[id];
+        this.setState({
+            companyName: user.companyName,
+            description: user.description,
+            skills: user.skills,
+            phoen: user.phone,
+            email: user.email,
+        });
+
+    }
 
     render() {
+        // console.log("HERE BITCH")
+        // console.log(this.props);
         return (
             <ScrollView>
                 {this.state.editBio ?
@@ -104,74 +118,84 @@ class NinjaBio extends React.Component {
                                 margin: 10
                             }}
                             mode="contained"
-                            onPress={() => this.setState({ editBio: false })}
+                            onPress={() => this.handleEdit}
                         >
                             <Text>Save</Text>
                         </Button>
                     </View>
                     :
-                    <View style={{ flex: 1, marginTop: 20 }}>
-                        <Card
-                            title="Testing"
-                            image={require("../assets/HungcarriesTaiwanFlag.jpeg")}
-                            containerStyle={{ backgroundColor: '#F5F5F5' }}
-                        >
-                            <View
-                                style={{
-                                    borderRadius: 3,
-                                    borderWidth: 1,
-                                    borderColor: "#d6d7da",
-                                    //flex: 3,
-                                    justifyContent: "flex-start",
-                                    alignItems: "flex-start",
-                                    flexDirection: "column",
-                                    padding: 5,
-                                    backgroundColor: '#FFFAFA'
-                                }}
-                            >
-                                {/* Ratings */}
-                                <View style={{ flexDirection: 'row' }}>
-                                    <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Rating: </Text>
-                                    <Text style={{ fontSize: 18 }}>98% positive</Text>
-                                </View>
-                                <Text></Text>
+                    <View>
+                        {this.props.users && this.props.users.map((user, id) => (
+                            <View style={{ flex: 1, marginTop: 20 }}>
+                                <Card
+                                    key = {id}
+                                    title={user.companyName.trim()}
+                                    image={require("../assets/HungcarriesTaiwanFlag.jpeg")}
+                                    containerStyle={{ backgroundColor: '#F5F5F5' }}
+                                >
+                                    <View
+                                        style={{
+                                            borderRadius: 3,
+                                            borderWidth: 1,
+                                            borderColor: "#d6d7da",
+                                            //flex: 3,
+                                            justifyContent: "flex-start",
+                                            alignItems: "flex-start",
+                                            flexDirection: "column",
+                                            padding: 5,
+                                            backgroundColor: '#FFFAFA'
+                                        }}
+                                    >
+                                        {/* Descriptions */}
+                                        <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{user.description}</Text>
+                                        <Text></Text>
 
-                                {/* Job Completed */}
-                                <View style={{ flexDirection: 'row' }}>
-                                    <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Job Completed: </Text>
-                                    <Text style={{ fontSize: 18 }}>20</Text>
-                                </View>
-                                <Text></Text>
+                                        {/* Ratings */}
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Rating: </Text>
+                                            <Text style={{ fontSize: 18 }}>98% positive</Text>
+                                        </View>
+                                        <Text></Text>
 
-                                {/* Skills */}
-                                <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Skills: </Text>
-                                <Text style={{ fontSize: 18 }}>SAMPLE</Text>
-                                <Text></Text>
+                                        {/* Job Completed */}
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Job Completed: </Text>
+                                            <Text style={{ fontSize: 18 }}>20</Text>
+                                        </View>
+                                        <Text></Text>
 
-                                {/* Contact Information */}
-                                <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Contact Info: </Text>
-                                {/* Phone Number */}
-                                <View style={{ flexDirection: 'row' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Tel: </Text>
-                                    <Text style={{ fontSize: 18 }}>SAMPLE</Text>
-                                </View>
-                                {/* Email */}
-                                <View style={{ flexDirection: 'row' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Email: </Text>
-                                    <Text style={{ fontSize: 18 }}>SAMPLE</Text>
-                                </View>
-                                <Text></Text>
+                                        {/* Skills */}
+                                        <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Skills: </Text>
+                                        <Text style={{ fontSize: 18 }}>{user.skills}</Text>
+                                        <Text></Text>
 
+                                        {/* Contact Information */}
+                                        <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Contact Info: </Text>
+                                        {/* Phone Number */}
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Tel: </Text>
+                                            <Text style={{ fontSize: 18 }}>{user.phone}</Text>
+                                        </View>
+                                        {/* Email */}
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Email: </Text>
+                                            <Text style={{ fontSize: 18 }}>{user.email}</Text>
+                                        </View>
+                                        <Text></Text>
+
+                                    </View>
+                                    <Button
+                                        style={{ width: 100, alignSelf: 'center', margin: 10 }}
+                                        mode="contained"
+                                        onPress={() => this.setState({ editBio: true })}
+                                    >
+                                        <Text>Edit Bio</Text>
+                                    </Button>
+                                </Card>
                             </View>
-                            <Button
-                                style={{ width: 100, alignSelf: 'center', margin: 10 }}
-                                mode="contained"
-                                onPress={() => this.setState({ editBio: true })}
-                            >
-                                <Text>Edit Bio</Text>
-                            </Button>
-                        </Card>
+                        ))}
                     </View>
+                    
                 }
             </ScrollView>
         );

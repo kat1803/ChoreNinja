@@ -174,12 +174,12 @@ class MainMenu extends React.Component {
   render() {
     return (
 		// dont fuck with this line
-		<View style={{ flex: 1}}>
+		<View style={{ flex: 1 }}>
 			{
 				this.props.user.user ?
-						<View style={{flexDirection:"row", justifyContent:"space-between", marginTop:55, marginLeft:15}}>
+						<View style={{ flexDirection:"row", justifyContent:"space-between", marginTop:55, marginLeft:15}}>
 							<Text style={{color:'#01479b', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>ChoreNinja</Text>
-							<SwitchSelector style={{ marginBottom:4, marginRight:5, width:145, marginTop: 5}}
+							<SwitchSelector style={{ flex: 1, marginBottom:4, marginRight:5, width:145, marginTop: 5}}
 								  initial={0}
 								  onPress={this.handleToggle.bind(this)}
 								  textColor={'#01479b'} //'#7a44cf'
