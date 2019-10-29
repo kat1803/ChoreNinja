@@ -4,6 +4,9 @@ import { StyleSheet } from "react-native"
 import { Card } from "react-native-elements";
 import { TextInput, Button } from "react-native-paper";
 
+import {connect} from 'react-redux';
+
+
 class NinjaBio extends React.Component {
     constructor(props) {
         super(props);
@@ -17,10 +20,9 @@ class NinjaBio extends React.Component {
                     companyName: "Test",
                 }
             ],
-            users: [
+            auth: [],
+            user: [
                 {
-                    id: 1,
-                    companyName: "Test",
                     description: "Test",
                     skills: "Test",
                     email: "Test",
@@ -28,7 +30,7 @@ class NinjaBio extends React.Component {
                     companyName: "Test",
                 }
             ],
-            description:'',
+            description:'Testing',
             skills: '',
             email: '',
             phone: '',
@@ -38,22 +40,22 @@ class NinjaBio extends React.Component {
         };
     }
 
-    handleEdit(){
-        var users = this.props.users;
-        var user = users[id];
-        this.setState({
-            companyName: user.companyName,
-            description: user.description,
-            skills: user.skills,
-            phoen: user.phone,
-            email: user.email,
-        });
+    // handleEdit(){
+    //     var users = this.props.users;
+    //     var user = users[id];
+    //     this.setState({
+    //         companyName: user.companyName,
+    //         description: user.description,
+    //         skills: user.skills,
+    //         phoen: user.phone,
+    //         email: user.email,
+    //     });
 
-    }
+    // }
 
     render() {
-        // console.log("HERE BITCH")
-        // console.log(this.props);
+        console.log("HERE NINJABIO")
+
         return (
             <ScrollView>
                 {this.state.editBio ?
@@ -125,11 +127,11 @@ class NinjaBio extends React.Component {
                     </View>
                     :
                     <View>
-                        {this.props.users && this.props.users.map((user, id) => (
+                        {/* {this.props.user && this.props.user.map((user, id) => ( */}
                             <View style={{ flex: 1, marginTop: 20 }}>
                                 <Card
-                                    key = {id}
-                                    title={user.companyName.trim()}
+                                    // key = {id}
+                                    title="TEST"
                                     image={require("../assets/HungcarriesTaiwanFlag.jpeg")}
                                     containerStyle={{ backgroundColor: '#F5F5F5' }}
                                 >
@@ -147,7 +149,7 @@ class NinjaBio extends React.Component {
                                         }}
                                     >
                                         {/* Descriptions */}
-                                        <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{user.description}</Text>
+                                        <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{this.state.description}</Text>
                                         <Text></Text>
 
                                         {/* Ratings */}
@@ -166,7 +168,7 @@ class NinjaBio extends React.Component {
 
                                         {/* Skills */}
                                         <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Skills: </Text>
-                                        <Text style={{ fontSize: 18 }}>{user.skills}</Text>
+                                        <Text style={{ fontSize: 18 }}></Text>
                                         <Text></Text>
 
                                         {/* Contact Information */}
@@ -174,12 +176,12 @@ class NinjaBio extends React.Component {
                                         {/* Phone Number */}
                                         <View style={{ flexDirection: 'row' }}>
                                             <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Tel: </Text>
-                                            <Text style={{ fontSize: 18 }}>{user.phone}</Text>
+                                            <Text style={{ fontSize: 18 }}></Text>
                                         </View>
                                         {/* Email */}
                                         <View style={{ flexDirection: 'row' }}>
                                             <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Email: </Text>
-                                            <Text style={{ fontSize: 18 }}>{user.email}</Text>
+                                            <Text style={{ fontSize: 18 }}></Text>
                                         </View>
                                         <Text></Text>
 
@@ -193,7 +195,7 @@ class NinjaBio extends React.Component {
                                     </Button>
                                 </Card>
                             </View>
-                        ))}
+                        {/* ))} */}
                     </View>
                     
                 }
@@ -202,4 +204,10 @@ class NinjaBio extends React.Component {
     }
 }
 
-export default NinjaBio; 
+// const mapStateToProps = state => {
+//     return {
+//         user: state.auth.user
+//     };
+// };
+
+export default (NinjaBio); 
