@@ -11,30 +11,22 @@ class NinjaBio extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            testing: [
-                {
-                    description: "Test",
-                    skills: "Test",
-                    email: "Test",
-                    phone: "Test",
-                    companyName: "Test",
-                }
-            ],
+            // testing: [
+            //     {
+            //         description: "Test",
+            //         skills: "Test",
+            //         email: "Test",
+            //         phone: "Test",
+            //         companyName: "Test",
+            //     }
+            // ],
             auth: [],
-            user: [
-                {
-                    description: "Test",
-                    skills: "Test",
-                    email: "Test",
-                    phone: "Test",
-                    companyName: "Test",
-                }
-            ],
-            description:'Testing',
-            skills: '',
-            email: '',
-            phone: '',
-            companyName: '',
+            user: [],
+            // description:'Testing',
+            // skills: '',
+            // email: '',
+            // phone: '',
+            // companyName: '',
 
             editBio: false,
         };
@@ -55,7 +47,7 @@ class NinjaBio extends React.Component {
 
     render() {
         console.log("HERE NINJABIO")
-
+        console.log(this.state.user);
         return (
             <ScrollView>
                 {this.state.editBio ?
@@ -204,10 +196,22 @@ class NinjaBio extends React.Component {
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         user: state.auth.user
-//     };
-// };
+const mapStateToProps = state => {
+    return {
+        user: state.auth.user
+    };
+};
 
-export default (NinjaBio); 
+const mapDispatchToProps = dispatch => {
+    return {
+        reduxFetchUserData: id => dispatch({
+            type: "SIGNED_IN",
+            value: id
+        })
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(NinjaBio); 

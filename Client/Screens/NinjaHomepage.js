@@ -11,48 +11,13 @@ class NinjaHomepage extends React.Component {
     this.state = {
       firstQuery: "",
       posts: [],
-      tasks: [
-        {
-          id: 1,
-          Job: "Laundry",
-          Field: "Laundry",
-          Description:
-            "I need someone to pick up my laundry at my home and do it.",
-          Date: "02/23/19",
-          Time: "3pm-5pm",
-          Price: "20",
-          Zipcode: "95112"
-        },
-        {
-          id: 2,
-          Job: "Lawn Cleaning",
-          Field: "Garden",
-          Description:
-            "I need someone to come to my home and clean up my lawn.",
-          Date: "08/23/19",
-          Time: "3pm-5pm",
-          Price: "20",
-          Zipcode: "95112"
-        },
-        {
-          id: 3,
-          Job: "Pick up dog",
-          Field: "Transportation",
-          Description:
-            "I need someone to pick up my dog at airport and send him home.",
-          Date: "02/23/19",
-          Time: "3pm-5pm",
-          Price: "20",
-          Zipcode: "95112"
-        }
-      ]
     };
   }
 
   render() {
     const { firstQuery } = this.state;
-    console.log("INSIDE NINJA HOMEPAGE")
-    console.log(this.props.posts);
+    // console.log("INSIDE NINJA HOMEPAGE")
+    // console.log(this.props.posts);
     return (
       <ScrollView>
         <View style= {{flex: 1}}>
@@ -172,8 +137,8 @@ class NinjaHomepage extends React.Component {
 
 //export default NinjaHomepage
 const mapStateToProps = state => {
-  console.log("I am called, I don't know why");
-  console.log(state.posts.posts);
+  // console.log("I am called, I don't know why");
+  // console.log(state.posts.posts);
   return {
     posts: state.posts.posts
   };
