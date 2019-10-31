@@ -120,8 +120,8 @@ class NinjaBio extends React.Component {
                                 >
                                     <Image
                                         style={{
-                                            width: 250,
-                                            height: 250,
+                                            width: 150,
+                                            height: 150,
                                             alignSelf: 'center',
                                         }}
                                         source={require("../assets/businessprofile.png")}
