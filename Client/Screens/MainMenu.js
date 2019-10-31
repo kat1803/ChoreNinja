@@ -39,7 +39,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
         <FAIcon
           name = "home"
           size = {30}
-          color='#01479b'
+          color='#01579B'
         />
       )
     })
@@ -51,7 +51,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
         <FAIcon
           name = "user"
           size = {30}
-          color='#01479b'
+          color='#01579B'
         />
       )
     })
@@ -64,7 +64,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
         <FAIcon
           name="envelope"
           size={30}
-          color='#01479b'
+          color='#01579B'
         />
       )
     }),
@@ -79,7 +79,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
         <FAIcon
           name="bell"
           size={30}
-          color='#01479b'
+          color='#01579B'
         />
       ),
     })
@@ -108,7 +108,7 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
         <FAIcon
           name="home"
           size={30}
-          color='#0091EA'
+          color='#0277BD'
         />
       )
     })
@@ -120,7 +120,7 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
         <FAIcon
           name="briefcase"
           size={30}
-          color='#0091EA'
+          color='#0277BD'
         />
       )
     })
@@ -132,7 +132,7 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
         <FAIcon
           name="user"
           size={30}
-          color='#0091EA'
+          color='#0277BD'
         />
       )
     })
@@ -144,7 +144,7 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
         <FAIcon
           name="info"
           size={30}
-          color='#0091EA'
+          color='#0277BD'
         />
       )
     })
@@ -156,7 +156,7 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
         <MCIIcon
           name="ninja"
           size={30}
-          color='#01479b'
+          color='#0277BD'
         />
       )
     })
@@ -169,7 +169,7 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
         <FAIcon
           name="user"
           size={30}
-          color='#0091EA'
+          color='#0277BD'
         />
       )
     })
@@ -201,14 +201,14 @@ class MainMenu extends React.Component {
 			{
 				this.props.user.user ?
 						<View style={{ flexDirection:"row", justifyContent:"space-between", marginTop:55, marginLeft:15}}>
-							<Text style={{color:'#01479b', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>ChoreNinja</Text>
+              <Text style={{ color:'#01579B', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>Chore Ninja</Text>
 							<SwitchSelector style={{ flex: 1, marginBottom:4, marginRight:10, width:145, marginTop: 5}}
 								  initial={0}
 								  onPress={this.handleToggle.bind(this)}
 								  textColor={'#01479b'} //'#7a44cf'
 								  selectedColor={'#80d8ff'}
 								  buttonColor={'#01479b'}
-								  borderColor={'#01479b'}
+                borderColor={'#01579B'}
 								  hasPadding
 								  options={[
 									{ label: "Master", value: true },
