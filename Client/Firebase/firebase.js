@@ -2,11 +2,11 @@ import firebase from 'firebase';
 
 import config from './firebaseSetting.json'
 class Firebase {
-    constructor() {
+    constructor(conID) {
         if (!firebase.apps.length) { //avoid re-initializing
             firebase.initializeApp(config);
         }
-        this.conversationID = ""
+        this.conversationID = conID
     }
 
     get uid() {
@@ -53,5 +53,4 @@ class Firebase {
     //         .then(success_callback, failed_callback);
     // }
 }
-const firebaseService = new Firebase();
-export default firebaseService;
+export default Firebase;
