@@ -85,18 +85,18 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
     })
   }, 
   //Signup: SignupScreen, //this is sign up for customer first join the app
-  NinjaJoin: {
-    screen: NinjaJoinScreen,
-    navigationOptions: () => ({
-      tabBarIcon: () => (
-        <MCIIcon
-          name = "ninja"
-          size={30}
-          color= '#01479b'
-        />
-      )
-    })
-  }, 
+  // NinjaJoin: {
+  //   screen: NinjaJoinScreen,
+  //   navigationOptions: () => ({
+  //     tabBarIcon: () => (
+  //       <MCIIcon
+  //         name = "ninja"
+  //         size={30}
+  //         color= '#01479b'
+  //       />
+  //     )
+  //   })
+  // }, 
 });
 
 // Ninja Navigation
@@ -149,6 +149,18 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       )
     })
   },
+  NinjaJoin: {
+    screen: NinjaJoinScreen,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <MCIIcon
+          name="ninja"
+          size={30}
+          color='#01479b'
+        />
+      )
+    })
+  }, 
   Rating: Rating,
   MenuNavBar: {
     screen: MenuNavBar,
@@ -190,7 +202,7 @@ class MainMenu extends React.Component {
 				this.props.user.user ?
 						<View style={{ flexDirection:"row", justifyContent:"space-between", marginTop:55, marginLeft:15}}>
 							<Text style={{color:'#01479b', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>ChoreNinja</Text>
-							<SwitchSelector style={{ flex: 1, marginBottom:4, marginRight:5, width:145, marginTop: 5}}
+							<SwitchSelector style={{ flex: 1, marginBottom:4, marginRight:10, width:145, marginTop: 5}}
 								  initial={0}
 								  onPress={this.handleToggle.bind(this)}
 								  textColor={'#01479b'} //'#7a44cf'

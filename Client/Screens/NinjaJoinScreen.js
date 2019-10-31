@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import { Card } from "react-native-elements";
-import { Button, InputItem } from '@ant-design/react-native';
+import { InputItem } from '@ant-design/react-native';
+import { Button, TouchableRipple, TextInput } from "react-native-paper";
 
 class NinjaJoinScreen extends React.Component {
     constructor(props) {
@@ -16,8 +17,9 @@ class NinjaJoinScreen extends React.Component {
         }
     }
     render() {
+        const { navigate } = this.props.navigation;
         return (
-            <View>
+            <ScrollView>
                 {!this.state.register ?
                     <View style={{ alignSelf: 'center', alignItems: 'center', justifyContent: 'center' }}>
                         <Card
@@ -37,46 +39,76 @@ class NinjaJoinScreen extends React.Component {
                             <Text style={{ alignSelf: 'center', fontSize: 20, marginBottom: 30 }}>
                                 Work Anywhere Anytime
                             </Text>
-                            <Button type="primary" onPress={() => this.setState({ register: true })}>Join Now</Button>
+                            <Button
+                                style={{
+                                    width: 200,
+                                    alignSelf: "center",
+                                    backgroundColor: "#01479b",
+                                    margin: 10
+                                }}
+                                mode="contained"
+                                onPress={() => this.setState({ register: true })}
+                            >
+                                JOIN NOW
+                            </Button>
+                            {/* <Button type="primary" onPress={() => this.setState({ register: true })}>Join Now</Button> */}
                         </Card>
                     </View>
                     :
                     <View style={{ justifyContent: "center" }}>
-                        <Card
-                            title = 'Sign Up as Ninja'
-                        >
-                            <Text style={{ fontWeight: 'bold' }}>
-                                Social Security Number
-                             </Text>
-                            <InputItem
-                                clear
-                                style={{ flex: 1 }}
+                            <Image style={{ marginTop: 10, alignSelf: 'center', width: 150, height: 150}} source={require("../assets/ninja2.png")}/>
+                            <Text
+                                style={{alignSelf: 'center', fontSize: 20, marginTop: 30}}
+                            >Sign Up as A Ninja</Text>
+
+                            <TextInput
+                                style={{ marginLeft: 5, marginRight: 5, marginTop: 2 }}
+                                mode="outlined"
+                                underlineColorAndroid="transparent"
+                                numberOfLines={1}
+                                label="SSN"
+                                onChangeText={ssn => this.setState({ snn })}
                                 value={this.state.ssn}
-                                onChange={
-                                    ssn => { this.setState({ ssn, }); }
-                                }
-                                placeholder="XXX-XX-XXXX"
+                                placeholder= "123 56 7890"
+                            />
+
+                            <TextInput
+                                style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}
+                                mode="outlined"
+                                underlineColorAndroid="transparent"
+                                numberOfLines={3}
+                                label="Biography"
+                                onChangeText={bio => this.setState({ bio })}
+                                value={this.state.bio}
+                                placeholder="Describe your expertise"
+                            />
+
+                            <TextInput
+                                style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}
+                                mode="outlined"
+                                underlineColorAndroid="transparent"
+                                numberOfLines={1}
+                                label="Skills"
+                                onChangeText={skills => this.setState({ skills })}
+                                value={this.state.skills}
+                                placeholder="Your skills"
+                            />
+                            
+                            <Button
+                                style={{
+                                    width: 100,
+                                    alignSelf: "center",
+                                    backgroundColor: "#01479b",
+                                    margin: 20
+                                }}
+                                mode="contained"
+                                onPress={() => navigate('HOME')}
                             >
-                            </InputItem>
-                            <Text></Text>
-                            <Text style={{ fontWeight: 'bold' }}>
-                                Bio
-                             </Text>
-                            <InputItem
-                                clear
-                                style={{ flex: 1 }}
-                                value={this.state.ssn}
-                                onChange={
-                                    ssn => { this.setState({ ssn, }); }
-                                }
-                                placeholder="Please describe briefly about yourself"
-                            >
-                            </InputItem>
-                            <Button type="primary" >Agree to join</Button>
-                        </Card>
+                                SIGN UP
+                            </Button>
                     </View>
                 }
-            </View>
+            </ScrollView>
         );
     }
 }

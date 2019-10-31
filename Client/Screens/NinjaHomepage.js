@@ -54,24 +54,24 @@ class NinjaHomepage extends React.Component {
                 title={post.name == "" ? "No Title" : post.name.trim()}
                 image={require("../assets/examplejob.png")}
               >
+                {/* Job Description */}
+                <View >
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Description:{" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.description}
+                  </Text>
+                </View>
+                <Text />
+
                 {/* Job Field */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                     Field:{" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    Empty
-                  </Text>
-                </View>
-                <Text />
-
-                {/* Job Description */}
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Description:{" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.description}
+                    {post.field}
                   </Text>
                 </View>
                 <Text />
@@ -83,6 +83,23 @@ class NinjaHomepage extends React.Component {
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {post.due_date}
+                  </Text>
+                </View>
+                <Text />
+
+                {/* Start Time */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Time: {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.start_time}
+                  </Text>
+                  <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
+                    End: {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.end_time}
                   </Text>
                 </View>
                 <Text />
@@ -104,7 +121,18 @@ class NinjaHomepage extends React.Component {
                     Zip Code{" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    95112
+                    {post.zipcode}
+                  </Text>
+                </View>
+                <Text />
+
+                {/* Payment Method */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Payment Method: {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.paymentMethod}
                   </Text>
                 </View>
                 <Text />

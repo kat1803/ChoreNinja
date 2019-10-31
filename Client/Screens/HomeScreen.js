@@ -11,10 +11,15 @@ class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      price: "",
-      description: "",
-      due_date: "",
+      name: '',
+      description: '',
+      field: '',
+      due_date: '',
+      start_time: '',
+      end_time: '',
+      price: '',
+      zipcode: '',
+      paymentMethod: '',
       posts: [],
       addNewPost: false,
       editPost: null
@@ -110,6 +115,14 @@ class HomeScreen extends React.Component {
                     label="Job Description"
                     onChangeText={description => this.setState({ description })}
                     value={this.state.description}
+                  />
+                  <TextInput
+                    style={{ backgroundColor: "rgb(250,250,250)" }}
+                    underlineColorAndroid="transparent"
+                    numberOfLines={1}
+                    label="Field"
+                    onChangeText={field => this.setState({ field })}
+                    value={this.state.field}
                   />
                   <TextInput
                     style={{ backgroundColor: "rgb(250,250,250)" }}
@@ -214,19 +227,8 @@ class HomeScreen extends React.Component {
                 title={post.name == "" ? "No Title" : post.name.trim()}
                 image={require("../assets/examplejob.png")}
               >
-                {/* Job Field */}
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Field:{" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    Empty
-                  </Text>
-                </View>
-                <Text />
-
                 {/* Job Description */}
-                <View style={{ flexDirection: "row" }}>
+                <View style={{ marginRight: 10}}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                     Description:{" "}
                   </Text>
@@ -235,17 +237,45 @@ class HomeScreen extends React.Component {
                   </Text>
                 </View>
                 <Text />
+                
+                {/* Job Field */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Field:{" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.field}
+                  </Text>
+                </View>
+                <Text />
 
                 {/* Due Date */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Time:{" "}
+                    Date:{" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {post.due_date}
                   </Text>
                 </View>
                 <Text />
+
+                {/* Start Time */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Time: {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.start_time}
+                  </Text>
+                  <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
+                    End: {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.end_time}
+                  </Text>
+                </View>
+                <Text/>
 
                 {/* Price of the Job */}
                 <View style={{ flexDirection: "row" }}>
@@ -261,10 +291,21 @@ class HomeScreen extends React.Component {
                 {/* Job Zipcode */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Zip Code{" "}
+                    Zip Code: {" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    95112
+                    {post.zipcode}
+                  </Text>
+                </View>
+                <Text />
+
+                {/* Payment Method */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Payment Method: {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.paymentMethod}
                   </Text>
                 </View>
                 <Text />

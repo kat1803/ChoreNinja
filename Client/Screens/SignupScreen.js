@@ -71,7 +71,7 @@ class SignupScreen extends React.Component {
 							label="First Name"
 							onChangeText={firstname => this.setState({ firstname })}
 							value={this.state.firstname}
-							/>
+						/>
 					}
 					{
 						!signin &&
