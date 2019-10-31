@@ -13,7 +13,6 @@ class HomeScreen extends React.Component {
     this.state = {
       name: '',
       description: '',
-      field: '',
       due_date: '',
       start_time: '',
       end_time: '',
@@ -34,7 +33,8 @@ class HomeScreen extends React.Component {
       description: this.state.description,
       due_date: this.state.due_date,
       start_time: this.state.start_time,
-      end_time: this.state.end_time
+      end_time: this.state.end_time,
+      zip: this.state.zipcode,
     };
     if (this.state.editPost != null) {
       console.log("Hello");
@@ -125,15 +125,6 @@ class HomeScreen extends React.Component {
                     mode="outlined"
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
-                    label="Field"
-                    onChangeText={field => this.setState({ field })}
-                    value={this.state.field}
-                  />
-                  <TextInput
-                    style={{ marginTop: 2 }}
-                    mode="outlined"
-                    underlineColorAndroid="transparent"
-                    numberOfLines={1}
                     label="Date"
                     onChangeText={due_date => this.setState({ due_date })}
                     value={this.state.due_date}
@@ -157,7 +148,6 @@ class HomeScreen extends React.Component {
                     onChangeText={end_time => this.setState({ end_time })}
                     value={this.state.end_time}
                   />
-
                   <TextInput
                     style={{ marginTop: 2 }}
                     mode="outlined"
@@ -167,7 +157,15 @@ class HomeScreen extends React.Component {
                     onChangeText={price => this.setState({ price })}
                     value={this.state.price}
                   />
-
+   <TextInput
+                    style={{ marginTop: 2 }}
+                    mode="outlined"
+                    underlineColorAndroid="transparent"
+                    numberOfLines={1}
+                    label="Zipcode"
+                    onChangeText={zipcode => this.setState({ zipcode })}
+                    value={this.state.zipcode}
+                  />
                   <CheckBox
                     title="Cash payment"
                     checkedIcon="dot-circle-o"
@@ -252,12 +250,13 @@ class HomeScreen extends React.Component {
                 <Text />
                 
                 {/* Job Field */}
+            
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Field:{" "}
+                    Zipcode: {" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.field}
+                    {post.zipcode}
                   </Text>
                 </View>
                 <Text />
