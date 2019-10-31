@@ -36,7 +36,7 @@ class SignupScreen extends React.Component {
 			<ScrollView>
 				<KeyboardAvoidingView>
 				<Image
-					style={{ marginTop: 80, marginBottom: 20, width: 263, height: 150, alignSelf:"center"}}
+					style={{ marginTop: 100, marginBottom: 20, width: 263, height: 150, alignSelf:"center"}}
 					// style={{justifyContent: 'center', width: 263, height: 150}}  
 					source={require('../assets/mainlogo.png')}
                 />
