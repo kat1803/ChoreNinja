@@ -79,7 +79,7 @@ class NinjaHomepage extends React.Component {
                 {/* Due Date */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Time:{" "}
+                    Date:{" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {post.due_date}
@@ -90,13 +90,13 @@ class NinjaHomepage extends React.Component {
                 {/* Start Time */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Time: {" "}
+                    Time: between {" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {post.start_time}
                   </Text>
                   <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
-                    End: {" "}
+                    and {" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {post.end_time}
