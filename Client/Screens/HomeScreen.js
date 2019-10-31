@@ -220,7 +220,7 @@ class HomeScreen extends React.Component {
           ) : (
             <Button
               style={{
-                width: 300,
+                width: 325,
                 alignSelf: "center",
                 backgroundColor: "#03A9F4",
                 margin: 5
