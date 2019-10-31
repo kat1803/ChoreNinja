@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { Card, ListItem, Icon } from "react-native-elements";
 import { Image, StyleSheet } from "react-native";
 import { Button, TouchableRipple, TextInput } from "react-native-paper";
+import { ScrollView } from "react-native-gesture-handler";
 
 // Formatted with the following command:
 // Nhis-MacBook-Pro:Screens kathryn$ prettier --write ProfileScreen.js
@@ -51,6 +52,7 @@ class ProfileScreen extends React.Component {
       }
     });
     return (
+      <ScrollView>
       <View style={{ flex: 1 }}>
         <View>
           {!this.state.edit ?
@@ -155,7 +157,8 @@ class ProfileScreen extends React.Component {
               </View>
           }
         </View>
-      </View>)
+      </View>
+      </ScrollView>)
   }
 }
 
