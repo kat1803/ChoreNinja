@@ -1,5 +1,5 @@
 // export default Message
-import Firebase from '../Firebase/firebase'
+import firebaseService from '../Firebase/firebase'
 import React from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
 import { View, Text, Switch } from "react-native";
@@ -14,43 +14,19 @@ class Message extends React.Component {
 
   changeConID = (conID) =>{
 	this.setState({ conID, messages: [] })
-	  if (this.firebaseService != null){
-		  this.firebaseService.refOff()
-		  this.firebaseService = null
-		}
-	  this.firebaseService = new Firebase(conID)
-	  this.firebaseService.refOn(message => {
-		// console.log("each", message)
-		// console.log("this.state.messages",this.state.messages)
-		// console.log("this.state.conID",this.state.conID)
-		this.setState(previousState =>({ messages: [...previousState.messages, message] }))
-		// this.setState(previousState =>({ messages: GiftedChat.append(previousState.messages, message) }))
+	firebaseService.refOff()
+	firebaseService.setConversation(conID)
+	firebaseService.refOn(message => {
+		this.setState(previousState =>({ messages: GiftedChat.append(previousState.messages, message) }))
 	});
-	// firebaseService.refOff();
-	// firebaseService.setConversation(conID)
-	// console.log(firebaseService.ref)
-	// firebaseService.refOnValue(message => {
-	// 	console.log("whole", message)
-	// 	this.setState({ conID, messages: message})
-	// });
 }
 
-// componentDidMount(){
-// 	if (this.state.conID != ''){
-// 		firebaseService.refOn(message => {
-// 			console.log("each", message)
-// 			this.setState(previousState =>({ messages: GiftedChat.append(previousState.messages, message) }))
-// 		});
-// 	}
-//   }
-
   componentWillUnmount() {
-	this.firebaseService.refOff();
+	firebaseService.refOff();
   }
 
   render() {
 	const { conID, conIDs, messages } = this.state
-	// console.log(conID, conIDs, messages)
 
 	  if (conID != ''){
 		return (
@@ -60,7 +36,7 @@ class Message extends React.Component {
 			</Button>
 			<GiftedChat
 			  messages={this.state.messages}
-			  onSend={this.firebaseService.send}
+			  onSend={firebaseService.send}
 			  user={{
 				_id: 1,
 			  }}
