@@ -60,8 +60,8 @@ class ProfileScreen extends React.Component {
               >
                 <Image
                   style={{
-                    width: 250,
-                    height: 250,
+                    width: 150,
+                    height: 150,
                     alignSelf: 'center',
                   }}
                   source={require("../assets/businessprofile.png")}
@@ -72,15 +72,15 @@ class ProfileScreen extends React.Component {
                 <Text></Text>
 
                 {/* Contact Information */}
-                <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Contact Info: </Text>
+                <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18, margin:5 }}>Address: </Text>
                 {/* Phone Number */}
                 <View style={{ flexDirection: 'row' }}>
-                  <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Tel: </Text>
+                  <Text style={{ fontWeight: 'bold', fontSize: 17, margin:5 }}> Tel: </Text>
                   <Text style={{ fontSize: 18 }}>{this.state.phone}</Text>
                 </View>
                 {/* Email */}
                 <View style={{ flexDirection: 'row' }}>
-                  <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Email: </Text>
+                  <Text style={{ fontWeight: 'bold', fontSize: 17, margin:5 }}> Email: </Text>
                   <Text style={{ fontSize: 18 }}>{this.state.email}</Text>
                 </View>
                 <Text/>
