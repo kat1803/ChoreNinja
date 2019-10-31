@@ -11,50 +11,16 @@ class NinjaHomepage extends React.Component {
     this.state = {
       firstQuery: "",
       posts: [],
-      tasks: [
-        {
-          id: 1,
-          Job: "Laundry",
-          Field: "Laundry",
-          Description:
-            "I need someone to pick up my laundry at my home and do it.",
-          Date: "02/23/19",
-          Time: "3pm-5pm",
-          Price: "20",
-          Zipcode: "95112"
-        },
-        {
-          id: 2,
-          Job: "Lawn Cleaning",
-          Field: "Garden",
-          Description:
-            "I need someone to come to my home and clean up my lawn.",
-          Date: "08/23/19",
-          Time: "3pm-5pm",
-          Price: "20",
-          Zipcode: "95112"
-        },
-        {
-          id: 3,
-          Job: "Pick up dog",
-          Field: "Transportation",
-          Description:
-            "I need someone to pick up my dog at airport and send him home.",
-          Date: "02/23/19",
-          Time: "3pm-5pm",
-          Price: "20",
-          Zipcode: "95112"
-        }
-      ]
     };
   }
 
   render() {
     const { firstQuery } = this.state;
-    console.log(this.props.posts);
+    // console.log("INSIDE NINJA HOMEPAGE")
+    // console.log(this.props.posts);
     return (
       <ScrollView>
-        <View>
+        <View style= {{flex: 1}}>
           <View
             style={{
               flexDirection: "row",
@@ -65,7 +31,7 @@ class NinjaHomepage extends React.Component {
           >
             <Searchbar
               placeholder="Search"
-              style={{ width: 300 }}
+              style={{ width: 300, flex: 1 }}
               onChangeText={query => {
                 this.setState({ firstQuery: query });
               }}
@@ -75,6 +41,7 @@ class NinjaHomepage extends React.Component {
               title="filter"
               icon="filter"
               size={20}
+              style={{color: '#0091EA'}}
               onPress={() => console.log("Pressed")}
             >
               Filter
@@ -87,19 +54,8 @@ class NinjaHomepage extends React.Component {
                 title={post.name == "" ? "No Title" : post.name.trim()}
                 image={require("../assets/examplejob.png")}
               >
-                {/* Job Field */}
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Field:{" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    Empty
-                  </Text>
-                </View>
-                <Text />
-
                 {/* Job Description */}
-                <View style={{ flexDirection: "row" }}>
+                <View >
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                     Description:{" "}
                   </Text>
@@ -109,13 +65,41 @@ class NinjaHomepage extends React.Component {
                 </View>
                 <Text />
 
+                {/* Job Field */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Field:{" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.field}
+                  </Text>
+                </View>
+                <Text />
+
                 {/* Due Date */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Time:{" "}
+                    Date:{" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {post.due_date}
+                  </Text>
+                </View>
+                <Text />
+
+                {/* Start Time */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Time: between {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.start_time}
+                  </Text>
+                  <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
+                    and {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.end_time}
                   </Text>
                 </View>
                 <Text />
@@ -137,7 +121,18 @@ class NinjaHomepage extends React.Component {
                     Zip Code{" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    95112
+                    {post.zipcode}
+                  </Text>
+                </View>
+                <Text />
+
+                {/* Payment Method */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Payment Method: {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.paymentMethod}
                   </Text>
                 </View>
                 <Text />
@@ -145,20 +140,20 @@ class NinjaHomepage extends React.Component {
                 <View
                   style={{
                     flexDirection: "row",
-                    justifyContent: "space-between"
+                    justifyContent: "space-between",
+                    alignSelf: 'center'
                   }}
                 >
-
                   <Button
                     style={{
-                      width: 100,
+                      width: 150,
                       margin: 7,
-                      backgroundColor: "#008000"
+                      backgroundColor: "#008000",
                     }}
                     mode="contained"
                     onPress={() => this.handleAcceptJob(idx)}
                   >
-                    <Text>Accept Job</Text>
+                    <Text>ACCEPT JOB</Text>
                   </Button>
                 </View>
               </Card>
@@ -171,8 +166,8 @@ class NinjaHomepage extends React.Component {
 
 //export default NinjaHomepage
 const mapStateToProps = state => {
-  console.log("I am called, I don't know why");
-  console.log(state.posts.posts);
+  // console.log("I am called, I don't know why");
+  // console.log(state.posts.posts);
   return {
     posts: state.posts.posts
   };

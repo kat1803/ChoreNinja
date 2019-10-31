@@ -11,10 +11,15 @@ class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      price: "",
-      description: "",
-      due_date: "",
+      name: '',
+      description: '',
+      field: '',
+      due_date: '',
+      start_time: '',
+      end_time: '',
+      price: '',
+      zipcode: '',
+      paymentMethod: '',
       posts: [],
       addNewPost: false,
       editPost: null
@@ -93,10 +98,13 @@ class HomeScreen extends React.Component {
         <View>
           {this.state.addNewPost || this.state.editPost != null ? (
             <View>
-              <Card>
+              <Card
+                title="Create Post"
+              >
                 <View>
                   <TextInput
-                    style={{ backgroundColor: "rgb(250,250,250)" }}
+                    style={{ marginTop: 2 }}
+                    mode="outlined"
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Job Title"
@@ -104,7 +112,8 @@ class HomeScreen extends React.Component {
                     value={this.state.name}
                   />
                   <TextInput
-                    style={{ backgroundColor: "rgb(250,250,250)" }}
+                    style={{ marginTop: 2 }}
+                    mode="outlined"
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Job Description"
@@ -112,46 +121,46 @@ class HomeScreen extends React.Component {
                     value={this.state.description}
                   />
                   <TextInput
-                    style={{ backgroundColor: "rgb(250,250,250)" }}
+                    style={{ marginTop: 2 }}
+                    mode="outlined"
+                    underlineColorAndroid="transparent"
+                    numberOfLines={1}
+                    label="Field"
+                    onChangeText={field => this.setState({ field })}
+                    value={this.state.field}
+                  />
+                  <TextInput
+                    style={{ marginTop: 2 }}
+                    mode="outlined"
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Date"
                     onChangeText={due_date => this.setState({ due_date })}
                     value={this.state.due_date}
                   />
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      backgroundColor: "rgb(250,250,250)"
-                    }}
-                  >
-                    <TextInput
-                      style={{
-                        backgroundColor: "rgb(250,250,250)",
-                        width: 175
-                      }}
-                      underlineColorAndroid="transparent"
-                      numberOfLines={1}
-                      label="Start Time:"
-                      onChangeText={start_time => this.setState({ start_time })}
-                      value={this.state.start_time}
-                    />
-                    <TextInput
-                      style={{
-                        backgroundColor: "rgb(250,250,250)",
-                        width: 175,
-                        marginLeft: 10
-                      }}
-                      underlineColorAndroid="transparent"
-                      numberOfLines={1}
-                      label="End Time:"
-                      onChangeText={end_time => this.setState({ end_time })}
-                      value={this.state.end_time}
-                    />
-                  </View>
                   <TextInput
-                    style={{ backgroundColor: "rgb(250,250,250)" }}
+                    style={{ marginTop: 2 }}
+                    mode="outlined"
+                    underlineColorAndroid="transparent"
+                    numberOfLines={1}
+                    label="Start Time"
+                    onChangeText={start_time => this.setState({ start_time })}
+                    value={this.state.start_time}
+                  />
+
+                  <TextInput
+                    style={{ marginTop: 2 }}
+                    mode="outlined"
+                    underlineColorAndroid="transparent"
+                    numberOfLines={1}
+                    label="End Time"
+                    onChangeText={end_time => this.setState({ end_time })}
+                    value={this.state.end_time}
+                  />
+
+                  <TextInput
+                    style={{ marginTop: 2 }}
+                    mode="outlined"
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Price"
@@ -178,29 +187,46 @@ class HomeScreen extends React.Component {
                     }
                   />
                 </View>
-                <Button
-                  style={{
-                    width: 100,
-                    alignSelf: "center",
-                    backgroundColor: "#01479b",
-                    margin: 10
-                  }}
-                  mode="contained"
-                  onPress={() => this.handlePost()}
-                >
-                  Post
-                </Button>
+
+                <View style={{ flexDirection: 'row', alignSelf: 'center'}}>
+                  <Button
+                    style={{
+                      width: 100,
+                      alignSelf: "center",
+                      backgroundColor: "#01479b",
+                      margin: 10
+                    }}
+                    mode="contained"
+                    onPress={() => this.handlePost()}
+                  >
+                    Post
+                  </Button>
+                  <Button
+                    style={{
+                      width: 100,
+                      alignSelf: "center",
+                      backgroundColor: "#01479b",
+                      margin: 10
+                    }}
+                    mode="contained"
+                    onPress={() => this.setState({ addNewPost: false, editPost: null })}
+                  >
+                    Cancel
+                  </Button>
+                </View>
+
               </Card>
             </View>
           ) : (
             <Button
               style={{
-                width: 250,
+                width: 325,
                 alignSelf: "center",
-                backgroundcolor: "#01479b",
-                margin: 10
+                backgroundColor: "#03A9F4",
+                margin: 5
               }}
               mode="contained"
+              icon='add'
               onPress={() => this.setState({ addNewPost: true })}
             >
               Post a Job
@@ -214,19 +240,8 @@ class HomeScreen extends React.Component {
                 title={post.name == "" ? "No Title" : post.name.trim()}
                 image={require("../assets/examplejob.png")}
               >
-                {/* Job Field */}
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Field:{" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    Empty
-                  </Text>
-                </View>
-                <Text />
-
                 {/* Job Description */}
-                <View style={{ flexDirection: "row" }}>
+                <View style={{ marginRight: 10}}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                     Description:{" "}
                   </Text>
@@ -235,17 +250,45 @@ class HomeScreen extends React.Component {
                   </Text>
                 </View>
                 <Text />
+                
+                {/* Job Field */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Field:{" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.field}
+                  </Text>
+                </View>
+                <Text />
 
                 {/* Due Date */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Time:{" "}
+                    Date: {" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {post.due_date}
                   </Text>
                 </View>
                 <Text />
+
+                {/* Start Time */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Time: between {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.start_time}
+                  </Text>
+                  <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
+                    and {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.end_time}
+                  </Text>
+                </View>
+                <Text/>
 
                 {/* Price of the Job */}
                 <View style={{ flexDirection: "row" }}>
@@ -261,10 +304,21 @@ class HomeScreen extends React.Component {
                 {/* Job Zipcode */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Zip Code{" "}
+                    Zip Code: {" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    95112
+                    {post.zipcode}
+                  </Text>
+                </View>
+                <Text />
+
+                {/* Payment Method */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Payment Method: {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.paymentMethod}
                   </Text>
                 </View>
                 <Text />
