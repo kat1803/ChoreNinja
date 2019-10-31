@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Image } from "react-native";
 import { StyleSheet } from "react-native"
 import { Card } from "react-native-elements";
 import { TextInput, Button } from "react-native-paper";
@@ -13,6 +13,7 @@ class NinjaBio extends React.Component {
         this.state = {         
             user: {
                 id: 1,
+                name: 'Donald Trump',
                 description: 'Best In the Business! You choose me, Or I choose you!',
                 skills: 'Accounting, Finance, Lawyer',
                 phone: '408 888 8888',
@@ -113,11 +114,19 @@ class NinjaBio extends React.Component {
                             <View style={{ flex: 1, marginTop: 20 }}>
                                 <Card
                                     // key = {id}
-                                    title="TEST"
-                                    image={require("../assets/businessprofile.png")}
-                                    containerStyle={{ backgroundColor: '#F5F5F5' }}
+                                    title={this.state.user.name}
+                                    // image={require("../assets/businessprofile.png")}
+                                    // containerStyle={{ backgroundColor: '#F5F5F5' }}
                                 >
-                                    <View
+                                    <Image
+                                        style={{
+                                            width: 250,
+                                            height: 250,
+                                            alignSelf: 'center',
+                                        }}
+                                        source={require("../assets/businessprofile.png")}
+                                    /> 
+                                    {/* <View
                                         style={{
                                             borderRadius: 3,
                                             borderWidth: 1,
@@ -129,7 +138,7 @@ class NinjaBio extends React.Component {
                                             padding: 5,
                                             backgroundColor: '#FFFAFA'
                                         }}
-                                    >
+                                    > */}
                                         {/* Descriptions */}
                                         <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{this.state.user.description}</Text>
                                         <Text></Text>
@@ -167,7 +176,7 @@ class NinjaBio extends React.Component {
                                         </View>
                                         <Text></Text>
 
-                                    </View>
+                                    {/* </View> */}
                                     <Button
                                         style={{ width: 100, alignSelf: 'center', margin: 10 }}
                                         mode="contained"
