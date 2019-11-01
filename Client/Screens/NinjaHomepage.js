@@ -37,7 +37,7 @@ class NinjaHomepage extends React.Component {
               }}
               value={firstQuery}
             />
-            <Button
+            {/* <Button
               title="filter"
               icon="filter"
               size={20}
@@ -45,7 +45,7 @@ class NinjaHomepage extends React.Component {
               onPress={() => console.log("Pressed")}
             >
               Filter
-            </Button>
+            </Button> */}
           </View>
           {this.props.posts &&
             this.props.posts.map((post, idx) => (

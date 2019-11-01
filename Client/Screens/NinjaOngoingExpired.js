@@ -56,17 +56,6 @@ class NinjaOngoingExpired extends React.Component {
                                 </View>
                                 <Text />
 
-                                {/* Job Field */}
-                                <View style={{ flexDirection: "row" }}>
-                                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                                        Field:{" "}
-                                    </Text>
-                                    <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                                        {task.field}
-                                    </Text>
-                                </View>
-                                <Text />
-
                                 {/* Due Date */}
                                 <View style={{ flexDirection: "row" }}>
                                     <Text style={{ fontSize: 18, fontWeight: "bold" }}>
@@ -78,7 +67,7 @@ class NinjaOngoingExpired extends React.Component {
                                 </View>
                                 <Text />
 
-                                {/* Start Time */}
+                                {/* Time */}
                                 <View style={{ flexDirection: "row" }}>
                                     <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                                         Time: between {" "}
@@ -117,7 +106,7 @@ class NinjaOngoingExpired extends React.Component {
                                 </View>
                                 <Text />
 
-                                {/* Payment Method */}
+                                {/* Payment Method
                                 <View style={{ flexDirection: "row" }}>
                                     <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                                         Payment Method: {" "}
@@ -126,7 +115,7 @@ class NinjaOngoingExpired extends React.Component {
                                         {task.paymentMethod}
                                     </Text>
                                 </View>
-                                <Text/>
+                                <Text/> */}
                                 <Button
                                     style={{ width: 150, alignSelf: 'center', margin: 10 }}
                                     mode="contained"
