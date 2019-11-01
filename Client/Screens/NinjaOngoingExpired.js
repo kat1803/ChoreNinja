@@ -39,7 +39,7 @@ class NinjaOngoingExpired extends React.Component {
                                 {/* task.status == 'Completed' || task.status == 'completed' */}
                                 {/* Status: if expires show red, else show  */}
                                 {task.status == 'Completed' || task.status == 'completed' ? 
-                                    <Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#FF0000', margin: 7 }}>{task.status}</Text> 
+                                    <Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#C0C0C0', margin: 7 }}>{task.status}</Text> 
                                 : 
                                     <Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#90EE90', margin: 7 }}>{task.status}</Text>
                                 }
