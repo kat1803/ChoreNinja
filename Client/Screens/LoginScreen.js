@@ -15,7 +15,7 @@ class HomeScreen extends React.Component {
         return (
             <View style={{ flex: 1}}>
                 <Image
-                  style={{width: 400, height: 400, marginBottom: 10}}
+                  style={{width: 400, height: 400, marginBottom: 10, alignSelf:"center"}}
                   source={require('../assets/logo_transparent.png')}
                 />
               <InputItem
