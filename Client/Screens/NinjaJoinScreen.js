@@ -96,7 +96,7 @@ class NinjaJoinScreen extends React.Component {
                             
                             <Button
                                 style={{
-                                    width: 100,
+                                    width: 150,
                                     alignSelf: "center",
                                     backgroundColor: "#01479b",
                                     margin: 20

@@ -162,12 +162,12 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
     })
   }, 
   Rating: Rating,
-  MenuNavBar: {
+  "Menu": {
     screen: MenuNavBar,
     navigationOptions: () => ({
       tabBarIcon: () => (
         <FAIcon
-          name="user"
+          name="bars"
           size={30}
           color='#0277BD'
         />

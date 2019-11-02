@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { Card, ListItem, Icon } from "react-native-elements";
 import { Image, StyleSheet } from "react-native";
 import { Button, TouchableRipple, TextInput } from "react-native-paper";
+import { ScrollView } from "react-native-gesture-handler";
 
 // Formatted with the following command:
 // Nhis-MacBook-Pro:Screens kathryn$ prettier --write ProfileScreen.js
@@ -51,6 +52,7 @@ class ProfileScreen extends React.Component {
       }
     });
     return (
+      <ScrollView>
       <View style={{ flex: 1 }}>
         <View>
           {!this.state.edit ?
@@ -60,8 +62,8 @@ class ProfileScreen extends React.Component {
               >
                 <Image
                   style={{
-                    width: 250,
-                    height: 250,
+                    width: 150,
+                    height: 150,
                     alignSelf: 'center',
                   }}
                   source={require("../assets/businessprofile.png")}
@@ -71,16 +73,14 @@ class ProfileScreen extends React.Component {
                 <Text style={{ marginTop: 30, fontSize: 20, fontStyle: 'italic' }}>{this.state.description == "" ? "Professional" : this.state.description.trim()}</Text>
                 <Text></Text>
 
-                {/* Contact Information */}
-                <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Contact Info: </Text>
                 {/* Phone Number */}
                 <View style={{ flexDirection: 'row' }}>
-                  <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Tel: </Text>
+                  <Text style={{ fontWeight: 'bold', fontSize: 17, margin:5 }}> Tel: </Text>
                   <Text style={{ fontSize: 18 }}>{this.state.phone}</Text>
                 </View>
                 {/* Email */}
                 <View style={{ flexDirection: 'row' }}>
-                  <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Email: </Text>
+                  <Text style={{ fontWeight: 'bold', fontSize: 17, margin:5 }}> Email: </Text>
                   <Text style={{ fontSize: 18 }}>{this.state.email}</Text>
                 </View>
                 <Text/>
@@ -155,7 +155,8 @@ class ProfileScreen extends React.Component {
               </View>
           }
         </View>
-      </View>)
+      </View>
+      </ScrollView>)
   }
 }
 
