@@ -1,16 +1,14 @@
 import { delay, takeEvery, takeLatest, put, call } from 'redux-saga/effects';
 
 export function* updateBio({ type, value }) {
-    var url = "https://choreninja.herokuapp.com/api/v1/auth/signin";
+    var url = "https://choreninja.herokuapp.com/api/v1/user";
     const res = yield call(() => {
         let reqBody = {
             username: value.email,
             password: value.password
         }
-        // console.log("email, password", value.email, value.password)
-        // console.log(reqBody)
         return fetch(url, {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify(reqBody),
             headers: {
                 'Content-Type': 'application/json',

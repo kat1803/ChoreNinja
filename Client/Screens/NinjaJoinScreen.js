@@ -17,7 +17,7 @@ class NinjaJoinScreen extends React.Component {
         }
     }
     render() {
-        const { navigate } = this.props.navigation;
+        // const { navigate } = this.props.navigation;
         return (
             <ScrollView>
                 {!this.state.register ?
@@ -67,7 +67,7 @@ class NinjaJoinScreen extends React.Component {
                                 underlineColorAndroid="transparent"
                                 numberOfLines={1}
                                 label="SSN"
-                                onChangeText={ssn => this.setState({ snn })}
+                                onChangeText={ssn => this.setState({ ssn })}
                                 value={this.state.ssn}
                                 placeholder= "123 56 7890"
                             />
@@ -102,7 +102,7 @@ class NinjaJoinScreen extends React.Component {
                                     margin: 20
                                 }}
                                 mode="contained"
-                                onPress={() => navigate('HOME')}
+                                // onPress={() => navigate('HOME')}
                             >
                                 SIGN UP
                             </Button>
