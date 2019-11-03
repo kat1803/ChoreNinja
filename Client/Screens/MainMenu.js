@@ -84,6 +84,31 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       ),
     })
   }, 
+  'ABOUT': {
+    screen: AboutScreen,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="info"
+          size={30}
+          color='#0277BD'
+        />
+      )
+    })
+  },
+  "Menu": {
+    screen: MenuNavBar,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="bars"
+          size={30}
+          color='#0277BD'
+        />
+      )
+    })
+  },
+  
   //Signup: SignupScreen, //this is sign up for customer first join the app
   // NinjaJoin: {
   //   screen: NinjaJoinScreen,
@@ -194,6 +219,7 @@ class MainMenu extends React.Component {
 
 
   render() {
+    console.log(this.props.user)
     return (
 		// dont fuck with this line
 		<View style={{ flex: 1 }}>
@@ -225,7 +251,7 @@ class MainMenu extends React.Component {
 				:
 				null
 			}
-		</View>
+		</View> 
     );
   }
 }
