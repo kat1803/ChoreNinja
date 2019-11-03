@@ -11,78 +11,92 @@ class NinjaBio extends React.Component {
     constructor(props) {
         super(props);
         this.state = {         
-            user: {
-                id: 1,
-                name: 'Donald Trump',
-                description: 'Best In the Business! You choose me, Or I choose you!',
-                skills: 'Accounting, Finance, Lawyer',
-                phone: '408 888 8888',
-                email: 'example@gmail.com',
-            },
-            editBio: false,
+            first_name: '',
+            last_name: '',
+            phone_number: '',
+            email: '',
+            description: '',
+            skills: '',
+            editBio: false
         };
-    }
+	}
 
-    // handleEdit(){
-    //     var users = this.props.users;
-    //     var user = users[id];
-    //     this.setState({
-    //         companyName: user.companyName,
-    //         description: user.description,
-    //         skills: user.skills,
-    //         phoen: user.phone,
-    //         email: user.email,
-    //     });
+	handleEdit = () =>{
+		let updateUser = Object.assign({}, this.props.user, this.state)
+		this.setState({editBio: false})
+		this.props.updateBio(updateUser)
+	}
+	
+	componentWillMount(){
+		const {first_name, last_name, email, phone_number, description, skills} = this.props.user
 
-    // }
+		this.setState({ 
+			first_name: first_name ? first_name : "",
+			last_name: last_name ? last_name : "",
+			email: email ? email : "",
+			phone_number: phone_number ? phone_number : "",
+			description: description ? description : "",
+			skills: skills ? skills : "" 
+		})
+	}
 
     render() {
-        console.log("HERE NINJABIO")
-        console.log(this.state.user);
         return (
             <ScrollView>
                 {this.state.editBio ?
                     <View>
                         <Text style={{ fontSize: 20, fontWeight: "bold", textAlign: "center", padding: 10 }}> Edit Your Bio </Text>
 
-                        {/* Company Name */}
                         <TextInput
                             style={{ backgroundColor: "rgb(250,250,250)", padding: 10 }}
                             underlineColorAndroid="transparent"
                             numberOfLines={1}
-                            label="CompanyName"
-                            onChangeText={companyName => this.setState({ companyName })}
-                            value={this.state.companyName}
+                            label="First Name"
+                            onChangeText={first_name => this.setState({ first_name })}
+                            value={this.state.first_name}
                         />
 
-                        {/* Description */}
                         <TextInput
                             style={{ backgroundColor: "rgb(250,250,250)", padding: 10 }}
                             underlineColorAndroid="transparent"
                             numberOfLines={1}
-                            label="Description"
-                            onChangeText={description => this.setState({ description })}
-                            value={this.state.description}
+                            label="Last Name"
+                            onChangeText={last_name => this.setState({ last_name })}
+                            value={this.state.last_name}
                         />
 
-                        {/* Skills */}
-                        <TextInput
-                            style={{ backgroundColor: "rgb(250,250,250)", padding: 10 }}
-                            underlineColorAndroid="transparent"
-                            numberOfLines={1}
-                            label="Skills"
-                            onChangeText={skills => this.setState({ skills })}
-                            value={this.state.skills}
-                        />
+						{
+							this.props.user.is_ninja &&
+								<TextInput
+									style={{ backgroundColor: "rgb(250,250,250)", padding: 10 }}
+									underlineColorAndroid="transparent"
+									numberOfLines={1}
+									label="Summary"
+									onChangeText={description => this.setState({ description })}
+									value={this.state.description}
+								/>
+						}
+
+						{
+							this.props.user.is_ninja &&
+								<TextInput
+									style={{ backgroundColor: "rgb(250,250,250)", padding: 10 }}
+									underlineColorAndroid="transparent"
+									numberOfLines={1}
+									label="Skills"
+									onChangeText={skills => this.setState({ skills })}
+									value={this.state.skills}
+								/>
+						}
 
                         {/* Phone */}
                         <TextInput
                             style={{ backgroundColor: "rgb(250,250,250)", padding: 10 }}
                             underlineColorAndroid="transparent"
                             numberOfLines={1}
-                            label="Phone"
-                            onChangeText={phone => this.setState({ phone })}
-                            value={this.state.phone}
+                            label="Phone number"
+                            onChangeText={phone_number => this.setState({ phone_number })}
+                            value={this.state.phone_number}
                         />
 
                         {/* Email */}
@@ -103,21 +117,16 @@ class NinjaBio extends React.Component {
                                 margin: 10
                             }}
                             mode="contained"
-                            // onPress={() => this.handleEdit}
-                            onPress={() => this.setState({editBio : false})}
+                            onPress={() => this.handleEdit()}
                         >
                             <Text>Save</Text>
                         </Button>
                     </View>
                     :
                     <View>
-                        {/* {this.props.user.map((user, id) => ( */}
                             <View style={{ flex: 1, marginTop: 20 }}>
                                 <Card
-                                    // key = {id}
-                                    title={this.state.user.name}
-                                    // image={require("../assets/businessprofile.png")}
-                                    // containerStyle={{ backgroundColor: '#F5F5F5' }}
+                                    title={`${this.state.first_name} ${this.state.last_name}`}
                                 >
                                     <Image
                                         style={{
@@ -127,21 +136,8 @@ class NinjaBio extends React.Component {
                                         }}
                                         source={require("../assets/businessprofile.png")}
                                     /> 
-                                    {/* <View
-                                        style={{
-                                            borderRadius: 3,
-                                            borderWidth: 1,
-                                            borderColor: "#d6d7da",
-                                            //flex: 3,
-                                            justifyContent: "flex-start",
-                                            alignItems: "flex-start",
-                                            flexDirection: "column",
-                                            padding: 5,
-                                            backgroundColor: '#FFFAFA'
-                                        }}
-                                    > */}
                                         {/* Descriptions */}
-                                        <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{this.state.user.description}</Text>
+                                        <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{this.state.description}</Text>
                                         <Text></Text>
 
                                         {/* Ratings */}
@@ -160,7 +156,7 @@ class NinjaBio extends React.Component {
 
                                         {/* Skills */}
                                         <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Skills: </Text>
-                                        <Text style={{ fontSize: 18 }}>{this.state.user.skills}</Text>
+                                        <Text style={{ fontSize: 18 }}>{this.state.skills}</Text>
                                         <Text></Text>
 
                                         {/* Contact Information */}
@@ -168,12 +164,12 @@ class NinjaBio extends React.Component {
                                         {/* Phone Number */}
                                         <View style={{ flexDirection: 'row' }}>
                                             <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Tel: </Text>
-                                            <Text style={{ fontSize: 18 }}>{this.state.user.phone}</Text>
+                                            <Text style={{ fontSize: 18 }}>{this.state.phone_number}</Text>
                                         </View>
                                         {/* Email */}
                                         <View style={{ flexDirection: 'row' }}>
                                             <Text style={{ fontWeight: 'bold', fontSize: 17 }}> Email: </Text>
-                                            <Text style={{ fontSize: 18 }}>{this.state.user.email}</Text>
+                                            <Text style={{ fontSize: 18 }}>{this.state.email}</Text>
                                         </View>
                                         <Text></Text>
 
@@ -204,10 +200,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        reduxFetchUserData: id => dispatch({
-            type: "SIGNED_IN",
-            value: id
-        })
+		updateBio: (payload) =>
+		dispatch({
+		  type: "UPDATE_PROFILE",
+		  value: payload
+		}),
     }
 }
 

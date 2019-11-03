@@ -22,7 +22,6 @@ class SignupScreen extends React.Component {
 	}
 
 	// googleSignin = () =>{
-	// 	console.log("here")
 	// 	this.props.googleSignin()
 	// }
 
