@@ -37,7 +37,7 @@ class NinjaHomepage extends React.Component {
               }}
               value={firstQuery}
             />
-            <Button
+            {/* <Button
               title="filter"
               icon="filter"
               size={20}
@@ -45,7 +45,7 @@ class NinjaHomepage extends React.Component {
               onPress={() => console.log("Pressed")}
             >
               Filter
-            </Button>
+            </Button> */}
           </View>
           {this.props.posts &&
             this.props.posts.map((post, idx) => (
@@ -65,17 +65,6 @@ class NinjaHomepage extends React.Component {
                 </View>
                 <Text />
 
-                {/* Job Field */}
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Field:{" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.field}
-                  </Text>
-                </View>
-                <Text />
-
                 {/* Due Date */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
@@ -87,7 +76,7 @@ class NinjaHomepage extends React.Component {
                 </View>
                 <Text />
 
-                {/* Start Time */}
+                {/* Time */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                     Time: between {" "}
@@ -126,7 +115,7 @@ class NinjaHomepage extends React.Component {
                 </View>
                 <Text />
 
-                {/* Payment Method */}
+                {/* Payment Method
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                     Payment Method: {" "}
@@ -135,7 +124,7 @@ class NinjaHomepage extends React.Component {
                     {post.paymentMethod}
                   </Text>
                 </View>
-                <Text />
+                <Text /> */}
 
                 <View
                   style={{

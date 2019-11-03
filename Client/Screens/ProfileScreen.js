@@ -73,8 +73,6 @@ class ProfileScreen extends React.Component {
                 <Text style={{ marginTop: 30, fontSize: 20, fontStyle: 'italic' }}>{this.state.description == "" ? "Professional" : this.state.description.trim()}</Text>
                 <Text></Text>
 
-                {/* Contact Information */}
-                <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18, margin:5 }}>Address: </Text>
                 {/* Phone Number */}
                 <View style={{ flexDirection: 'row' }}>
                   <Text style={{ fontWeight: 'bold', fontSize: 17, margin:5 }}> Tel: </Text>

@@ -157,7 +157,7 @@ class HomeScreen extends React.Component {
                     onChangeText={price => this.setState({ price })}
                     value={this.state.price}
                   />
-   <TextInput
+                  <TextInput
                     style={{ marginTop: 2 }}
                     mode="outlined"
                     underlineColorAndroid="transparent"
@@ -166,7 +166,7 @@ class HomeScreen extends React.Component {
                     onChangeText={zipcode => this.setState({ zipcode })}
                     value={this.state.zipcode}
                   />
-                  <CheckBox
+                  {/* <CheckBox
                     title="Cash payment"
                     checkedIcon="dot-circle-o"
                     uncheckedIcon="circle-o"
@@ -183,7 +183,7 @@ class HomeScreen extends React.Component {
                     onPress={() =>
                       this.setState({ checked: !this.state.checked })
                     }
-                  />
+                  /> */}
                 </View>
 
                 <View style={{ flexDirection: 'row', alignSelf: 'center'}}>
@@ -248,18 +248,6 @@ class HomeScreen extends React.Component {
                   </Text>
                 </View>
                 <Text />
-                
-                {/* Job Field */}
-            
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Zipcode: {" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.zipcode}
-                  </Text>
-                </View>
-                <Text />
 
                 {/* Due Date */}
                 <View style={{ flexDirection: "row" }}>
@@ -307,17 +295,6 @@ class HomeScreen extends React.Component {
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {post.zipcode}
-                  </Text>
-                </View>
-                <Text />
-
-                {/* Payment Method */}
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Payment Method: {" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.paymentMethod}
                   </Text>
                 </View>
                 <Text />
