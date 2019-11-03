@@ -25,8 +25,6 @@ export function* signIn({type, value}) {
 			username: value.email,
 			password: value.password
 		}
-		console.log("email, password",value.email, value.password)
-		console.log(reqBody)
 		return fetch(url, {
 			method: "POST",
 			body: JSON.stringify(reqBody),
@@ -39,7 +37,6 @@ export function* signIn({type, value}) {
 			console.log(err)
 		})
 	})
-	console.log(res)
 	yield put({
 		type: 'SIGNED_IN',
 		value: res
@@ -91,10 +88,33 @@ export function* signOut() {
 	}
 }
 
+export function* updateProfile({ type, value }) {
+	var url = `https://choreninja.herokuapp.com/api/v1/user/${value._id}`;
+    const res = yield call(() => {
+        return fetch(url, {
+            method: "PUT",
+            body: JSON.stringify({"user" : value}),
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': 'application/json'
+            }
+        }).then(res => res.json())
+            .catch(err => {
+                console.log(err)
+            })
+    })
+    console.log(res)
+    yield put({
+        type: 'UPDATE_AUTH',
+        value: res.item
+    })
+}
+
 export function* watchAuth (){
 	//Take Latest action
 	yield takeLatest("SIGN_UP", signUp);
 	yield takeLatest("SIGN_IN", signIn);
 	// yield takeLatest("SIGN_IN_GOOGLE", signInGoogle);
 	yield takeLatest("SIGN_OUT", signOut);
+	yield takeLatest("UPDATE_PROFILE", updateProfile);
 }

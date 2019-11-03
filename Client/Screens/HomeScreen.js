@@ -3,7 +3,6 @@ import { View, Text, DatePickerIOS, ScrollView } from "react-native";
 import { Platform, StyleSheet, Image } from "react-native";
 import { Card, CheckBox } from "react-native-elements";
 import { TextInput, Button } from "react-native-paper";
-import { deletePost, editPost } from "./sagas/homescreenSaga.js";
 
 import { connect } from "react-redux";
 
@@ -20,14 +19,13 @@ class HomeScreen extends React.Component {
       zipcode: '',
       paymentMethod: '',
       posts: [],
-      addNewPost: false,
-      editPost: null
+      showForm: false,
+      editPostId: false
     };
   }
 
-  handlePost() {
-    console.log("HANDLE POST ", this.state.editPost);
-    var newpost = {
+  handleSave() {
+    let newpost = {
       name: this.state.name,
       price: this.state.price,
       description: this.state.description,
@@ -36,14 +34,11 @@ class HomeScreen extends React.Component {
       end_time: this.state.end_time,
       zip: this.state.zipcode,
     };
-    if (this.state.editPost != null) {
-      console.log("Hello");
-      editPost(newpost, this.state.editPost);
+    if (this.state.editPostId) {
+		this.props.reduxEditPost(newpost, this.state.editPostId )
     } else {
-      console.log("Wut?");
-
       // Call redux dispatcher to make API call for POST request
-      this.props.reduxHandlePost(newpost);
+		this.props.reduxHandlePost(newpost);
     }
     // // Copy the current post array
     // var newPosts = Object.assign(this.state.posts);
@@ -55,51 +50,47 @@ class HomeScreen extends React.Component {
       price: "",
       description: "",
       due_date: "",
-      addNewPost: false,
-      editPost: null
+      showForm: false,
+      editPostId: false
     });
   }
 
   handleEdit(idx) {
-    var posts = this.props.posts;
+    var posts = this.props.myPosts;
     var post = posts[idx];
     this.setState({
       name: post.name,
       price: post.price.toString(),
       description: post.description,
       due_date: post.due_date,
-      editPost: post._id
-    });
+	  showForm: true,
+	  editPostId: post._id,
+	});
   }
 
   handleDelete(idx) {
-    console.log("need to delete ", idx);
 
-    var posts = this.props.posts;
+    var posts = this.props.myPosts;
     var post = posts[idx];
-    console.log("post to delete ", post);
     var postId = post._id;
-    console.log("post id to delete ", postId);
 
-    deletePost(postId);
-    posts.splice(idx, 1);
-    this.setState({ posts: posts });
+	posts.splice(idx, 1);
+	this.setState({ posts: posts });
+	this.props.reduxDeletePost(postId)
   }
 
   componentWillMount() {
-    this.props.reduxFetchPost("UserIDHere");
+    this.props.reduxFetchMyPost();
   }
 
   render() {
-    //console.log("this.props.posts", this.props.posts);
-    //console.log(this);
     return (
       <ScrollView>
         <View>
-          {this.state.addNewPost || this.state.editPost != null ? (
+          {this.state.showForm ? (
             <View>
               <Card
-                title="Create Post"
+                title={this.state.editPostId ? "Edit Post" : "Add New Post"}
               >
                 <View>
                   <TextInput
@@ -195,9 +186,9 @@ class HomeScreen extends React.Component {
                       margin: 10
                     }}
                     mode="contained"
-                    onPress={() => this.handlePost()}
+                    onPress={() => this.handleSave()}
                   >
-                    Post
+                    {this.state.editPostId ? "Save" : "Post"}
                   </Button>
                   <Button
                     style={{
@@ -207,7 +198,7 @@ class HomeScreen extends React.Component {
                       margin: 10
                     }}
                     mode="contained"
-                    onPress={() => this.setState({ addNewPost: false, editPost: null })}
+                    onPress={() => this.setState({ showForm: false, editPost: false })}
                   >
                     Cancel
                   </Button>
@@ -225,14 +216,14 @@ class HomeScreen extends React.Component {
               }}
               mode="contained"
               icon='add'
-              onPress={() => this.setState({ addNewPost: true })}
+              onPress={() => this.setState({ showForm: true })}
             >
               Post a Job
             </Button>
           )}
 
-          {this.props.posts &&
-            this.props.posts.map((post, idx) => (
+          {this.props.myPosts &&
+            this.props.myPosts.map((post, idx) => (
               <Card
                 key={idx}
                 title={post.name == "" ? "No Title" : post.name.trim()}
@@ -350,9 +341,9 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  console.log("I am called, I don't know why");
   return {
-    posts: state.posts.posts
+    myPosts: state.posts.myPosts,
+    user: state.auth.user
   };
 };
 
@@ -361,17 +352,21 @@ const mapDispatchToProps = dispatch => {
     reduxHandlePost: post =>
       dispatch({
         type: "ADD_POST",
-        value: post
+        value: {post}
       }),
     reduxDeletePost: id =>
       dispatch({
         type: "DELETE_POST",
-        value: id
+        value: {id}
       }),
-    reduxFetchPost: id =>
+    reduxFetchMyPost: () =>
       dispatch({
-        type: "FETCH_POST",
-        value: id
+        type: "FETCH_MY_POST",
+      }),
+    reduxEditPost: (post, id) =>
+      dispatch({
+        type: "EDIT_POST",
+        value: {post, id}
       })
   };
 };

@@ -45,7 +45,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
     })
   },
   Profile: {
-    screen: ProfileScreen,
+    screen: NinjaBio,
     navigationOptions: () => ({
       tabBarIcon: () => (
         <FAIcon
@@ -198,7 +198,7 @@ class MainMenu extends React.Component {
 		// dont fuck with this line
 		<View style={{ flex: 1 }}>
 			{
-				this.props.user.user ?
+				this.props.auth.user ?
 						<View style={{ flexDirection:"row", justifyContent:"space-between", marginTop:55, marginLeft:15}}>
 							<Text style={{ color:'#01579B', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>Chore Ninja</Text>
 							<SwitchSelector style={{ flex: 1, marginBottom:4, marginRight:10, width:200, marginTop: 5}}
@@ -220,7 +220,7 @@ class MainMenu extends React.Component {
 					<SignupScreen signup={this.props.signup} signin={this.props.signin} googleSignin={this.props.googleSignin}/>
 			} 
 			{
-				this.props.user.user ?
+				this.props.auth.user ?
 					this.state.isNinja ? (<AppMainContainerCustomer />) : (<AppMainContainerNinja />)
 				:
 				null
@@ -233,7 +233,7 @@ class MainMenu extends React.Component {
 
 const mapStateToProps = state => {
 	return {
-	  user: state.auth.user
+	  auth: state.auth
 	};
   };
   
