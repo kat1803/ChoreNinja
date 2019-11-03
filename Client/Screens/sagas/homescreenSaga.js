@@ -92,7 +92,7 @@ function* fetchAllPost() {
 		let token = yield select((state) => state.auth.token)
         const posts = yield call(()=>{
             return fetch(
-                `https://choreninja.herokuapp.com/api/v1/job`,
+                `https://choreninja.herokuapp.com/api/v1/job?ninja=new`,
                 {
 					method: "GET",
 					headers: new Headers({

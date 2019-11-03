@@ -15,6 +15,25 @@ class NinjaHomepage extends React.Component {
     };
   }
 
+  handleAcceptJob = (idx) =>{
+	var posts = this.props.allPosts;
+    var post = posts[idx];
+	let edittedPost = {
+		name: post.name,
+		price: post.price,
+		description: post.description,
+		due_date: post.due_date,
+		start_time: post.start_time,
+		end_time: post.end_time,
+		zip: post.zipcode,
+		ninja: {
+			id: this.props.user._id,
+			username: this.props.user.username
+		},
+	};
+	this.props.reduxEditPost(edittedPost, post._id)
+  }
+
   componentWillMount(){
 	this.props.reduxFetchAllPost()
   }
@@ -149,7 +168,12 @@ const mapDispatchToProps = dispatch => {
     reduxFetchAllPost: () =>
       dispatch({
         type: "FETCH_ALL_POST",
-      }),
+	  }),
+	reduxEditPost: (post, id) =>
+      dispatch({
+        type: "EDIT_POST",
+        value: {post, id}
+      })
   };
 };
 
