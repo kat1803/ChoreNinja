@@ -15,86 +15,79 @@ class NinjaHomepage extends React.Component {
     };
   }
 
+  componentWillMount(){
+	this.props.reduxFetchAllPost()
+  }
+
   render() {
     const { firstQuery } = this.state;
-    // console.log("INSIDE NINJA HOMEPAGE")
-    // console.log(this.props.posts);
     return (
       <ScrollView>
-        <View style= {{flex: 1}}>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              margin: 10
-            }}
-          >
-            <Searchbar
-              placeholder="Search"
-              style={{ width: 300, flex: 1 }}
-              onChangeText={query => {
-                this.setState({ firstQuery: query });
-              }}
-              value={firstQuery}
-            />
-            {/* <Button
-              title="filter"
-              icon="filter"
-              size={20}
-              style={{color: '#0091EA'}}
-              onPress={() => console.log("Pressed")}
-            >
-              Filter
-            </Button> */}
-          </View>
-          {this.props.posts &&
-            this.props.posts.map((post, idx) => (
-              <Card
-                key={idx}
-                title={post.name == "" ? "No Title" : post.name.trim()}
-                image={require("../assets/examplejob.png")}
-              >
-                {/* Job Description */}
-                <View >
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Description:{" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.description}
-                  </Text>
-                </View>
-                <Text />
+		{
+			this.props.user.is_ninja ?
+		        <View style= {{flex: 1}}>
+		          <View
+		            style={{
+		              flexDirection: "row",
+		              alignItems: "center",
+		              justifyContent: "space-between",
+		              margin: 10
+		            }}
+		          >
+		            <Searchbar
+		              placeholder="Search"
+		              style={{ width: 300, flex: 1 }}
+		              onChangeText={query => {
+		                this.setState({ firstQuery: query });
+		              }}
+		              value={firstQuery}
+		            />
+		          </View>
+		          { this.props.allPosts &&
+		            this.props.allPosts.map((post, idx) => (
+		              <Card
+		                key={idx}
+		                title={post.name == "" ? "No Title" : post.name.trim()}
+		                image={require("../assets/examplejob.png")}
+		              >
+		                {/* Job Description */}
+		                <View >
+		                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+		                    Description:{" "}
+		                  </Text>
+		                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+		                    {post.description}
+		                  </Text>
+		                </View>
+		                <Text />
 
-                {/* Due Date */}
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Date:{" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.due_date}
-                  </Text>
-                </View>
-                <Text />
+		                {/* Due Date */}
+		                <View style={{ flexDirection: "row" }}>
+		                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+		                    Date:{" "}
+		                  </Text>
+		                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+		                    {post.due_date}
+		                  </Text>
+		                </View>
+		                <Text />
 
-                {/* Time */}
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Time: between {" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.start_time}
-                  </Text>
-                  <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
-                    and {" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.end_time}
-                  </Text>
-                </View>
-                <Text />
-
-		                {/* Price of the Job */}
+		                {/* Time */}
+		                <View style={{ flexDirection: "row" }}>
+		                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+		                    Time: between {" "}
+		                  </Text>
+		                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+		                    {post.start_time}
+		                  </Text>
+		                  <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
+		                    and {" "}
+		                  </Text>
+		                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+		                    {post.end_time}
+		                  </Text>
+		                </View>
+		                <Text />
 		                <View style={{ flexDirection: "row" }}>
 		                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
 		                    Price:{" "}
@@ -104,8 +97,6 @@ class NinjaHomepage extends React.Component {
 		                  </Text>
 		                </View>
 		                <Text />
-
-		                {/* Job Zipcode */}
 		                <View style={{ flexDirection: "row" }}>
 		                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
 		                    Zip Code{" "}
@@ -115,18 +106,6 @@ class NinjaHomepage extends React.Component {
 		                  </Text>
 		                </View>
 		                <Text />
-
-                {/* Payment Method
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Payment Method: {" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.paymentMethod}
-                  </Text>
-                </View>
-                <Text /> */}
-
 		                <View
 		                  style={{
 		                    flexDirection: "row",
@@ -150,7 +129,7 @@ class NinjaHomepage extends React.Component {
 		            ))}
 		        </View>
 			:
-			<NinjaJoinScreen/>
+				<NinjaJoinScreen/>
 		}
       </ScrollView>
     );
@@ -159,31 +138,18 @@ class NinjaHomepage extends React.Component {
 
 //export default NinjaHomepage
 const mapStateToProps = state => {
-  // console.log("I am called, I don't know why");
-  // console.log(state.posts.posts);
   return {
-	posts: state.posts.posts,
+	allPosts: state.posts.allPosts,
 	user: state.auth.user
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    reduxHandlePost: post =>
+    reduxFetchAllPost: () =>
       dispatch({
-        type: "ADD_POST",
-        value: post
+        type: "FETCH_ALL_POST",
       }),
-    reduxDeletePost: id =>
-      dispatch({
-        type: "DELETE_POST",
-        value: id
-      }),
-    reduxFetchPost: id =>
-      dispatch({
-        type: "FETCH_POST",
-        value: id
-      })
   };
 };
 
