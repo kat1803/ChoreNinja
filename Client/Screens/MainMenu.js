@@ -96,6 +96,18 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       )
     })
   },
+  "Menu": {
+    screen: MenuNavBar,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="bars"
+          size={30}
+          color='#0277BD'
+        />
+      )
+    })
+  },
   
   //Signup: SignupScreen, //this is sign up for customer first join the app
   // NinjaJoin: {
