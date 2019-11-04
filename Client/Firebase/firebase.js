@@ -16,7 +16,18 @@ class Firebase {
     get ref() {
         // return firebase.database().ref('Messages');
         return firebase.database().ref('Messages/' + this.conversationID);
-    }
+	}
+	
+	createConversation = ( jobId, masterId, ninjaId) =>{
+		let ref = firebase.database().ref(`Messages/${jobId}_${masterId}_${ninjaId}`);
+		ref.push({
+			createdAt: this.current_time,
+			text: "Hi! I would like to take the job!",
+			user: {
+				_id: ninjaId
+			}
+		})
+	}
 
     setConversation = (conversationID) => {
         this.conversationID = conversationID

@@ -57,7 +57,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
     })
   },
   // 'MessageList': MessageList,
-  Message: {
+  "Message": {
     screen: Message,
     navigationOptions: () => ({
       tabBarIcon: () => (
@@ -162,14 +162,14 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       )
     })
   },
-  'ABOUT': {
-    screen: AboutScreen,
+  "Message": {
+    screen: Message,
     navigationOptions: () => ({
       tabBarIcon: () => (
         <FAIcon
-          name="info"
+          name="envelope"
           size={30}
-          color='#0277BD'
+          color='#01579B'
         />
       )
     })

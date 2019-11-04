@@ -5,6 +5,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import { connect } from "react-redux";
 import { Searchbar, Button } from "react-native-paper";
 import NinjaJoinScreen from "./NinjaJoinScreen";
+import firebaseService from '../Firebase/firebase'
 
 class NinjaHomepage extends React.Component {
   constructor(props) {
@@ -31,7 +32,16 @@ class NinjaHomepage extends React.Component {
 			username: this.props.user.username
 		},
 	};
+	console.log(post)
+	console.log(post.master)
+	console.log(post.master.id)
+	
+	// Init the conversation between the ninja and the master
+	firebaseService.createConversation(post._id, post.master.id, this.props.user._id)
+	
+	this.props.addConversation(`${post._id}_${post.master.id}_${this.props.user._id}`, post.master.id, this.props.user._id)
 	this.props.reduxEditPost(edittedPost, post._id)
+	this.props.navigation.navigate("Message")
   }
 
   componentWillMount(){
@@ -165,6 +175,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+	addConversation: (conversationId, masterId, ninjaId) =>
+		dispatch({
+		  type: "ADD_CONVERSATION",
+		  value: {conversationId, masterId, ninjaId}
+		}),
 	reduxFetchAllPost: () =>
 	  dispatch({
 		type: "FETCH_ALL_POST",

@@ -1,4 +1,4 @@
-import { delay, takeEvery, takeLatest, put, call } from 'redux-saga/effects';
+import { delay, takeEvery, takeLatest, put, call, select } from 'redux-saga/effects';
 
 export function* signUp({type, value}) {
 	var url = "https://choreninja.herokuapp.com/api/v1/auth/signup";
@@ -110,6 +110,30 @@ export function* updateProfile({ type, value }) {
     })
 }
 
+export function* addConversation({type, value}) {
+	let {conversationId, masterId, ninjaId} = value
+	let token = yield select((state) => state.auth.token)
+	try {
+		//make http call to add post
+		const posts = yield call(() => {
+			return fetch("https://choreninja.herokuapp.com/api/v1/user/conversation", {
+				method: "POST",
+				body: JSON.stringify(value),
+				headers: new Headers({
+					'Authorization': `Bearer ${token}`, 
+					'Content-Type': 'application/json'
+				}), 
+			}).then(res => res.json())
+			.catch(err => {
+					console.log(err)
+				})
+		})
+	}
+	catch (error) {
+		console.log(error);
+	}
+}
+
 export function* watchAuth (){
 	//Take Latest action
 	yield takeLatest("SIGN_UP", signUp);
@@ -117,4 +141,5 @@ export function* watchAuth (){
 	// yield takeLatest("SIGN_IN_GOOGLE", signInGoogle);
 	yield takeLatest("SIGN_OUT", signOut);
 	yield takeLatest("UPDATE_PROFILE", updateProfile);
+	yield takeLatest("ADD_CONVERSATION", addConversation);
 }
