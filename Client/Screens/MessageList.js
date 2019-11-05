@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
 
 class MessageItem extends Component {
     onPress = () => {
-        console.log('Pressed');
     };
     render() {
         const { name, picture, LastMessage } = this.props.item;
@@ -84,7 +83,6 @@ class MessageItem extends Component {
 
 export default class MessageList extends Component {
     onPress = () => {
-        console.log('Pressed');
     };
     render() {
 		let data = [

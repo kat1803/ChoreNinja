@@ -45,7 +45,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
     })
   },
   Profile: {
-    screen: ProfileScreen,
+    screen: NinjaBio,
     navigationOptions: () => ({
       tabBarIcon: () => (
         <FAIcon
@@ -57,7 +57,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
     })
   },
   // 'MessageList': MessageList,
-  Message: {
+  "Message": {
     screen: Message,
     navigationOptions: () => ({
       tabBarIcon: () => (
@@ -161,15 +161,16 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
         />
       )
     })
-  }, 
-  "Rating": {
-    screen: Rating,
+  },
+  "Message": {
+    screen: Message,
     navigationOptions: () => ({
       tabBarIcon: () => (
         <FAIcon
-          name="star"
+          name="envelope"
+
           size={30}
-          color='#0277BD'
+          color='#01579B'
         />
       )
     })
@@ -200,7 +201,6 @@ class MainMenu extends React.Component {
   }
 
   handleToggle(isNinja) {
-      console.log("sub");
     this.setState(state => ({
       isNinja: isNinja
     }));
@@ -213,16 +213,16 @@ class MainMenu extends React.Component {
 		// dont fuck with this line
 		<View style={{ flex: 1 }}>
 			{
-				this.props.user.user ?
+				this.props.auth.user ?
 						<View style={{ flexDirection:"row", justifyContent:"space-between", marginTop:55, marginLeft:15}}>
-              <Text style={{ color:'#01579B', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>Chore Ninja</Text>
+							<Text style={{ color:'#01579B', width: 250, height: 50, fontSize:35, fontWeight:"bold"}}>Chore Ninja</Text>
 							<SwitchSelector style={{ flex: 1, marginBottom:4, marginRight:10, width:200, marginTop: 5}}
 								  initial={0}
 								  onPress={this.handleToggle.bind(this)}
 								  textColor={'#01479b'} //'#7a44cf'
 								  selectedColor={'#80d8ff'}
 								  buttonColor={'#01479b'}
-                  borderColor={'#01579B'}
+				                  borderColor={'#01579B'}
 								  hasPadding
 								  options={[
 									{ label: "Master", value: true },
@@ -232,10 +232,10 @@ class MainMenu extends React.Component {
 							/>
 						</View>
 				:
-					<SignupScreen signup={this.props.signup} signin={this.props.signin}/>
+					<SignupScreen signup={this.props.signup} signin={this.props.signin} googleSignin={this.props.googleSignin}/>
 			} 
 			{
-				this.props.user.user ?
+				this.props.auth.user ?
 					this.state.isNinja ? (<AppMainContainerCustomer />) : (<AppMainContainerNinja />)
 				:
 				null
@@ -248,7 +248,7 @@ class MainMenu extends React.Component {
 
 const mapStateToProps = state => {
 	return {
-	  user: state.auth.user
+	  auth: state.auth
 	};
   };
   
@@ -264,6 +264,10 @@ const mapDispatchToProps = dispatch => {
 		  type: "SIGN_IN",
 		  value: {email, password}
 		}),
+	//   googleSignin: () =>
+	// 	dispatch({
+	// 	  type: "SIGN_IN_GOOGLE",
+	// 	}),
 	  signout: () =>
 		dispatch({
 		  type: "SIGN_OUT",

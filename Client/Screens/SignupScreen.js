@@ -20,6 +20,11 @@ class SignupScreen extends React.Component {
 			signin: true,
 		}
 	}
+
+	// googleSignin = () =>{
+	// 	this.props.googleSignin()
+	// }
+
 	handleSubmit = () => {
 		const {email, password, signin} = this.state
 		if (signin){
@@ -103,19 +108,19 @@ class SignupScreen extends React.Component {
 							{signin ? "Create Account" : "Sign In"}
 						</Button>
 					</View>
-					<Text style={{ marginTop: 15, marginBottom: 15, textAlign: "center", fontSize: 18}}>OR</Text>
-					{/* <Button 
+					{/* <Text style={{ marginTop: 15, marginBottom: 15, textAlign: "center", fontSize: 18}}>OR</Text>
+					<Button 
 						mode="contained" 
 						style={{ width:250, alignSelf:"center", backgroundColor:"#176BEF"}}
 					> 
 						Login With Facebook
-					</Button> */}
+					</Button>
 					<Button 
 						mode="contained" 
 						style={{marginTop:10, width:250, alignSelf:"center", backgroundColor:"#FF3E30", marginBottom: 100}}
 					>
 						Login With Google
-					</Button>
+					</Button> */}
 				</View>
 				</KeyboardAvoidingView>
 			</ScrollView>

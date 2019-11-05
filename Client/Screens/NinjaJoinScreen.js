@@ -3,21 +3,37 @@ import { View, Text, Image, ScrollView } from "react-native";
 import { Card } from "react-native-elements";
 import { InputItem } from '@ant-design/react-native';
 import { Button, TouchableRipple, TextInput } from "react-native-paper";
+import { connect } from "react-redux";
 
 class NinjaJoinScreen extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             register: false,
-            ssn: '',
-            bio: '',
-            skills: '',
-            jobCompleted: '',
-            ratings: '',
+            first_name: '',
+            last_name: '',
+            email: '',
+            phone_number: '',
+            is_ninja: "true"
         }
-    }
+	}
+
+	handleSignUpNinja = () =>{
+		let updateUser = Object.assign({}, this.state,{_id: this.props.user._id})
+		this.props.signUpNinja(updateUser)
+	}
+	
+	componentWillMount(){
+		const {first_name, last_name, email, phone_number} = this.props.user
+		this.setState({
+			first_name: first_name ? first_name : "",
+			last_name: last_name ? last_name : "",
+			email: email ? email : "",
+			phone_number: phone_number ? phone_number : "",
+		})
+	}
     render() {
-        const { navigate } = this.props.navigation;
+        // const { navigate } = this.props.navigation;
         return (
             <ScrollView>
                 {!this.state.register ?
@@ -66,32 +82,40 @@ class NinjaJoinScreen extends React.Component {
                                 mode="outlined"
                                 underlineColorAndroid="transparent"
                                 numberOfLines={1}
-                                label="SSN"
-                                onChangeText={ssn => this.setState({ snn })}
-                                value={this.state.ssn}
-                                placeholder= "123 56 7890"
+                                label="First Name"
+                                onChangeText={first_name => this.setState({ first_name })}
+                                value={this.state.first_name}
+                                placeholder= "John"
                             />
-
                             <TextInput
-                                style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}
+                                style={{ marginLeft: 5, marginRight: 5, marginTop: 2 }}
                                 mode="outlined"
                                 underlineColorAndroid="transparent"
-                                numberOfLines={3}
-                                label="Biography"
-                                onChangeText={bio => this.setState({ bio })}
-                                value={this.state.bio}
-                                placeholder="Describe your expertise"
+                                numberOfLines={1}
+                                label="Last Name"
+                                onChangeText={last_name => this.setState({ last_name })}
+                                value={this.state.last_name}
+                                placeholder= "Doe"
                             />
-
                             <TextInput
                                 style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}
                                 mode="outlined"
                                 underlineColorAndroid="transparent"
                                 numberOfLines={1}
-                                label="Skills"
-                                onChangeText={skills => this.setState({ skills })}
-                                value={this.state.skills}
-                                placeholder="Your skills"
+                                label="Email"
+                                onChangeText={email => this.setState({ email })}
+                                value={this.state.email}
+                                placeholder="choreninja@gmail.com"
+                            />
+                            <TextInput
+                                style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}
+                                mode="outlined"
+                                underlineColorAndroid="transparent"
+                                numberOfLines={1}
+                                label="Phone Number"
+                                onChangeText={phone_number => this.setState({ phone_number })}
+                                value={this.state.phone_number}
+                                placeholder="888-111-111"
                             />
                             
                             <Button
@@ -102,7 +126,7 @@ class NinjaJoinScreen extends React.Component {
                                     margin: 20
                                 }}
                                 mode="contained"
-                                onPress={() => navigate('HOME')}
+                                onPress={() => this.handleSignUpNinja()}
                             >
                                 SIGN UP
                             </Button>
@@ -113,15 +137,23 @@ class NinjaJoinScreen extends React.Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        user: state.auth.user
+    };
+};
 
-export default NinjaJoinScreen
+const mapDispatchToProps = dispatch => {
+    return {
+		signUpNinja: (payload) =>
+		dispatch({
+		  type: "UPDATE_PROFILE",
+		  value: payload
+		}),
+    }
+}
 
-/*<Appbar.Header>
-                    <Appbar.Content
-                        title="Join as a NINJA!"
-                        style={{alignItems: 'center'}}
-                    />
-                    <Appbar.Action icon="notifications" onPress={() => console.log('Pressed')} />
-                    <Appbar.Action icon="inbox" onPress={() => console.log('Pressed')} />
-                </Appbar.Header>
-                */
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(NinjaJoinScreen); 
