@@ -8,7 +8,7 @@ import HomeScreen from './Screens/HomeScreen';
 import { Provider } from 'react-redux';
 //import redux store
 import {store} from './Screens/store/store';
-
+import { InAppNotificationProvider } from 'react-native-in-app-notification';
 // Theme for react-native-paper
 const custom_theme = {
 	...DefaultTheme,
@@ -49,7 +49,9 @@ export default class App extends Component {
     return (
 	<PaperProvider theme={custom_theme}>
 		<Provider store={store}>
-			<MainMenu />
+			<InAppNotificationProvider>
+				<MainMenu />
+			</InAppNotificationProvider>
 		</Provider>
 	</PaperProvider>
     );

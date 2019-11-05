@@ -7,15 +7,15 @@ class Firebase {
             firebase.initializeApp(config);
         }
         this.conversationID = ""
-    }
-
-    get uid() {
-        return (firebase.auth().currentUser || {}).uid;
+        this.user = {}
     }
 
     get ref() {
-        // return firebase.database().ref('Messages');
         return firebase.database().ref('Messages/' + this.conversationID);
+	}
+
+	get refNotification() {
+        return firebase.database().ref('Notifications/' + this.user._id);
 	}
 	
 	createConversation = ( jobId, masterId, ninjaId) =>{
@@ -29,8 +29,25 @@ class Firebase {
 		})
 	}
 
+	createNotification = ( job , masterId, ninjaId) =>{
+		let ref = firebase.database().ref(`Notifications/${masterId}`);
+		ref.push({
+			createdAt: this.current_time,
+			text: `Congratualation! Your ${job.name} have been accepted by a ninja!`,
+		})
+		let ref2 = firebase.database().ref(`Notifications/${ninjaId}`);
+		ref2.push({
+			createdAt: this.current_time,
+			text: `Congratualation! You have became ninja for ${job.name}!`,
+		})
+	}
+
     setConversation = (conversationID) => {
         this.conversationID = conversationID
+    }
+
+	setUser = (user) => {
+        this.user = user
     }
     
     get current_time() {
@@ -43,6 +60,14 @@ class Firebase {
     }
     refOff() {
         this.ref.off();
+    }
+    refNotificationOn = callback => {
+        this.refNotification
+            .limitToLast(20)
+            .on('child_added', snapshot => callback(snapshot.val()));
+    }
+    refNotificationOff() {
+        this.refNotification.off();
     }
     parse = snapshot => {
         const { timestamp: numberStamp, text, user } = snapshot.val();
