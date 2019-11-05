@@ -110,6 +110,27 @@ export function* updateProfile({ type, value }) {
     })
 }
 
+export function* getUser() {
+	let token = yield select((state) => state.auth.token)
+	var url = `https://choreninja.herokuapp.com/api/v1/user/getLoggedIn`;
+    const res = yield call(() => {
+        return fetch(url, {
+            method: "GET",
+			headers: new Headers({
+				'Authorization': `Bearer ${token}`, 
+			})
+			}).then(res => res.json())
+            .catch(err => {
+                console.log(err)
+            })
+    })
+    console.log(res)
+    yield put({
+        type: 'UPDATE_AUTH',
+        value: res.item
+    })
+}
+
 export function* addConversation({type, value}) {
 	let {conversationId, masterId, ninjaId} = value
 	let token = yield select((state) => state.auth.token)
@@ -128,6 +149,8 @@ export function* addConversation({type, value}) {
 					console.log(err)
 				})
 		})
+		// Get user again to update the message list
+		getUser()
 	}
 	catch (error) {
 		console.log(error);
@@ -139,6 +162,7 @@ export function* watchAuth (){
 	yield takeLatest("SIGN_UP", signUp);
 	yield takeLatest("SIGN_IN", signIn);
 	// yield takeLatest("SIGN_IN_GOOGLE", signInGoogle);
+	yield takeLatest("GET_USER", getUser);
 	yield takeLatest("SIGN_OUT", signOut);
 	yield takeLatest("UPDATE_PROFILE", updateProfile);
 	yield takeLatest("ADD_CONVERSATION", addConversation);

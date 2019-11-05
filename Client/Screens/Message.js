@@ -38,7 +38,10 @@ class Message extends React.Component {
 			<GiftedChat
 			  messages={this.state.messages}
 			  onSend={firebaseService.send}
-			  user={this.props.user}
+			  user={{
+				  _id: this.props.user._id,
+				  name: `${this.props.user.first_name} ${this.props.user.last_name}`
+			  }}
 			/>
 		  </View>)
 	  } else{
