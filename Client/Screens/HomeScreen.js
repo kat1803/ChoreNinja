@@ -29,11 +29,11 @@ class HomeScreen extends React.Component {
       name: this.state.name,
       price: this.state.price,
       description: this.state.description,
-      due_date: this.state.due_date,
       start_time: this.state.start_time,
       end_time: this.state.end_time,
-      zip: this.state.zipcode,
-    };
+      zipcode: this.state.zipcode,
+	};
+	this.state.due_date != "" ? newpost.due_date = this.state.due_date : null
     if (this.state.editPostId) {
 		this.props.reduxEditPost(newpost, this.state.editPostId )
     } else {
@@ -243,10 +243,7 @@ class HomeScreen extends React.Component {
                 {/* Due Date */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Date: {" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.due_date}
+                    {`Post date: ${new Date(post.post_date).toISOString().slice(0,19).replace('T', " ")}`}
                   </Text>
                 </View>
                 <Text />
@@ -254,16 +251,7 @@ class HomeScreen extends React.Component {
                 {/* Start Time */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Time: between {" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.start_time}
-                  </Text>
-                  <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
-                    and {" "}
-                  </Text>
-                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.end_time}
+                    {`Due date: ${new Date(post.due_date).toISOString().slice(0,19).replace('T', " ")}`}
                   </Text>
                 </View>
                 <Text/>

@@ -26,7 +26,7 @@ class NinjaHomepage extends React.Component {
 		due_date: post.due_date,
 		start_time: post.start_time,
 		end_time: post.end_time,
-		zip: post.zipcode,
+		zipcode: post.zipcode,
 		ninja: {
 			id: this.props.user._id,
 			username: this.props.user.username
