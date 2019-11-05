@@ -21,7 +21,6 @@ class MenuNavBar extends Component {
                   </View>
                   <View>
                           <TouchableHighlight onPress={() => this.props.navigation.navigate('ABOUT')}>
-                          
                           <Text style={{fontSize: 30}}>About</Text>
                         </TouchableHighlight>
                   </View>
@@ -39,7 +38,9 @@ class MenuNavBar extends Component {
 //styles
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#0277BD',
+    width: 200,
+    alignSelf:'center',
     borderColor: 'white',
     borderWidth: 1,
     borderRadius: 12,

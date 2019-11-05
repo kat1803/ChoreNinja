@@ -86,18 +86,18 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       ),
     })
   }, 
-  'ABOUT': {
-    screen: AboutScreen,
+  NinjaJoin: {
+    screen: NinjaJoinScreen,
     navigationOptions: () => ({
       tabBarIcon: () => (
-        <FAIcon
-          name="info"
+        <MCIIcon
+          name="ninja"
           size={30}
           color='#0277BD'
         />
       )
     })
-  },
+  }, 
   "Menu": {
     screen: MenuNavBar,
     navigationOptions: () => ({
@@ -170,25 +170,14 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       tabBarIcon: () => (
         <FAIcon
           name="envelope"
+
           size={30}
           color='#01579B'
         />
       )
     })
   },
-  NinjaJoin: {
-    screen: NinjaJoinScreen,
-    navigationOptions: () => ({
-      tabBarIcon: () => (
-        <MCIIcon
-          name="ninja"
-          size={30}
-          color='#0277BD'
-        />
-      )
-    })
-  }, 
-  Rating: Rating,
+
   "Menu": {
     screen: MenuNavBar,
     navigationOptions: () => ({
