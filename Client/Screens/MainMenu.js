@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Switch} from "react-native";
+import { View, Text, Switch, TouchableHighlight} from "react-native";
 import {
   createBottomTabNavigator,
   createAppContainer,
@@ -25,6 +25,8 @@ import FAIcon from 'react-native-vector-icons/FontAwesome';
 import MCIIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { connect } from "react-redux";
+import { withInAppNotification } from 'react-native-in-app-notification';
+import firebaseService from '../Firebase/firebase'
 
 const ninjaImage = require('../assets/ninja1.png');
 const userImage = require('../assets/users.png');
@@ -197,7 +199,7 @@ const AppMainContainerNinja = createAppContainer(AppMainNavigatorNinja);
 class MainMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isNinja: true };
+    this.state = { isNinja: true, firstLogin: true };
   }
 
   handleToggle(isNinja) {
@@ -206,9 +208,38 @@ class MainMenu extends React.Component {
     }));
   }
 
+  componentWillReceiveProps(nextProps){
+	  if (this.props.auth.user._id != nextProps.auth.user._id){
+		this.props.showNotification({
+			title: `Wellcome ${nextProps.auth.user.first_name}!`,
+			message: `Let's get some work done!!!`,
+			onClose: () => console.log("closeit")
+		  });
+		//   console.log("set hook")
+		//   console.log("this.nextProps.auth.user")
+		//   console.log(nextProps.auth.user)
+		firebaseService.setUser(nextProps.auth.user)
+		firebaseService.refNotificationOn(message => {
+			// console.log("show notification!!")
+			// console.log(message)
+			// this.setState(previousState =>({ messages: GiftedChat.append(previousState.messages, message) }))
+			this.props.showNotification({
+				// title: 'You pressed it!',
+				title: `Horay ${nextProps.auth.user.first_name}!`,
+				message: `${message.text}`,
+				onClose: () => console.log("closeit")
+			  });
+		});
+	  }
+  }
+
+
+  componentWillUnmount(){
+	  firebaseService.refNotificationOff()
+  }
 
   render() {
-    console.log(this.props.user)
+    // console.log(this.props.user)
     return (
 		// dont fuck with this line
 		<View style={{ flex: 1 }}>
@@ -275,8 +306,8 @@ const mapDispatchToProps = dispatch => {
 	};
   };
 
-export default connect(
+export default withInAppNotification(connect(
 	mapStateToProps,
 	mapDispatchToProps
-  )(MainMenu);
+  )(MainMenu));
   

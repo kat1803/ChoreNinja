@@ -38,10 +38,11 @@ class NinjaHomepage extends React.Component {
 	
 	// Init the conversation between the ninja and the master
 	firebaseService.createConversation(post._id, post.master.id, this.props.user._id)
+	firebaseService.createNotification(post, post.master.id, this.props.user._id)
 	
 	this.props.addConversation(`${post._id}_${post.master.id}_${this.props.user._id}`, post.master.id, this.props.user._id)
 	this.props.reduxEditPost(edittedPost, post._id)
-	this.props.navigation.navigate("Message")
+	// this.props.navigation.navigate("Message")
   }
 
   componentWillMount(){
