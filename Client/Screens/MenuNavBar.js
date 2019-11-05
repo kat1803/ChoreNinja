@@ -3,6 +3,13 @@ import {Image, StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import { connect } from "react-redux";
 class MenuNavBar extends Component {
+    constructor(props){
+        super(props)
+        this.state ={
+            signout: false
+        }
+    }
+
     handleSignOut = () =>{
         console.log("Signout hit")
         this.props.signout()
@@ -26,11 +33,12 @@ class MenuNavBar extends Component {
                   </View>
                    
                 </View>
-                
+          
                 <TouchableHighlight onPress={this.handleSignOut}>
                        <Text style={styles.button}> Sign out </Text>
                    </TouchableHighlight>
                
+
             </View>
         )
     }
@@ -69,8 +77,9 @@ const mapDispatchToProps = dispatch => {
 	};
   };
 
+
+
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
   )(MenuNavBar);
-  
