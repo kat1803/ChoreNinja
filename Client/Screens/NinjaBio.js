@@ -103,7 +103,8 @@ class NinjaBio extends React.Component {
                                 margin: 10
                             }}
                             mode="contained"
-                            onPress={() => this.handleEdit}
+                            // onPress={() => this.handleEdit}
+                            onPress={() => this.setState({editBio : false})}
                         >
                             <Text>Save</Text>
                         </Button>

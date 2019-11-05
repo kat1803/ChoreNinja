@@ -5,7 +5,7 @@ export function* signUp({type, value}) {
 	yield call(() => {
 		return fetch(url, {
 			method: "POST",
-			body: JSON.stringify({username: value.email, password: value.password}),
+			body: JSON.stringify({ username: value.email, password: value.password  }),
 			headers: {
 				'Content-Type': 'application/json',
 				'accept': 'application/json'

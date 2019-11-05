@@ -39,7 +39,7 @@ class NinjaOngoingExpired extends React.Component {
                                 {/* task.status == 'Completed' || task.status == 'completed' */}
                                 {/* Status: if expires show red, else show  */}
                                 {task.status == 'Completed' || task.status == 'completed' ? 
-                                    <Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#FF0000', margin: 7 }}>{task.status}</Text> 
+                                    <Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#C0C0C0', margin: 7 }}>{task.status}</Text> 
                                 : 
                                     <Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#90EE90', margin: 7 }}>{task.status}</Text>
                                 }
@@ -56,17 +56,6 @@ class NinjaOngoingExpired extends React.Component {
                                 </View>
                                 <Text />
 
-                                {/* Job Field */}
-                                <View style={{ flexDirection: "row" }}>
-                                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                                        Field:{" "}
-                                    </Text>
-                                    <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                                        {task.field}
-                                    </Text>
-                                </View>
-                                <Text />
-
                                 {/* Due Date */}
                                 <View style={{ flexDirection: "row" }}>
                                     <Text style={{ fontSize: 18, fontWeight: "bold" }}>
@@ -78,7 +67,7 @@ class NinjaOngoingExpired extends React.Component {
                                 </View>
                                 <Text />
 
-                                {/* Start Time */}
+                                {/* Time */}
                                 <View style={{ flexDirection: "row" }}>
                                     <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                                         Time: between {" "}
@@ -117,7 +106,7 @@ class NinjaOngoingExpired extends React.Component {
                                 </View>
                                 <Text />
 
-                                {/* Payment Method */}
+                                {/* Payment Method
                                 <View style={{ flexDirection: "row" }}>
                                     <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                                         Payment Method: {" "}
@@ -126,7 +115,7 @@ class NinjaOngoingExpired extends React.Component {
                                         {task.paymentMethod}
                                     </Text>
                                 </View>
-                                <Text/>
+                                <Text/> */}
                                 <Button
                                     style={{ width: 150, alignSelf: 'center', margin: 10 }}
                                     mode="contained"

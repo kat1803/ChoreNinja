@@ -104,12 +104,12 @@ class SignupScreen extends React.Component {
 						</Button>
 					</View>
 					<Text style={{ marginTop: 15, marginBottom: 15, textAlign: "center", fontSize: 18}}>OR</Text>
-					<Button 
+					{/* <Button 
 						mode="contained" 
 						style={{ width:250, alignSelf:"center", backgroundColor:"#176BEF"}}
 					> 
 						Login With Facebook
-					</Button>
+					</Button> */}
 					<Button 
 						mode="contained" 
 						style={{marginTop:10, width:250, alignSelf:"center", backgroundColor:"#FF3E30", marginBottom: 100}}
