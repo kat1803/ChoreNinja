@@ -2,7 +2,7 @@
 import firebaseService from '../Firebase/firebase'
 import React from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
-import { View, Text, Switch } from "react-native";
+import { View, ScrollView, Text, Switch } from "react-native";
 import { List, Button } from 'react-native-paper';
 import { connect } from "react-redux";
 
@@ -46,7 +46,7 @@ class Message extends React.Component {
 		  </View>)
 	  } else{
 		return (
-		  <View>
+			<ScrollView>
 			{
 				this.props.user.conversationId ?
 					this.props.user.conversationId.map((conID, idx) => {
@@ -69,7 +69,7 @@ class Message extends React.Component {
 						/>
 				  })
 			}
-		  </View>)
+		  </ScrollView>)
 	  }
   }
 }
