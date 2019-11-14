@@ -24,19 +24,18 @@ class MenuNavBar extends Component {
                 /> */}
                 <View style={{flexDirection: "row", margin: 10, borderBottomWidth: 2}}>
                   <View style={{marginRight: 5}}>
-                      <FAIcon name="info" size={40} color='#0091EA'/>
+                      <FAIcon name="info" size={30} color='#0091EA'/>
                   </View>
                   <View>
-                          <TouchableHighlight onPress={() => this.props.navigation.navigate('ABOUT')}>
-                          <Text style={{fontSize: 30}}>About</Text>
-                        </TouchableHighlight>
+                      <TouchableHighlight onPress={() => this.props.navigation.navigate('ABOUT')}>
+                        <Text style={{fontSize: 25}}> About</Text>
+                      </TouchableHighlight>
                   </View>
-                   
                 </View>
           
                 <TouchableHighlight onPress={this.handleSignOut}>
-                       <Text style={styles.button}> Sign out </Text>
-                   </TouchableHighlight>
+                       <Text style={styles.button}> Sign Out </Text>
+                </TouchableHighlight>
                
 
             </View>
