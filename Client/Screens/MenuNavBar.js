@@ -11,7 +11,6 @@ class MenuNavBar extends Component {
     }
 
     handleSignOut = () =>{
-        console.log("Signout hit")
         this.props.signout()
     }
     render(){

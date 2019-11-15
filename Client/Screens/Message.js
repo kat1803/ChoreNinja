@@ -9,8 +9,7 @@ import { connect } from "react-redux";
 class Message extends React.Component {
   state = {
 	messages: [],
-	conID : '',
-	conIDs: ['Conversation1', 'Conversation2']
+	conID : ''
   }
 
   changeConID = (conID) =>{
@@ -22,8 +21,13 @@ class Message extends React.Component {
 	});
 }
 
-  componentWillUnmount() {
+componentWillUnmount() {
 	firebaseService.refOff();
+}
+
+send = (message) =>{
+	firebaseService.send(message)
+	this.props.updateConversation(this.state.conID.id, this.state.conID.masterId, this.state.conID.ninjaId, message[0].text)
   }
 
   render() {
@@ -37,7 +41,7 @@ class Message extends React.Component {
 			</Button>
 			<GiftedChat
 			  messages={this.state.messages}
-			  onSend={firebaseService.send}
+			  onSend={this.send}
 			  user={{
 				  _id: this.props.user._id,
 				  name: `${this.props.user.first_name} ${this.props.user.last_name}`
@@ -53,21 +57,13 @@ class Message extends React.Component {
 						return <List.Item
 						  key={idx}
 						  onPress={() => this.changeConID(conID)}
-						  title={conID}
-						//   description={conID}
+						  title={conID.id}
+						  description={conID.info.lastMessage}
 						  left={props => <List.Icon {...props} icon="chat" />}
 						/>
 					  })
 				:
-					conIDs.map((conID, idx) => {
-						return <List.Item
-						  key={idx}
-						  onPress={() => this.changeConID(conID)}
-						  title={conID}
-						//   description={conID}
-						  left={props => <List.Icon {...props} icon="chat" />}
-						/>
-				  })
+					<Text>It is lonely here!!</Text>
 			}
 		  </ScrollView>)
 	  }
@@ -81,7 +77,13 @@ const mapStateToProps = state => {
   };
   
   const mapDispatchToProps = dispatch => {
-	return {};
+	return {	
+		updateConversation: (conversationId, masterId, ninjaId, lastMessage) =>
+			dispatch({
+			  type: "UPDATE_CONVERSATION",
+			  value: {conversationId, masterId, ninjaId, lastMessage}
+			}),
+	};
   };
   
   export default connect(
