@@ -89,51 +89,71 @@ class NinjaHomepage extends React.Component {
 						</View>
 						<Text />
 
-						{/* Due Date */}
+						{/* Date */}
 						<View style={{ flexDirection: "row" }}>
 						  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-							Date:{" "}
+							Date: {" "}
 						  </Text>
 						  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-							{post.due_date}
+								{new Date(post.due_date).toISOString().slice(8, 10)}-
+                    			{new Date(post.due_date).toISOString().slice(5, 7)}-
+                    			{new Date(post.due_date).toISOString().slice(0, 4)}
 						  </Text>
 						</View>
 						<Text />
 
 						{/* Time */}
 						<View style={{ flexDirection: "row" }}>
-						  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-							Time: between {" "}
-						  </Text>
-						  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-							{post.start_time}
-						  </Text>
-						  <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
-							and {" "}
-						  </Text>
-						  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-							{post.end_time}
-						  </Text>
+						  	<Text style={{ fontSize: 18, fontWeight: "bold" }}>
+								Time: btw {" "}
+						  	</Text>
+						  	<Text style={{ fontSize: 20, fontStyle: "italic" }}>
+								{post.start_time}
+						 	</Text>
+						  	<Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
+								{"&  "}
+						  	</Text>
+						  	<Text style={{ fontSize: 20, fontStyle: "italic" }}>
+								{new Date(post.due_date).toISOString().slice(11, 16)}
+						  	</Text>
 						</View>
-						<Text />
+						<Text/>
+
+						{/* Price */}
 						<View style={{ flexDirection: "row" }}>
 						  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-							Price:{" "}
+							Price: {" "}
 						  </Text>
 						  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
 							$ {post.price}
 						  </Text>
 						</View>
 						<Text />
+
+						{/* Zip Code */}
 						<View style={{ flexDirection: "row" }}>
 						  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-							Zip Code{" "}
+							Zip Code: {" "}
 						  </Text>
 						  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
 							{post.zipcode}
 						  </Text>
 						</View>
 						<Text />
+
+						{/* Posted Date */}
+						<View style={{ flexDirection: "row" }}>
+							<Text style={{ fontSize: 12, fontWeight: "bold" }}>
+								Posted On: {" "}
+							</Text>
+							<Text style={{ fontSize: 12, fontStyle: "italic" }}>
+								{new Date(post.post_date).toISOString().slice(8, 10)}-
+                    			{new Date(post.post_date).toISOString().slice(5, 7)}-
+                    			{new Date(post.post_date).toISOString().slice(0, 4)}
+							</Text>
+						</View>
+						<Text />
+
 						<View
 						  style={{
 							flexDirection: "row",

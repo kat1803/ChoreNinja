@@ -69,21 +69,25 @@ class NinjaOngoingExpired extends React.Component {
 										{job.description}
 									</Text>
 								</View>
+								<Text/>
 
-								{/* Due Date */}
+								{/* Date */}
 								<View style={{ flexDirection: "row" }}>
 									<Text style={{ fontSize: 18, fontWeight: "bold" }}>
-										Date:{" "}
+										Date: {" "}
 									</Text>
 									<Text style={{ fontSize: 20, fontStyle: "italic" }}>
-										{job.due_date}
+										{new Date(job.due_date).toISOString().slice(8, 10)}-
+                    					{new Date(job.due_date).toISOString().slice(5, 7)}-
+                    					{new Date(job.due_date).toISOString().slice(0, 4)}
 									</Text>
 								</View>
+								<Text />
 
 								{/* Time */}
 								<View style={{ flexDirection: "row" }}>
 									<Text style={{ fontSize: 18, fontWeight: "bold" }}>
-										Time: between {" "}
+										Time: btw {" "}
 									</Text>
 									<Text style={{ fontSize: 20, fontStyle: "italic" }}>
 										{job.start_time}
@@ -92,29 +96,32 @@ class NinjaOngoingExpired extends React.Component {
 										and {" "}
 									</Text>
 									<Text style={{ fontSize: 20, fontStyle: "italic" }}>
-										{job.end_date}
+										{new Date(job.due_date).toISOString().slice(11, 16)}
 									</Text>
 								</View>
+								<Text />
 
 								{/* Price of the Job */}
 								<View style={{ flexDirection: "row" }}>
 									<Text style={{ fontSize: 18, fontWeight: "bold" }}>
-										Price:{" "}
+										Price: {" "}
 									</Text>
 									<Text style={{ fontSize: 20, fontStyle: "italic" }}>
 										$ {job.price}
 									</Text>
 								</View>
+								<Text />
 
 								{/* Job Zipcode */}
 								<View style={{ flexDirection: "row" }}>
 									<Text style={{ fontSize: 18, fontWeight: "bold" }}>
-										Zip Code{" "}
+										Zip Code: {" "}
 									</Text>
 									<Text style={{ fontSize: 20, fontStyle: "italic" }}>
 										{job.zipcode}
 									</Text>
 								</View>
+								<Text />
 
 								{/* Payment Method
 								<View style={{ flexDirection: "row" }}>
