@@ -152,7 +152,7 @@ class HomeScreen extends React.Component {
                     label="Price"
                     placeholder="$"
                     onChangeText={price => this.setState({ price })}
-                    value={this.state.price}
+                    value={this.state.price.toISOString}
                   />
                   <TextInput
                     style={{ marginTop: 2 }}
