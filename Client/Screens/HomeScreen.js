@@ -128,12 +128,11 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Date"
+                    placeholder="MM-DD-YYYY"
                     onChangeText={date => this.setState({ date })}
                     value={this.state.date}
-
-                    placeholder="DD-MM-YYYY"
-
                   />
+
                   <TextInput
                     style={{ marginTop: 2 }}
                     mode="outlined"
@@ -290,8 +289,8 @@ class HomeScreen extends React.Component {
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {new Date(post.start_date).toISOString().slice(11, 16)}
                   </Text>
-                  <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
-                    {"&  "}
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    {" & "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {new Date(post.due_date).toISOString().slice(11, 16)}
@@ -343,6 +342,7 @@ class HomeScreen extends React.Component {
                   <Button
                     style={{ width: 100, margin: 7 }}
                     mode="outlined"
+                    color='#1B58B5'
                     onPress={() => this.handleEdit(idx)}
                   >
                     <Text>Edit</Text>

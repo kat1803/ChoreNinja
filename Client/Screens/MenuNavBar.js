@@ -23,7 +23,7 @@ class MenuNavBar extends Component {
                 /> */}
                 <View style={{flexDirection: "row", margin: 10, borderBottomWidth: 2}}>
                   <View style={{marginRight: 5}}>
-                      <FAIcon name="info" size={30} color='#0091EA'/>
+                <FAIcon name="info" size={30} color='#1B58B5'/>
                   </View>
                   <View>
                       <TouchableHighlight onPress={() => this.props.navigation.navigate('ABOUT')}>
@@ -32,7 +32,7 @@ class MenuNavBar extends Component {
                   </View>
                 </View>
           
-                <TouchableHighlight onPress={this.handleSignOut}>
+            <TouchableHighlight onPress={this.handleSignOut} color= '#03A9F4'>
                        <Text style={styles.button}> Sign Out </Text>
                 </TouchableHighlight>
                
@@ -44,7 +44,7 @@ class MenuNavBar extends Component {
 //styles
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#0277BD',
+    backgroundColor: '#1B58B5',
     width: 200,
     alignSelf:'center',
     borderColor: 'white',

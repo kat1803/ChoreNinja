@@ -90,10 +90,10 @@ class NinjaOngoingExpired extends React.Component {
 										Time: btw {" "}
 									</Text>
 									<Text style={{ fontSize: 20, fontStyle: "italic" }}>
-										{job.start_time}
+										{new Date(job.start_date).toISOString().slice(11, 16)}
 									</Text>
-									<Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
-										and {" "}
+									<Text style={{ fontSize: 18, fontWeight: "bold" }}>
+										{" & "}
 									</Text>
 									<Text style={{ fontSize: 20, fontStyle: "italic" }}>
 										{new Date(job.due_date).toISOString().slice(11, 16)}

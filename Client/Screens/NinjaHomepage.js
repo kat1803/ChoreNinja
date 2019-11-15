@@ -108,11 +108,9 @@ class NinjaHomepage extends React.Component {
 								Time: btw {" "}
 						  	</Text>
 						  	<Text style={{ fontSize: 20, fontStyle: "italic" }}>
-								{post.start_time}
+								{new Date(post.start_date).toISOString().slice(11, 16)}
 						 	</Text>
-						  	<Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
-								{"&  "}
-						  	</Text>
+						  	<Text style={{ fontSize: 18, fontWeight: "bold" }}>{" & "}</Text>
 						  	<Text style={{ fontSize: 20, fontStyle: "italic" }}>
 								{new Date(post.due_date).toISOString().slice(11, 16)}
 						  	</Text>
