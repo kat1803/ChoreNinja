@@ -190,6 +190,8 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
   },
 });
 
+
+
 const AppMainContainerCustomer = createAppContainer(AppMainNavigatorCustomer);
 const AppMainContainerNinja = createAppContainer(AppMainNavigatorNinja);
 
@@ -255,10 +257,10 @@ class MainMenu extends React.Component {
 					<SignupScreen signup={this.props.signup} signin={this.props.signin} googleSignin={this.props.googleSignin}/>
 			} 
 			{
-				this.props.auth.user ?
-					this.state.isNinja ? (<AppMainContainerCustomer />) : (<AppMainContainerNinja />)
+        this.props.auth.user ?	
+            this.state.isNinja ? (<AppMainContainerCustomer />) : this.props.auth.user.is_ninja ? (<AppMainContainerNinja />) : <NinjaJoinScreen />
 				:
-				null
+        null
 			}
 		</View> 
     );

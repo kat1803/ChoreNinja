@@ -254,8 +254,8 @@ class HomeScreen extends React.Component {
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {/* {new Date(post.due_date).toISOString().slice(0, 10).replace('T', " ")} */}
+                    {new Date(post.due_date).toISOString().slice(5, 7)}-
                     {new Date(post.due_date).toISOString().slice(8,10)}-
-                    {new Date(post.due_date).toISOString().slice(5,7)}- 
                     {new Date(post.due_date).toISOString().slice(0,4)}
                   </Text>
                 </View>
@@ -306,8 +306,8 @@ class HomeScreen extends React.Component {
                     Posted On: {" "}
                   </Text>
                   <Text style={{ fontSize: 12, fontStyle: "italic" }}>
-                    {new Date(post.post_date).toISOString().slice(8, 10)}-
                     {new Date(post.post_date).toISOString().slice(5, 7)}-
+                    {new Date(post.post_date).toISOString().slice(8, 10)}-
                     {new Date(post.post_date).toISOString().slice(0, 4)}
                   </Text>
                 </View>
