@@ -6,20 +6,20 @@ class Firebase {
         if (!firebase.apps.length) { //avoid re-initializing
             firebase.initializeApp(config);
         }
-        this.conversationID = ""
+        this.conversationID = {}
         this.user = {}
     }
 
     get ref() {
-        return firebase.database().ref('Messages/' + this.conversationID);
+        return firebase.database().ref('Messages/' + this.conversationID.id);
 	}
 
 	get refNotification() {
         return firebase.database().ref('Notifications/' + this.user._id);
 	}
 	
-	createConversation = ( jobId, masterId, ninjaId) =>{
-		let ref = firebase.database().ref(`Messages/${jobId}_${masterId}_${ninjaId}`);
+	createConversation = ( conID, ninjaId) =>{
+		let ref = firebase.database().ref(`Messages/${conID}`);
 		ref.push({
 			createdAt: this.current_time,
 			text: "Hi! I would like to take the job!",
@@ -83,10 +83,6 @@ class Firebase {
             this.ref.push(message);
         }
     };
-    // login = async (user, success_callback, failed_callback) => {
-    //     await firebase.auth()
-    //         .signInWithEmailAndPassword(user.email, user.password)
-    //         .then(success_callback, failed_callback);
-    // }
+
 }
 export default new Firebase();

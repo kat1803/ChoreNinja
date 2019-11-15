@@ -112,7 +112,7 @@ export function* updateProfile({ type, value }) {
 
 export function* getUser() {
 	let token = yield select((state) => state.auth.token)
-	var url = `https://choreninja.herokuapp.com/api/v1/user/getLoggedIn`;
+	var url = `https://choreninja.herokuapp.com/api/v1/auth/getLoggedIn`;
     const res = yield call(() => {
         return fetch(url, {
             method: "GET",
@@ -127,7 +127,7 @@ export function* getUser() {
     console.log(res)
     yield put({
         type: 'UPDATE_AUTH',
-        value: res.item
+        value: res.user
     })
 }
 
@@ -150,7 +150,37 @@ export function* addConversation({type, value}) {
 				})
 		})
 		// Get user again to update the message list
-		getUser()
+		yield put({
+			type: 'GET_USER'
+		})
+	}
+	catch (error) {
+		console.log(error);
+	}
+}
+
+export function* updateConversation({type, value}) {
+	let {conversationId, masterId, ninjaId} = value
+	let token = yield select((state) => state.auth.token)
+	try {
+		//make http call to add post
+		const posts = yield call(() => {
+			return fetch("https://choreninja.herokuapp.com/api/v1/user/conversation/update", {
+				method: "PUT",
+				body: JSON.stringify(value),
+				headers: new Headers({
+					'Authorization': `Bearer ${token}`, 
+					'Content-Type': 'application/json'
+				}), 
+			}).then(res => res.json())
+			.catch(err => {
+					console.log(err)
+				})
+		})
+		// Get user again to update the message list
+		yield put({
+			type: 'GET_USER'
+		})
 	}
 	catch (error) {
 		console.log(error);
@@ -166,4 +196,5 @@ export function* watchAuth (){
 	yield takeLatest("SIGN_OUT", signOut);
 	yield takeLatest("UPDATE_PROFILE", updateProfile);
 	yield takeLatest("ADD_CONVERSATION", addConversation);
+	yield takeLatest("UPDATE_CONVERSATION", updateConversation);
 }

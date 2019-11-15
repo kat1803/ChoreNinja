@@ -215,16 +215,9 @@ class MainMenu extends React.Component {
 			message: `Let's get some work done!!!`,
 			onClose: () => console.log("closeit")
 		  });
-		//   console.log("set hook")
-		//   console.log("this.nextProps.auth.user")
-		//   console.log(nextProps.auth.user)
 		firebaseService.setUser(nextProps.auth.user)
 		firebaseService.refNotificationOn(message => {
-			// console.log("show notification!!")
-			// console.log(message)
-			// this.setState(previousState =>({ messages: GiftedChat.append(previousState.messages, message) }))
 			this.props.showNotification({
-				// title: 'You pressed it!',
 				title: `Horay ${nextProps.auth.user.first_name}!`,
 				message: `${message.text}`,
 				onClose: () => console.log("closeit")
@@ -239,7 +232,6 @@ class MainMenu extends React.Component {
   }
 
   render() {
-    // console.log(this.props.user)
     return (
 		// dont fuck with this line
 		<View style={{ flex: 1 }}>
