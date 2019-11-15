@@ -140,24 +140,30 @@ class NinjaBio extends React.Component {
                                         <Text style={{ fontSize: 20, fontStyle: 'italic' }}>{this.state.description}</Text>
                                         <Text></Text>
 
-                                        {/* Ratings */}
-                                        <View style={{ flexDirection: 'row' }}>
-                                            <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Rating: </Text>
-                                            <Text style={{ fontSize: 18 }}>98% positive</Text>
-                                        </View>
-                                        <Text></Text>
+										{
+											this.props.user.is_ninja && 
+											<View>
+												{/* Ratings */}
+												<View style={{ flexDirection: 'row' }}>
+													<Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Rating: </Text>
+													<Text style={{ fontSize: 18 }}>98% positive</Text>
+												</View>
+												<Text></Text>
+		
+												{/* Job Completed */}
+												<View style={{ flexDirection: 'row' }}>
+													<Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Job Completed: </Text>
+													<Text style={{ fontSize: 18 }}>20</Text>
+												</View>
+												<Text></Text>
 
-                                        {/* Job Completed */}
-                                        <View style={{ flexDirection: 'row' }}>
-                                            <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Job Completed: </Text>
-                                            <Text style={{ fontSize: 18 }}>20</Text>
-                                        </View>
-                                        <Text></Text>
+												{/* Skills */}
+												<Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Skills: </Text>
+												<Text style={{ fontSize: 18 }}>{this.state.skills}</Text>
+												<Text></Text>
+											</View>
+										}
 
-                                        {/* Skills */}
-                                        <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Skills: </Text>
-                                        <Text style={{ fontSize: 18 }}>{this.state.skills}</Text>
-                                        <Text></Text>
 
                                         {/* Contact Information */}
                                         <Text style={{ fontWeight: "bold", fontStyle: 'italic', fontSize: 18 }}>Contact Info: </Text>
