@@ -61,7 +61,7 @@ class HomeScreen extends React.Component {
     var post = posts[idx];
     this.setState({
       name: post.name,
-      price: post.price.toString(),
+      price: post.price,
       description: post.description,
     //   date: post.date,
 	  showForm: true,
@@ -100,6 +100,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Job Title"
+                    placeholder="Title of the Job"
                     onChangeText={name => this.setState({ name })}
                     value={this.state.name}
                   />
@@ -109,6 +110,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Job Description"
+                    placeholder="Description of the job"
                     onChangeText={description => this.setState({ description })}
                     value={this.state.description}
                   />
@@ -120,6 +122,7 @@ class HomeScreen extends React.Component {
                     label="Date"
                     onChangeText={date => this.setState({ date })}
                     value={this.state.date}
+                    placeholder="DD-MM-YYYY"
                   />
                   <TextInput
                     style={{ marginTop: 2 }}
@@ -127,6 +130,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Start Time"
+                    placeholder="HH:MM"
                     onChangeText={start_time => this.setState({ start_time })}
                     value={this.state.start_time}
                   />
@@ -137,6 +141,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="End Time"
+                    placeholder="HH:MM"
                     onChangeText={end_time => this.setState({ end_time })}
                     value={this.state.end_time}
                   />
@@ -146,8 +151,9 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Price"
+                    placeholder="$"
                     onChangeText={price => this.setState({ price })}
-                    value={this.state.price}
+                    value={this.state.price.toISOString}
                   />
                   <TextInput
                     style={{ marginTop: 2 }}
@@ -155,6 +161,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Zipcode"
+                    placeholder="Zipcode"
                     onChangeText={zipcode => this.setState({ zipcode })}
                     value={this.state.zipcode}
                   />
@@ -248,8 +255,8 @@ class HomeScreen extends React.Component {
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {/* {new Date(post.due_date).toISOString().slice(0, 10).replace('T', " ")} */}
+                    {new Date(post.due_date).toISOString().slice(5, 7)}-
                     {new Date(post.due_date).toISOString().slice(8,10)}-
-                    {new Date(post.due_date).toISOString().slice(5,7)}- 
                     {new Date(post.due_date).toISOString().slice(0,4)}
                   </Text>
                 </View>
@@ -300,8 +307,8 @@ class HomeScreen extends React.Component {
                     Posted On: {" "}
                   </Text>
                   <Text style={{ fontSize: 12, fontStyle: "italic" }}>
-                    {new Date(post.post_date).toISOString().slice(8, 10)}-
                     {new Date(post.post_date).toISOString().slice(5, 7)}-
+                    {new Date(post.post_date).toISOString().slice(8, 10)}-
                     {new Date(post.post_date).toISOString().slice(0, 4)}
                   </Text>
                 </View>
