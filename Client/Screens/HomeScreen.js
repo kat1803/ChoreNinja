@@ -12,7 +12,7 @@ class HomeScreen extends React.Component {
     this.state = {
       name: '',
       description: '',
-      due_date: '',
+      date: '',
       start_time: '',
       end_time: '',
       price: '',
@@ -20,7 +20,7 @@ class HomeScreen extends React.Component {
       paymentMethod: '',
       posts: [],
       showForm: false,
-      editPostId: false
+	  editPostId: false,
     };
   }
 
@@ -29,11 +29,12 @@ class HomeScreen extends React.Component {
       name: this.state.name,
       price: this.state.price,
       description: this.state.description,
-      start_time: this.state.start_time,
-      end_time: this.state.end_time,
+      start_date: `${this.state.date} ${this.state.start_time}`,
+      due_date: `${this.state.date} ${this.state.end_time}`,
       zipcode: this.state.zipcode,
 	};
-	this.state.due_date != "" ? newpost.due_date = this.state.due_date : null
+	this.state.date != "" ? newpost.date = this.state.date : null
+	console.log("newpost", newpost)
     if (this.state.editPostId) {
 		this.props.reduxEditPost(newpost, this.state.editPostId )
     } else {
@@ -49,7 +50,7 @@ class HomeScreen extends React.Component {
       name: "",
       price: "",
       description: "",
-      due_date: "",
+      date: "",
       showForm: false,
       editPostId: false
     });
@@ -62,7 +63,7 @@ class HomeScreen extends React.Component {
       name: post.name,
       price: post.price,
       description: post.description,
-      due_date: post.due_date,
+    //   date: post.date,
 	  showForm: true,
 	  editPostId: post._id,
 	});
@@ -119,9 +120,8 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Date"
-                    placeholder="DD-MM-YYYY"
-                    onChangeText={due_date => this.setState({ due_date })}
-                    value={this.state.due_date}
+                    onChangeText={date => this.setState({ date })}
+                    value={this.state.date}
                   />
                   <TextInput
                     style={{ marginTop: 2 }}
@@ -181,7 +181,7 @@ class HomeScreen extends React.Component {
                     onPress={() =>
                       this.setState({ checked: !this.state.checked })
                     }
-                  /> */}
+				  /> */}
                 </View>
 
                 <View style={{ flexDirection: 'row', alignSelf: 'center'}}>
@@ -267,7 +267,7 @@ class HomeScreen extends React.Component {
                     Time: btw {" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
-                    {post.start_time}
+                    {new Date(post.start_date).toISOString().slice(11, 16)}
                   </Text>
                   <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
                     {"&  "}
