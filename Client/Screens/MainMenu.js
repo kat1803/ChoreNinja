@@ -46,18 +46,6 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       )
     })
   },
-  Profile: {
-    screen: NinjaBio,
-    navigationOptions: () => ({
-      tabBarIcon: () => (
-        <FAIcon
-          name = "user"
-          size = {30}
-          color='#01579B'
-        />
-      )
-    })
-  },
   // 'MessageList': MessageList,
   "Message": {
     screen: Message,
@@ -86,18 +74,30 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       ),
     })
   }, 
-  NinjaJoin: {
-    screen: NinjaJoinScreen,
+  Profile: {
+    screen: NinjaBio,
     navigationOptions: () => ({
       tabBarIcon: () => (
-        <MCIIcon
-          name="ninja"
+        <FAIcon
+          name="user"
           size={30}
-          color='#0277BD'
+          color='#01579B'
         />
       )
     })
-  }, 
+  },
+  // NinjaJoin: {
+  //   screen: NinjaJoinScreen,
+  //   navigationOptions: () => ({
+  //     tabBarIcon: () => (
+  //       <MCIIcon
+  //         name="ninja"
+  //         size={30}
+  //         color='#0277BD'
+  //       />
+  //     )
+  //   })
+  // }, 
   "Menu": {
     screen: MenuNavBar,
     navigationOptions: () => ({
