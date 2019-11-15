@@ -239,27 +239,42 @@ class HomeScreen extends React.Component {
                   </Text>
                 </View>
                 <Text />
-
-                {/* Due Date */}
+                
+                {/* Date */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    {`Post date: ${new Date(post.post_date).toISOString().slice(0,19).replace('T', " ")}`}
+                    Date: {" "}
                   </Text>
-                </View>
-                <Text />
-
-                {/* Start Time */}
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    {`Due date: ${new Date(post.due_date).toISOString().slice(0,19).replace('T', " ")}`}
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {/* {new Date(post.due_date).toISOString().slice(0, 10).replace('T', " ")} */}
+                    {new Date(post.due_date).toISOString().slice(8,10)}-
+                    {new Date(post.due_date).toISOString().slice(5,7)}- 
+                    {new Date(post.due_date).toISOString().slice(0,4)}
                   </Text>
                 </View>
                 <Text/>
 
+                {/* Time */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                    Time: btw {" "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {post.start_time}
+                  </Text>
+                  <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: "bold" }}>
+                    {"&  "}
+                  </Text>
+                  <Text style={{ fontSize: 20, fontStyle: "italic" }}>
+                    {new Date(post.due_date).toISOString().slice(11, 16)}
+                  </Text>
+                </View>
+                <Text />
+
                 {/* Price of the Job */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    Price:{" "}
+                    Price: {" "}
                   </Text>
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     $ {post.price}
@@ -277,6 +292,19 @@ class HomeScreen extends React.Component {
                   </Text>
                 </View>
                 <Text />
+
+                {/* Posted Date */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ fontSize: 12, fontWeight: "bold" }}>
+                    Posted On: {" "}
+                  </Text>
+                  <Text style={{ fontSize: 12, fontStyle: "italic" }}>
+                    {new Date(post.post_date).toISOString().slice(8, 10)}-
+                    {new Date(post.post_date).toISOString().slice(5, 7)}-
+                    {new Date(post.post_date).toISOString().slice(0, 4)}
+                  </Text>
+                </View>
+                <Text/>
 
                 <View
                   style={{
