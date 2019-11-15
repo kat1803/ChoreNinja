@@ -32,15 +32,13 @@ class NinjaHomepage extends React.Component {
 			username: this.props.user.username
 		},
 	};
-	console.log(post)
-	console.log(post.master)
-	console.log(post.master.id)
+	let conID = `${post.name} - ${this.props.user.first_name}`
 	
 	// Init the conversation between the ninja and the master
-	firebaseService.createConversation(post._id, post.master.id, this.props.user._id)
+	firebaseService.createConversation(conID, this.props.user._id)
 	firebaseService.createNotification(post, post.master.id, this.props.user._id)
 	
-	this.props.addConversation(`${post._id}_${post.master.id}_${this.props.user._id}`, post.master.id, this.props.user._id)
+	this.props.addConversation(conID, post.master.id, this.props.user._id, "Hi! I would like to take the job!")
 	this.props.reduxEditPost(edittedPost, post._id)
 	// this.props.navigation.navigate("Message")
   }
@@ -176,10 +174,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-	addConversation: (conversationId, masterId, ninjaId) =>
+	addConversation: (conversationId, masterId, ninjaId, lastMessage) =>
 		dispatch({
 		  type: "ADD_CONVERSATION",
-		  value: {conversationId, masterId, ninjaId}
+		  value: {conversationId, masterId, ninjaId, lastMessage}
 		}),
 	reduxFetchAllPost: () =>
 	  dispatch({
