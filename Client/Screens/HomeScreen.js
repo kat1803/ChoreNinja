@@ -216,16 +216,16 @@ class HomeScreen extends React.Component {
                     }}
                     mode="contained"
                     onPress={() => this.setState({
-						name: "",
-						price: "",
-						description: "",
-						date: "",
-						start_time: "",
-						end_time: "",
-						zipcode: "",
-						showForm: false,
-						editPostId: false
-					  })}
+						          name: "",
+						          price: "",
+						          description: "",
+						          date: "",
+						          start_time: "",
+						          end_time: "",
+						          zipcode: "",
+						          showForm: false,
+						          editPostId: false
+					          })}
                   >
                     Cancel
                   </Button>

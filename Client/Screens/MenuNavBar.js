@@ -16,27 +16,20 @@ class MenuNavBar extends Component {
     render(){
         return(
             <View >
-               {/* <Image
-				      	style={{ marginTop: 50, marginBottom: 20, width: 263, height: 150, alignSelf:"center"}}
-				        	// style={{justifyContent: 'center', width: 263, height: 150}}  
-				        	source={require('../assets/mainlogo.png')}
-                /> */}
-                <View style={{flexDirection: "row", margin: 10, borderBottomWidth: 2}}>
-                  <View style={{marginRight: 5}}>
-                <FAIcon name="info" size={30} color='#1B58B5'/>
-                  </View>
-                  <View>
-                      <TouchableHighlight onPress={() => this.props.navigation.navigate('ABOUT')}>
-                        <Text style={{fontSize: 25}}> About</Text>
-                      </TouchableHighlight>
-                  </View>
+              <View style={{flexDirection: "row", margin: 10, borderBottomWidth: 2}}>
+                <View style={{marginRight: 5}}>
+                  <FAIcon name="info" size={30} color='#1B58B5'/>
                 </View>
+                <View>
+                  <TouchableHighlight onPress={() => this.props.navigation.navigate('ABOUT')}>
+                    <Text style={{fontSize: 25}}> About</Text>
+                  </TouchableHighlight>
+                </View>
+              </View>
           
-            <TouchableHighlight onPress={this.handleSignOut} color= '#03A9F4'>
-                       <Text style={styles.button}> Sign Out </Text>
-                </TouchableHighlight>
-               
-
+              <TouchableHighlight onPress={this.handleSignOut} color= '#03A9F4'>
+                <Text style={styles.button}> Sign Out </Text>
+              </TouchableHighlight>
             </View>
         )
     }

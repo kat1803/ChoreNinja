@@ -59,18 +59,6 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       showLabel: false
     }
   },
-  "Notification": {
-    screen: Notification,
-    navigationOptions: () => ({
-      tabBarIcon: () => (
-        <FAIcon
-          name="bell"
-          size={30}
-          color='#1B58B5'
-        />
-      ),
-    })
-  },
   Profile: {
     screen: NinjaBio,
     navigationOptions: () => ({
@@ -81,6 +69,18 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
           color='#1B58B5'
         />
       )
+    })
+  },
+  "Notification": {
+    screen: Notification,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="bell"
+          size={30}
+          color='#1B58B5'
+        />
+      ),
     })
   },
   "Menu": {
@@ -95,6 +95,8 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       )
     })
   },
+},{
+  tabBarOptions: { showLabel: false }
 });
 
 // Ninja Navigation
@@ -123,18 +125,6 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       )
     })
   },
-  'BIO': {
-    screen: NinjaBio,
-    navigationOptions: () => ({
-      tabBarIcon: () => (
-        <FAIcon
-          name="user"
-          size={30}
-          color='#1B58B5'
-        />
-      )
-    })
-  },
   "Message": {
     screen: Message,
     navigationOptions: () => ({
@@ -142,6 +132,18 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
         <FAIcon
           name="envelope"
 
+          size={30}
+          color='#1B58B5'
+        />
+      )
+    })
+  },
+  'BIO': {
+    screen: NinjaBio,
+    navigationOptions: () => ({
+      tabBarIcon: () => (
+        <FAIcon
+          name="user"
           size={30}
           color='#1B58B5'
         />
@@ -160,6 +162,8 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       )
     })
   },
+}, {
+  tabBarOptions: { showLabel: false }
 });
 
 
@@ -216,7 +220,7 @@ class MainMenu extends React.Component {
                 textColor={'#01579D'} //'#7a44cf'
                 selectedColor={'#FFFFFF'}
                 buttonColor={'#1B58B5'}
-                borderColor={'#01579B'}
+                borderColor={'#FFFFFF'}
                 hasPadding
                 options={[
                   { label: "Master", value: true },
