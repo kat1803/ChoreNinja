@@ -51,6 +51,9 @@ class HomeScreen extends React.Component {
       price: "",
       description: "",
       date: "",
+      start_time: "",
+	  end_time: "",
+	  zipcode: "",
       showForm: false,
       editPostId: false
     });
@@ -63,6 +66,11 @@ class HomeScreen extends React.Component {
       name: post.name,
       price: post.price,
       description: post.description,
+      date: new Date(post.start_date).toISOString().slice(0, 10),
+      start_time: new Date(post.start_date).toISOString().slice(11, 16),
+      end_time: new Date(post.due_date).toISOString().slice(11, 16),
+      price: post.price.toString(),
+      zipcode: post.zipcode,
     //   date: post.date,
 	  showForm: true,
 	  editPostId: post._id,
@@ -152,7 +160,7 @@ class HomeScreen extends React.Component {
                     label="Price"
                     placeholder="$"
                     onChangeText={price => this.setState({ price })}
-                    value={this.state.price.toISOString}
+                    value={this.state.price}
                   />
                   <TextInput
                     style={{ marginTop: 2 }}
@@ -205,7 +213,17 @@ class HomeScreen extends React.Component {
                       margin: 10
                     }}
                     mode="contained"
-                    onPress={() => this.setState({ showForm: false, editPost: false })}
+                    onPress={() => this.setState({
+						name: "",
+						price: "",
+						description: "",
+						date: "",
+						start_time: "",
+						end_time: "",
+						zipcode: "",
+						showForm: false,
+						editPostId: false
+					  })}
                   >
                     Cancel
                   </Button>
