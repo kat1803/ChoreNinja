@@ -60,7 +60,7 @@ class HomeScreen extends React.Component {
     var post = posts[idx];
     this.setState({
       name: post.name,
-      price: post.price.toString(),
+      price: post.price,
       description: post.description,
       due_date: post.due_date,
 	  showForm: true,
