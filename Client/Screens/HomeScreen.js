@@ -122,7 +122,9 @@ class HomeScreen extends React.Component {
                     label="Date"
                     onChangeText={date => this.setState({ date })}
                     value={this.state.date}
+
                     placeholder="DD-MM-YYYY"
+
                   />
                   <TextInput
                     style={{ marginTop: 2 }}
