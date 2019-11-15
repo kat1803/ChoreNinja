@@ -11,14 +11,12 @@ import SignupScreen from "./SignupScreen";
 import Notification from "./Notification";
 import Message from "./Message";
 import MessageList from "./MessageList";
-import ProfileScreen from "./ProfileScreen";
 import AboutScreen from "./AboutScreen";
 import NinjaBio from "./NinjaBio";
 import NinjaOngoingExpired from "./NinjaOngoingExpired";
 import NinjaHome from "./NinjaHomepage";
 import NinjaJoinScreen from "./NinjaJoinScreen";
 import Rating from "./Rating";
-import NinjaEditBio from "./NinjaEditBio";
 import MenuNavBar from "./MenuNavBar";
 //importing icon
 import FAIcon from 'react-native-vector-icons/FontAwesome';
@@ -233,7 +231,6 @@ class MainMenu extends React.Component {
 
   render() {
     return (
-		// dont fuck with this line
 		<View style={{ flex: 1 }}>
 			{
 				this.props.auth.user ?

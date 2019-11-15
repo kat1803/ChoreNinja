@@ -99,6 +99,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Job Title"
+                    placeholder="Title of the Job"
                     onChangeText={name => this.setState({ name })}
                     value={this.state.name}
                   />
@@ -108,6 +109,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Job Description"
+                    placeholder="Description of the job"
                     onChangeText={description => this.setState({ description })}
                     value={this.state.description}
                   />
@@ -117,6 +119,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Date"
+                    placeholder="DD-MM-YYYY"
                     onChangeText={due_date => this.setState({ due_date })}
                     value={this.state.due_date}
                   />
@@ -126,6 +129,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Start Time"
+                    placeholder="HH:MM"
                     onChangeText={start_time => this.setState({ start_time })}
                     value={this.state.start_time}
                   />
@@ -136,6 +140,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="End Time"
+                    placeholder="HH:MM"
                     onChangeText={end_time => this.setState({ end_time })}
                     value={this.state.end_time}
                   />
@@ -145,6 +150,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Price"
+                    placeholder="$"
                     onChangeText={price => this.setState({ price })}
                     value={this.state.price}
                   />
@@ -154,6 +160,7 @@ class HomeScreen extends React.Component {
                     underlineColorAndroid="transparent"
                     numberOfLines={1}
                     label="Zipcode"
+                    placeholder="Zipcode"
                     onChangeText={zipcode => this.setState({ zipcode })}
                     value={this.state.zipcode}
                   />
