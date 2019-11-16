@@ -66,6 +66,11 @@ class Firebase {
             .limitToLast(20)
             .on('child_added', snapshot => callback(snapshot.val()));
     }
+    refNotificationOnValue = callback => {
+        this.refNotification
+            .limitToLast(20)
+            .once('value', snapshot => callback(this.parseAll(snapshot.val())));
+    }
     refNotificationOff() {
         this.refNotification.off();
     }
@@ -75,7 +80,15 @@ class Firebase {
         const timestamp = new Date(numberStamp);
         const message = { _id, timestamp, text, user };
         return message;
-    };
+	};
+	
+	parseAll = snapshot => {
+		let res = []
+		if (snapshot){
+			res = Object.entries(snapshot).map(e => Object.assign(e[1], { key: e[0] }));
+		}
+		return res
+	}
     send = messages => {
         for (let i = 0; i < messages.length; i++) {
             const { text, user } = messages[i];

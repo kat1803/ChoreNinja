@@ -210,17 +210,22 @@ class MainMenu extends React.Component {
 
   componentWillReceiveProps(nextProps){
 	  if (this.props.auth.user._id != nextProps.auth.user._id){
-		this.props.showNotification({
-			title: `Wellcome ${nextProps.auth.user.first_name}!`,
-			message: `Let's get some work done!!!`,
-			onClose: () => console.log("closeit")
-		  });
+		  if (nextProps.auth.user.first_name){
+			  this.props.showNotification({
+				  title: `Wellcome ${nextProps.auth.user.first_name}!`,
+				  message: `Let's get some work done!!!`,
+				});
+			} else{
+			  this.props.showNotification({
+				  title: `Goodbye ${this.props.auth.user.first_name ? this.props.auth.user.first_name : ""}!`,
+				  message: `Have a great day!`,
+				});
+		  }
 		firebaseService.setUser(nextProps.auth.user)
 		firebaseService.refNotificationOn(message => {
 			this.props.showNotification({
-				title: `Horay ${nextProps.auth.user.first_name}!`,
+				title: `Hello ${nextProps.auth.user.first_name}!`,
 				message: `${message.text}`,
-				onClose: () => console.log("closeit")
 			  });
 		});
 	  }
