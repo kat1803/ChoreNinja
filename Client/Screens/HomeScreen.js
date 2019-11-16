@@ -258,6 +258,21 @@ class HomeScreen extends React.Component {
               >
                 {/* Job Description */}
                 <View style={{ marginRight: 10}}>
+	  				{
+						post.end_date ?
+						<Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#C0C0C0', margin: 7 }}>Completed</Text> 
+						: null
+					}
+					{
+						(post.ninja && !post.end_date) ?
+						<Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#90EE90', margin: 7 }}>Ongoing</Text>
+						: null
+					}
+					{
+						(!post.ninja && !post.end_date) ?
+						<Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#90EE90', margin: 7 }}>New</Text>
+						: null
+					}
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                     Description:{" "}
                   </Text>
