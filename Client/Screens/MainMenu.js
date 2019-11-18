@@ -83,12 +83,24 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       ),
     })
   },
-  "Menu": {
-    screen: MenuNavBar,
+  // "Menu": {
+  //   screen: MenuNavBar,
+  //   navigationOptions: () => ({
+  //     tabBarIcon: () => (
+  //       <FAIcon
+  //         name="bars"
+  //         size={30}
+  //         color='#1B58B5'
+  //       />
+  //     )
+  //   })
+  // },
+  "About": {
+    screen: AboutScreen,
     navigationOptions: () => ({
       tabBarIcon: () => (
         <FAIcon
-          name="bars"
+          name="info"
           size={30}
           color='#1B58B5'
         />
@@ -150,12 +162,24 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       )
     })
   },
-  "Menu": {
-    screen: MenuNavBar,
+  // "Menu": {
+  //   screen: MenuNavBar,
+  //   navigationOptions: () => ({
+  //     tabBarIcon: () => (
+  //       <FAIcon
+  //         name="bars"
+  //         size={30}
+  //         color='#1B58B5'
+  //       />
+  //     )
+  //   })
+  // },
+  "About": {
+    screen: AboutScreen,
     navigationOptions: () => ({
       tabBarIcon: () => (
         <FAIcon
-          name="bars"
+          name="info"
           size={30}
           color='#1B58B5'
         />

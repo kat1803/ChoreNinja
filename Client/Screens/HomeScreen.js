@@ -193,7 +193,6 @@ class HomeScreen extends React.Component {
                     }
 				  /> */}
                 </View>
-
                 <View style={{ flexDirection: 'row', alignSelf: 'center'}}>
                   <Button
                     style={{
