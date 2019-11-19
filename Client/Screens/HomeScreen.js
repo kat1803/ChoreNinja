@@ -311,7 +311,7 @@ class HomeScreen extends React.Component {
                 style={{
                   width: 325,
                   alignSelf: "center",
-                  backgroundColor: "#03A9F4",
+                  backgroundColor: "#1B58B5",
                   margin: 5
                 }}
                 mode="contained"

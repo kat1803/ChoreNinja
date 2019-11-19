@@ -68,7 +68,7 @@ class NinjaHomepage extends React.Component {
 					  onChangeText={firstQuery => {
 						this.setState({ firstQuery });
 					  }}
-					  onSubmitEditing={()=>this.props.searchPost(firstQuery)}
+					  onSubmitEditing={()=> firstQuery != "" ? this.props.searchPost(firstQuery) : this.props.reduxFetchAllPost()}
 					  value={firstQuery}
 					/>
 				  </View>
