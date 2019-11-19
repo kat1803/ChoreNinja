@@ -45,21 +45,21 @@ class SignupScreen extends React.Component {
 					// style={{justifyContent: 'center', width: 263, height: 150}}  
 					source={require('../assets/mainlogo.png')}
                 />
-			  	<Title style={{ textAlign: "center"}}>{signin ? "Sign In" : "Sign Up"}</Title>
+			  	{/* <Title style={{ textAlign: "center"}}>{signin ? "Sign In" : "Sign Up"}</Title> */}
 				<View>
 					<TextInput
-						style={{marginLeft:5, marginRight:5, marginTop:2}}
-						mode="outlined"
-						underlineColorAndroid="transparent"
+						style={{backgroundColor: "white", marginLeft:5, marginRight:5, marginTop:2}}
+						mode="flat"
+						// underlineColorAndroid="transparent"
 						numberOfLines={1}
 						label="Email"
 						onChangeText={email => this.setState({ email })}
 						value={this.state.email}
 					/>
 					<TextInput
-						style={{ marginLeft: 5, marginRight: 5, marginTop: 2 }}
-						mode="outlined"
-						underlineColorAndroid="transparent"
+						style={{backgroundColor: "white",  marginLeft: 5, marginRight: 5, marginTop: 2 }}
+						mode="flat"
+						// underlineColorAndroid="transparent"
 						numberOfLines={1}
 						label="Password"
 						secureTextEntry={true}
@@ -69,9 +69,9 @@ class SignupScreen extends React.Component {
 					{
 						!signin &&
 						<TextInput
-							style={{ marginLeft: 5, marginRight: 5, marginTop: 2 }}
-							mode="outlined"
-							underlineColorAndroid="transparent"
+							style={{backgroundColor: "white",  marginLeft: 5, marginRight: 5, marginTop: 2 }}
+							mode="flat"
+							// underlineColorAndroid="transparent"
 							numberOfLines={1}
 							label="First Name"
 							onChangeText={firstname => this.setState({ firstname })}
@@ -81,9 +81,9 @@ class SignupScreen extends React.Component {
 					{
 						!signin &&
 						<TextInput
-							style={{ marginLeft: 5, marginRight: 5, marginTop: 2 }}
-							mode="outlined"
-							underlineColorAndroid="transparent"
+							style={{backgroundColor: "white",  marginLeft: 5, marginRight: 5, marginTop: 2 }}
+							mode="flat"
+							// underlineColorAndroid="transparent"
 							numberOfLines={1}
 							label="Last Name"
 							onChangeText={lastname => this.setState({ lastname })}
@@ -95,7 +95,7 @@ class SignupScreen extends React.Component {
 							onPress={this.handleSubmit}
 							mode="outlined"
 							// style={{ marginTop: 15, alignSelf: "center", width: 250 }}
-							style={{ marginLeft: 2, marginRight: 10, marginTop: 15, width: 160, backgroundColor: "#00B0FF"}}
+							style={{ marginLeft: 2, marginRight: 10, marginTop: 15, width: 160}}
 						>
 							{signin ? "Sign In" : "Sign Up"}
 						</Button>
@@ -103,7 +103,7 @@ class SignupScreen extends React.Component {
 							onPress={() => this.setState({ signin: !signin })}
 							mode="outlined" 
 							//style={{ marginTop: 25, alignSelf: "center", width: 250 }}
-							style={{ marginRight: 2, marginLeft: 3, marginTop: 15, width: 175, backgroundColor: "#00B0FF"}}
+							style={{ marginRight: 2, marginLeft: 3, marginTop: 15, width: 175}}
 						>
 							{signin ? "Create Account" : "Sign In"}
 						</Button>
