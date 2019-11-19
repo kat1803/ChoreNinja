@@ -65,9 +65,10 @@ class NinjaHomepage extends React.Component {
 					<Searchbar
 					  placeholder="Search"
 					  style={{ width: 300, flex: 1 }}
-					  onChangeText={query => {
-						this.setState({ firstQuery: query });
+					  onChangeText={firstQuery => {
+						this.setState({ firstQuery });
 					  }}
+					  onSubmitEditing={()=>this.props.searchPost(firstQuery)}
 					  value={firstQuery}
 					/>
 				  </View>
@@ -205,6 +206,11 @@ const mapDispatchToProps = dispatch => {
 	  dispatch({
 		type: "EDIT_POST",
 		value: {post, id}
+	  }),
+	searchPost: (name) =>
+	  dispatch({
+		type: "SEARCH_POST",
+		value: {name}
 	  })
   };
 };

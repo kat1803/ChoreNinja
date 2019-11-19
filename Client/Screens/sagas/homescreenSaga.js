@@ -189,6 +189,37 @@ function* fetchMyJob() {
 	}
 }
 
+function* searchPost({type, value}) {
+	let {name} = value
+	try {
+		//make http call to add post
+		let token = yield select((state) => state.auth.token)
+		const posts = yield call(()=>{
+			return fetch(
+				`https://choreninja.herokuapp.com/api/v1/job?name=${name}`,
+				{
+					method: "GET",
+					headers: new Headers({
+						'Authorization': `Bearer ${token}`, 
+						'Content-Type': 'application/x-www-form-urlencoded'
+					  }), 
+				})
+				.then(res => res.json())
+				.catch(err => {
+					console.log(err)
+				})
+		})
+		console.log("posts", posts)
+		yield put({
+			type: 'RECIEVE_ALL_POST',
+			value: posts
+		})
+
+	}
+	catch (error){
+		console.log(error);
+	}
+}
 
 export function* watchPost (){
 	//Take Latest action
@@ -197,5 +228,6 @@ export function* watchPost (){
 	yield takeLatest("EDIT_POST", editPost);
 	yield takeLatest("FETCH_MY_POST", fetchMyPost);
 	yield takeLatest("FETCH_ALL_POST", fetchAllPost);
+	yield takeLatest("SEARCH_POST", searchPost);
 	yield takeLatest("FETCH_MY_JOB", fetchMyJob);
 }
