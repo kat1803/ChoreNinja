@@ -41,25 +41,28 @@ class NinjaOngoingExpired extends React.Component {
 		return (
 			<ScrollView>
 				<View style={{ flex: 1 }}>
-					<Text style={{ alignSelf: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold' }}>
-						{/* <Image style={{ width:45, height:45, margin:5}} source={require("../assets/tasks.png")}/> My tasks:  */}
-						MY TASKS
-					</Text>
-					{
-						this.props.myJobs &&
-						this.props.myJobs.map((job, idx) => {
-						return (
+					<View>
+						<Text style={{ alignSelf: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold' }}>
+							{/* <Image style={{ width:45, height:45, margin:5}} source={require("../assets/tasks.png")}/> My tasks:  */}
+							MY TASKS
+						</Text>
+					</View>
+					{	this.props.myJobs &&
+						this.props.myJobs.map((job, idx) => (
 							<Card
 								key={idx}
 								title={job.name}
 								image={require('../assets/examplejob.png')}
 							>
-								{
-									job.end_date ? 
-									<Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#C0C0C0', margin: 7 }}>Completed</Text> 
-								: 
-									<Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#90EE90', margin: 7 }}>Ongoing</Text>
-								}
+								<View>
+									{
+										job.end_date ?
+											<Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#C0C0C0', margin: 7 }}>Completed</Text>
+											:
+											<Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#90EE90', margin: 7 }}>Ongoing</Text>
+									}
+								</View>
+								
 								{/* Job Description */}
 								<View >
 									<Text style={{ fontSize: 18, fontWeight: "bold" }}>
@@ -133,8 +136,9 @@ class NinjaOngoingExpired extends React.Component {
 									</Text>
 								</View>
 								<Text/> */}
-								{
-									!job.end_date &&
+								<View>
+									{
+										!job.end_date &&
 										<Button
 											style={{ width: 150, alignSelf: 'center', margin: 10 }}
 											mode="contained"
@@ -142,10 +146,10 @@ class NinjaOngoingExpired extends React.Component {
 										>
 											<Text>Complete</Text>
 										</Button>
-								}
+									}
+								</View>
 							</Card>
 						)
-					}
 					)}
 				</View>
 			</ScrollView >
