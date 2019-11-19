@@ -28,7 +28,6 @@ class AboutScreen extends React.Component {
                 <TouchableHighlight onPress={this.handleSignOut} color='#03A9F4'>
                     <Text style={styles.button}> Sign Out </Text>
                 </TouchableHighlight>
-
             </View>
         );
     }
