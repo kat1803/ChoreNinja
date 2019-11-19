@@ -33,12 +33,12 @@ class Firebase {
 		let ref = firebase.database().ref(`Notifications/${masterId}`);
 		ref.push({
 			createdAt: this.current_time,
-			text: `Congratualation! Your ${job.name} have been accepted by a ninja!`,
+            text: `Congratulations! Your ${job.name} have been accepted by a ninja!`,
 		})
 		let ref2 = firebase.database().ref(`Notifications/${ninjaId}`);
 		ref2.push({
 			createdAt: this.current_time,
-			text: `Congratualation! You have became ninja for ${job.name}!`,
+            text: `Congratulations! You have became ninja for ${job.name}!`,
 		})
 	}
 

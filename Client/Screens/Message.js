@@ -2,8 +2,8 @@
 import firebaseService from '../Firebase/firebase'
 import React from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
-import { View, ScrollView, Text, Switch } from "react-native";
-import { List, Button } from 'react-native-paper';
+import { View, ScrollView, Text, Switch, StyleSheet } from "react-native";
+import { List, Button, Title } from 'react-native-paper';
 import { connect } from "react-redux";
 
 class Message extends React.Component {
@@ -50,25 +50,38 @@ send = (message) =>{
 		  </View>)
 	  } else{
 		return (
-			<ScrollView>
-			{
-				this.props.user.conversationId ?
-					this.props.user.conversationId.map((conID, idx) => {
-						return <List.Item
-						  key={idx}
-						  onPress={() => this.changeConID(conID)}
-						  title={conID.id}
-						  description={conID.info.lastMessage}
-						  left={props => <List.Icon {...props} icon="chat" />}
-						/>
-					  })
-				:
-					<Text>It is lonely here!!</Text>
-			}
-		  </ScrollView>)
+			<View>
+				<Title style={{ fontSize: 25, alignSelf: 'center' }}>Messages</Title>
+				<View style={styles.lineStyle} />
+				<ScrollView>
+					{
+						this.props.user.conversationId ?
+							this.props.user.conversationId.map((conID, idx) => {
+								return <List.Item
+									key={idx}
+									onPress={() => this.changeConID(conID)}
+									title={conID.id}
+									description={conID.info.lastMessage}
+									left={props => <List.Icon {...props} icon="mail" />}
+								/>
+							})
+							:
+							<Text>It is lonely here!!</Text>
+					}
+				</ScrollView>
+			</View>
+		)
 	  }
   }
 }
+
+const styles = StyleSheet.create({
+	lineStyle: {
+		borderWidth: 0.5,
+		borderColor: 'black',
+		margin: 10,
+	}
+})
 
 const mapStateToProps = state => {
 	return {

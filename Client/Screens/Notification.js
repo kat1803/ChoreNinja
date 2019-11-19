@@ -35,10 +35,11 @@ class Notification extends React.Component {
                                 <List.Item
                                     style={{ flex: 1 }}
                                     key={i}
-                                    title={message.text}
+                                    title={message.text.substring(0,16)}
+                                    description={message.text.substring(17)}
                                     titleStyle={{ fontWeight: 'bold' }}
                                     // description={this.calAgoTime(message.createAt)}
-                                    left={props => <List.Icon {...props} icon='mail'/>}
+                                    left={props => <List.Icon {...props} icon='notifications'/>}
                                 />
                             );
                         })}    
