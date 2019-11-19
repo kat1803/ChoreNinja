@@ -20,7 +20,7 @@ class HomeScreen extends React.Component {
       paymentMethod: '',
       posts: [],
       showForm: false,
-	  editPostId: false,
+      editPostId: false,
     };
   }
 
@@ -32,14 +32,14 @@ class HomeScreen extends React.Component {
       start_date: `${this.state.date} ${this.state.start_time}`,
       due_date: `${this.state.date} ${this.state.end_time}`,
       zipcode: this.state.zipcode,
-	};
-	this.state.date != "" ? newpost.date = this.state.date : null
-	console.log("newpost", newpost)
+    };
+    this.state.date != "" ? newpost.date = this.state.date : null
+    console.log("newpost", newpost)
     if (this.state.editPostId) {
-		this.props.reduxEditPost(newpost, this.state.editPostId )
+      this.props.reduxEditPost(newpost, this.state.editPostId)
     } else {
       // Call redux dispatcher to make API call for POST request
-		this.props.reduxHandlePost(newpost);
+      this.props.reduxHandlePost(newpost);
     }
     // // Copy the current post array
     // var newPosts = Object.assign(this.state.posts);
@@ -52,8 +52,15 @@ class HomeScreen extends React.Component {
       description: "",
       date: "",
       start_time: "",
-	  end_time: "",
-	  zipcode: "",
+      end_time: "",
+      zipcode: "",
+      zipcodeError: "",
+      nameError: "",
+      descriptionError: "",
+      dateError: "",
+      startTimeError: "",
+      endTimeError: "",
+      priceError: "",
       showForm: false,
       editPostId: false
     });
@@ -71,10 +78,10 @@ class HomeScreen extends React.Component {
       end_time: new Date(post.due_date).toISOString().slice(11, 16),
       price: post.price.toString(),
       zipcode: post.zipcode,
-    //   date: post.date,
-	  showForm: true,
-	  editPostId: post._id,
-	});
+      //   date: post.date,
+      showForm: true,
+      editPostId: post._id,
+    });
   }
 
   handleDelete(idx) {
@@ -83,9 +90,9 @@ class HomeScreen extends React.Component {
     var post = posts[idx];
     var postId = post._id;
 
-	posts.splice(idx, 1);
-	this.setState({ posts: posts });
-	this.props.reduxDeletePost(postId)
+    posts.splice(idx, 1);
+    this.setState({ posts: posts });
+    this.props.reduxDeletePost(postId)
   }
 
   componentWillMount() {
@@ -112,6 +119,10 @@ class HomeScreen extends React.Component {
                     onChangeText={name => this.setState({ name })}
                     value={this.state.name}
                   />
+                  {!!this.state.nameError && (
+                    <Text style={{ color: "red" }}>{this.state.nameError}</Text>
+                  )}
+
                   <TextInput
                     style={{ marginTop: 2 }}
                     mode="outlined"
@@ -122,6 +133,10 @@ class HomeScreen extends React.Component {
                     onChangeText={description => this.setState({ description })}
                     value={this.state.description}
                   />
+                  {!!this.state.descriptionError && (
+                    <Text style={{ color: "red" }}>{this.state.descriptionError}</Text>
+                  )}
+
                   <TextInput
                     style={{ marginTop: 2 }}
                     mode="outlined"
@@ -132,6 +147,9 @@ class HomeScreen extends React.Component {
                     onChangeText={date => this.setState({ date })}
                     value={this.state.date}
                   />
+                  {!!this.state.dateError && (
+                    <Text style={{ color: "red" }}>{this.state.dateError}</Text>
+                  )}
 
                   <TextInput
                     style={{ marginTop: 2 }}
@@ -143,6 +161,9 @@ class HomeScreen extends React.Component {
                     onChangeText={start_time => this.setState({ start_time })}
                     value={this.state.start_time}
                   />
+                  {!!this.state.startTimeError && (
+                    <Text style={{ color: "red" }}>{this.state.startTimeError}</Text>
+                  )}
 
                   <TextInput
                     style={{ marginTop: 2 }}
@@ -154,6 +175,10 @@ class HomeScreen extends React.Component {
                     onChangeText={end_time => this.setState({ end_time })}
                     value={this.state.end_time}
                   />
+                  {!!this.state.endTimeError && (
+                    <Text style={{ color: "red" }}>{this.state.endTimeError}</Text>
+                  )}
+
                   <TextInput
                     style={{ marginTop: 2 }}
                     mode="outlined"
@@ -164,6 +189,10 @@ class HomeScreen extends React.Component {
                     onChangeText={price => this.setState({ price })}
                     value={this.state.price}
                   />
+                  {!!this.state.priceError && (
+                    <Text style={{ color: "red" }}>{this.state.priceError}</Text>
+                  )}
+
                   <TextInput
                     style={{ marginTop: 2 }}
                     mode="outlined"
@@ -174,6 +203,9 @@ class HomeScreen extends React.Component {
                     onChangeText={zipcode => this.setState({ zipcode })}
                     value={this.state.zipcode}
                   />
+                  {!!this.state.zipcodeError && (
+                    <Text style={{ color: "red" }}>{this.state.zipcodeError}</Text>
+                  )}
                   {/* <CheckBox
                     title="Cash payment"
                     checkedIcon="dot-circle-o"
@@ -193,7 +225,7 @@ class HomeScreen extends React.Component {
                     }
 				  /> */}
                 </View>
-                <View style={{ flexDirection: 'row', alignSelf: 'center'}}>
+                <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
                   <Button
                     style={{
                       width: 100,
@@ -202,7 +234,42 @@ class HomeScreen extends React.Component {
                       margin: 10
                     }}
                     mode="contained"
-                    onPress={() => this.handleSave()}
+                    onPress={() => {
+                      if (
+                        this.state.name.trim() === "" || 
+                        this.state.date.trim() === "" ||
+                        this.state.description.trim() === "" ||
+                        this.state.start_time.trim() === "" ||
+                        this.state.end_time.trim() === "" ||
+                        this.state.price.trim() === "" ||
+                        this.state.zipcode.trim() === "" 
+                      ) {
+                        if (this.state.name.trim() === "") {
+                          this.setState(() => ({ nameError: "Job title required" }))
+                        }
+                        if (this.state.description.trim() === "") {
+                          this.setState(() => ({ descriptionError: "Description required" }))
+                        }
+                        if (this.state.date.trim() === "") {
+                          this.setState(() => ({ dateError: "Date required" }))
+                        }
+                        if (this.state.start_time.trim() === "") {
+                          this.setState(() => ({ startTimeError: "Start Time required" }))
+                        }
+                        if (this.state.end_time.trim() === "") {
+                          this.setState(() => ({ endTimeError: "End Time required" }))
+                        }
+                        if (this.state.price.trim() === "") {
+                          this.setState(() => ({ priceError: "Price required" }))
+                        }
+                        if (this.state.zipcode.trim() === "") {
+                          this.setState(() => ({ zipcodeError: "Zipcode required" }))
+                        }
+                      }
+                      else {
+                        this.handleSave();
+                      }
+                    }}
                   >
                     {this.state.editPostId ? "Save" : "Post"}
                   </Button>
@@ -215,16 +282,23 @@ class HomeScreen extends React.Component {
                     }}
                     mode="contained"
                     onPress={() => this.setState({
-						          name: "",
-						          price: "",
-						          description: "",
-						          date: "",
-						          start_time: "",
-						          end_time: "",
-						          zipcode: "",
-						          showForm: false,
-						          editPostId: false
-					          })}
+                      name: "",
+                      price: "",
+                      description: "",
+                      date: "",
+                      start_time: "",
+                      end_time: "",
+                      zipcode: "",
+                      zipcodeError: "",
+                      nameError: "",
+                      descriptionError: "",
+                      dateError: "",
+                      startTimeError: "",
+                      endTimeError: "",
+                      priceError: "",
+                      showForm: false,
+                      editPostId: false
+                    })}
                   >
                     Cancel
                   </Button>
@@ -233,20 +307,20 @@ class HomeScreen extends React.Component {
               </Card>
             </View>
           ) : (
-            <Button
-              style={{
-                width: 325,
-                alignSelf: "center",
-                backgroundColor: "#03A9F4",
-                margin: 5
-              }}
-              mode="contained"
-              icon='add'
-              onPress={() => this.setState({ showForm: true })}
-            >
-              Post a Job
+              <Button
+                style={{
+                  width: 325,
+                  alignSelf: "center",
+                  backgroundColor: "#03A9F4",
+                  margin: 5
+                }}
+                mode="contained"
+                icon='add'
+                onPress={() => this.setState({ showForm: true })}
+              >
+                Post a Job
             </Button>
-          )}
+            )}
 
           {this.props.myPosts &&
             this.props.myPosts.map((post, idx) => (
@@ -256,22 +330,22 @@ class HomeScreen extends React.Component {
                 image={require("../assets/examplejob.png")}
               >
                 {/* Job Description */}
-                <View style={{ marginRight: 10}}>
-	  				{
-						post.end_date ?
-						<Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#C0C0C0', margin: 7 }}>Completed</Text> 
-						: null
-					}
-					{
-						(post.ninja && !post.end_date) ?
-						<Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#90EE90', margin: 7 }}>Ongoing</Text>
-						: null
-					}
-					{
-						(!post.ninja && !post.end_date) ?
-						<Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#90EE90', margin: 7 }}>New</Text>
-						: null
-					}
+                <View style={{ marginRight: 10 }}>
+                  {
+                    post.end_date ?
+                      <Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#C0C0C0', margin: 7 }}>Completed</Text>
+                      : null
+                  }
+                  {
+                    (post.ninja && !post.end_date) ?
+                      <Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#90EE90', margin: 7 }}>Ongoing</Text>
+                      : null
+                  }
+                  {
+                    (!post.ninja && !post.end_date) ?
+                      <Text style={{ fontStyle: 'italic', textAlign: 'center', fontSize: 20, backgroundColor: '#90EE90', margin: 7 }}>New</Text>
+                      : null
+                  }
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
                     Description:{" "}
                   </Text>
@@ -280,7 +354,7 @@ class HomeScreen extends React.Component {
                   </Text>
                 </View>
                 <Text />
-                
+
                 {/* Date */}
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
@@ -289,11 +363,11 @@ class HomeScreen extends React.Component {
                   <Text style={{ fontSize: 20, fontStyle: "italic" }}>
                     {/* {new Date(post.due_date).toISOString().slice(0, 10).replace('T', " ")} */}
                     {new Date(post.due_date).toISOString().slice(5, 7)}-
-                    {new Date(post.due_date).toISOString().slice(8,10)}-
-                    {new Date(post.due_date).toISOString().slice(0,4)}
+                    {new Date(post.due_date).toISOString().slice(8, 10)}-
+                    {new Date(post.due_date).toISOString().slice(0, 4)}
                   </Text>
                 </View>
-                <Text/>
+                <Text />
 
                 {/* Time */}
                 <View style={{ flexDirection: "row" }}>
@@ -345,7 +419,7 @@ class HomeScreen extends React.Component {
                     {new Date(post.post_date).toISOString().slice(0, 4)}
                   </Text>
                 </View>
-                <Text/>
+                <Text />
 
                 <View
                   style={{
@@ -410,12 +484,12 @@ const mapDispatchToProps = dispatch => {
     reduxHandlePost: post =>
       dispatch({
         type: "ADD_POST",
-        value: {post}
+        value: { post }
       }),
     reduxDeletePost: id =>
       dispatch({
         type: "DELETE_POST",
-        value: {id}
+        value: { id }
       }),
     reduxFetchMyPost: () =>
       dispatch({
@@ -424,7 +498,7 @@ const mapDispatchToProps = dispatch => {
     reduxEditPost: (post, id) =>
       dispatch({
         type: "EDIT_POST",
-        value: {post, id}
+        value: { post, id }
       })
   };
 };

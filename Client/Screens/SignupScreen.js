@@ -37,7 +37,7 @@ class SignupScreen extends React.Component {
 	render() {
 		const {signin} = this.state
 		return (
-			<View style={{ flex: 1 }}>
+			<View style={{ flex: 1,  }}>
 			<ScrollView>
 				<KeyboardAvoidingView>
 				<Image

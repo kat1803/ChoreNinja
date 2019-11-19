@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableHighlight } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import { connect } from "react-redux";
+import { TextInput, Button } from "react-native-paper";
 
 class AboutScreen extends React.Component {
     constructor(props) {
@@ -18,16 +19,33 @@ class AboutScreen extends React.Component {
     render() {
         return (
             <View style={styles.Content}>
-                <Image style={{ width: 200, height: 350 }}
+                <Image style={{ width: 200, height: 330 }}
                         source={require("../assets/ninja.png")}/>
                 <Text style={styles.Text}>
                     Our all-in-one service platform that instantly connects you with a professional Ninja service provider.
-                    Ranging from all your basic needs to professional needs. 
-                    Be more productive with us and join Chore Ninja. 
                 </Text>
-                <TouchableHighlight onPress={this.handleSignOut} color='#03A9F4'>
+                <Text style={styles.Text}>
+                    Ranging from all your basic needs to professional needs. Be more productive with us and join Chore Ninja.
+                </Text>
+                {/* <Button onPress={this.handleSignOut} color= '#03A9F4'> */}
+                <Button
+                    style={{
+                        alignSelf: "center",
+                        backgroundColor: "#1B58B5",
+                        margin: 5
+                    }}
+                    mode="contained"
+                    onPress={this.handleSignOut}
+                >
+                    Sign Out
+                </Button>
+                {/* <TouchableHighlight onPress={this.handleSignOut} color='#03A9F4'>
                     <Text style={styles.button}> Sign Out </Text>
-                </TouchableHighlight>
+                </TouchableHighlight> 
+                Our all-in-one service platform that instantly connects you with a professional Ninja service provider.
+                    Ranging from all your basic needs to professional needs.
+                    Be more productive with us and join Chore Ninja.
+                */}
             </View>
         );
     }
@@ -40,8 +58,11 @@ const styles = StyleSheet.create({
     Text:{
         alignItems: "center", 
         justifyContent: "center",
-        fontWeight: "bold", 
+        fontWeight: "400", 
+        fontStyle: 'italic',
+        textAlign: 'center',
         fontSize: 15,
+        padding: 10,
     },
     button: {
         marginTop: 20,
