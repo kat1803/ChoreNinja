@@ -1,3 +1,4 @@
+//will implement later
 import React, { Component } from "react";
 import { Text, View, ScrollView, SafeAreaView, Platform, StyleSheet, AlertIOS} from "react-native";
 import { Card } from "react-native-elements";
@@ -20,7 +21,6 @@ class Rating extends Component {
           onPress: () => console.log('OK Pressed'),
         },
       ],
-      //'secure-text',
     );
   };
 

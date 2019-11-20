@@ -83,7 +83,6 @@ class SignupScreen extends React.Component {
 						<TextInput
 							style={{backgroundColor: "white",  marginLeft: 5, marginRight: 5, marginTop: 2 }}
 							mode="flat"
-							// underlineColorAndroid="transparent"
 							numberOfLines={1}
 							label="Last Name"
 							onChangeText={lastname => this.setState({ lastname })}
@@ -93,34 +92,19 @@ class SignupScreen extends React.Component {
 					<View style={{ flexDirection: 'row', alignSelf: 'center'}}>
 						<Button
 							onPress={this.handleSubmit}
-							mode="text"
-							// style={{ marginTop: 15, alignSelf: "center", width: 250 }}
-							style={{marginLeft: 2, marginRight: 10, marginTop: 15, width: 160}}
+							mode="outlined"
+							style={{marginLeft: 2, marginRight: 10, marginTop: 15, width: 160, borderColor:''}}
 						>
 							{signin ? "Sign In" : "Sign Up"}
 						</Button>
 						<Button
 							onPress={() => this.setState({ signin: !signin })}
-							mode="text" 
-							//style={{ marginTop: 25, alignSelf: "center", width: 250 }}
+							mode="outlined" 
 							style={{marginRight: 2, marginLeft: 3, marginTop: 15, width: 175}}
 						>
 							{signin ? "Create Account" : "Sign In"}
 						</Button>
 					</View>
-					{/* <Text style={{ marginTop: 15, marginBottom: 15, textAlign: "center", fontSize: 18}}>OR</Text>
-					<Button 
-						mode="contained" 
-						style={{ width:250, alignSelf:"center", backgroundColor:"#176BEF"}}
-					> 
-						Login With Facebook
-					</Button>
-					<Button 
-						mode="contained" 
-						style={{marginTop:10, width:250, alignSelf:"center", backgroundColor:"#FF3E30", marginBottom: 100}}
-					>
-						Login With Google
-					</Button> */}
 				</View>
 				</KeyboardAvoidingView>
 			</ScrollView>

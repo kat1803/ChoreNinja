@@ -6,11 +6,9 @@ import {
 } from "react-navigation";
 import SwitchSelector from "react-native-switch-selector";
 import HomeScreen from "./HomeScreen";
-import LoginScreen from "./LoginScreen";
 import SignupScreen from "./SignupScreen";
 import Notification from "./Notification";
 import Message from "./Message";
-import MessageList from "./MessageList";
 import AboutScreen from "./AboutScreen";
 import NinjaBio from "./NinjaBio";
 import NinjaOngoingExpired from "./NinjaOngoingExpired";
@@ -18,10 +16,7 @@ import NinjaHome from "./NinjaHomepage";
 import NinjaJoinScreen from "./NinjaJoinScreen";
 import Rating from "./Rating";
 import MenuNavBar from "./MenuNavBar";
-//importing icon
 import FAIcon from 'react-native-vector-icons/FontAwesome';
-import MCIIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import { connect } from "react-redux";
 import { withInAppNotification } from 'react-native-in-app-notification';
 import firebaseService from '../Firebase/firebase'
@@ -31,7 +26,6 @@ const userImage = require('../assets/users.png');
 
 //Main Navigation
 const AppMainNavigatorCustomer = createBottomTabNavigator({
-  //Login: LoginScreen,
   Home: {
     screen: HomeScreen,
     navigationOptions: () => ({
@@ -83,18 +77,7 @@ const AppMainNavigatorCustomer = createBottomTabNavigator({
       ),
     })
   },
-  // "Menu": {
-  //   screen: MenuNavBar,
-  //   navigationOptions: () => ({
-  //     tabBarIcon: () => (
-  //       <FAIcon
-  //         name="bars"
-  //         size={30}
-  //         color='#1B58B5'
-  //       />
-  //     )
-  //   })
-  // },
+
   "About": {
     screen: AboutScreen,
     navigationOptions: () => ({
@@ -162,18 +145,7 @@ const AppMainNavigatorNinja = createBottomTabNavigator({
       )
     })
   },
-  // "Menu": {
-  //   screen: MenuNavBar,
-  //   navigationOptions: () => ({
-  //     tabBarIcon: () => (
-  //       <FAIcon
-  //         name="bars"
-  //         size={30}
-  //         color='#1B58B5'
-  //       />
-  //     )
-  //   })
-  // },
+
   "About": {
     screen: AboutScreen,
     navigationOptions: () => ({
@@ -249,7 +221,7 @@ class MainMenu extends React.Component {
                 textColor={'#01579D'} //'#7a44cf'
                 selectedColor={'#FFFFFF'}
                 buttonColor={'#1B58B5'}
-                borderColor={'#FFFFFF'}
+                borderColor={'#1B58B5'}
                 hasPadding
                 options={[
                   { label: "Master", value: true },
@@ -291,10 +263,7 @@ const mapDispatchToProps = dispatch => {
         type: "SIGN_IN",
         value: { email, password }
       }),
-    //   googleSignin: () =>
-    // 	dispatch({
-    // 	  type: "SIGN_IN_GOOGLE",
-    // 	}),
+
     signout: () =>
       dispatch({
         type: "SIGN_OUT",
