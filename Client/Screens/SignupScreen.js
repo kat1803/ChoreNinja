@@ -93,17 +93,17 @@ class SignupScreen extends React.Component {
 					<View style={{ flexDirection: 'row', alignSelf: 'center'}}>
 						<Button
 							onPress={this.handleSubmit}
-							mode="outlined"
+							mode="text"
 							// style={{ marginTop: 15, alignSelf: "center", width: 250 }}
-							style={{ marginLeft: 2, marginRight: 10, marginTop: 15, width: 160}}
+							style={{marginLeft: 2, marginRight: 10, marginTop: 15, width: 160}}
 						>
 							{signin ? "Sign In" : "Sign Up"}
 						</Button>
 						<Button
 							onPress={() => this.setState({ signin: !signin })}
-							mode="outlined" 
+							mode="text" 
 							//style={{ marginTop: 25, alignSelf: "center", width: 250 }}
-							style={{ marginRight: 2, marginLeft: 3, marginTop: 15, width: 175}}
+							style={{marginRight: 2, marginLeft: 3, marginTop: 15, width: 175}}
 						>
 							{signin ? "Create Account" : "Sign In"}
 						</Button>
