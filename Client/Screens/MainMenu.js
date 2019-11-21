@@ -184,7 +184,7 @@ class MainMenu extends React.Component {
 	  if (this.props.auth.user._id != nextProps.auth.user._id){
 		  if (nextProps.auth.user.first_name){
 			  this.props.showNotification({
-				  title: `Wellcome ${nextProps.auth.user.first_name}!`,
+				  title: `Welcome ${nextProps.auth.user.first_name}!`,
 				  message: `Let's get some work done!!!`,
 				});
 			} else{
